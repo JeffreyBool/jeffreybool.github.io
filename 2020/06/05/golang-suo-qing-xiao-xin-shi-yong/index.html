@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="golang-锁请小心使用, JeffreyBool">
+    <meta name="keywords" content="golang 锁请小心使用, JeffreyBool">
     <meta name="description" content="JeffreyBool">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>golang-锁请小心使用 | JeffreyBool</title>
+    <title>golang 锁请小心使用 | JeffreyBool</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">golang-锁请小心使用</h1>
+                    <h1 class="description center-align post-title">golang 锁请小心使用</h1>
                 </div>
             </div>
         </div>
@@ -365,12 +365,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/golang/">
+                                <span class="chip bg-color">golang</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/golang/" class="post-category">
+                                golang
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -388,7 +401,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    69
+                    387
                 </div>
                 
 
@@ -410,12 +423,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <hr>
-<p>title: golang 锁请小心使用<br>date: 2020-06-05 11:17:11<br>tags: </p>
-<ul>
-<li>golang<br>categories:</li>
-<li>golang</li>
-</ul>
+                <h2 id="关于锁使用"><a href="#关于锁使用" class="headerlink" title="关于锁使用"></a>关于锁使用</h2><p> 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 <code>defer</code> 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以很难排查。</p>
+<ol>
+<li><p>提前 <code>unlock</code><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744022_k7ZtwmAx9H.png" alt="image.png">)<img src="media/15907411886247/15907429736183.jpg" alt=""></p>
+</li>
+<li><p>不能提前 <code>unlock</code> 怎么办？如何处理???<br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744031_4Ay8Ub0Ntd.png" alt="image.png">)<img src="media/15907411886247/15907431250385.jpg" alt=""></p>
+</li>
+</ol>
+<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744040_vMvix7i2KO.png" alt="image.png">)<img src="media/15907411886247/15907436439527.jpg" alt=""><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744050_ewlAjsdhpx.png" alt="image.png"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744056_VlDn6KYxy9.png" alt="image.png"></p>
+<p>以上就是处理锁提前返回防止坑，能够知道锁什么时间释放很重要，往往很多坑就是这个函数已经 <code>lock</code> 锁了，然后再调用另外一个函数 <code>a-&gt;b-&gt;c-&gt;d</code>， 如此调用链；你不会知道这些函数是否也调用了这个函数的锁实例，导致死锁的发生。而且还有一点，像上图的 <code>SendMessage</code> 可能是一个耗时调用，那么这个锁就会一直阻塞在这里得不到释放。像我遇到的一个坑就是调用 <code>SendMessage</code> 函数，然后这个函数给客户端发送消息，然后由于客户端种种原因导致消息发送失败触发我的 close 函数，然后 close 内部处理资源清理导致再调用这个锁实例的函数导致重复加锁，这个 😭😭<code>BUG</code> 隐藏的很深，一般看不出来。</p>
+<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/61" target="_blank" rel="noopener">https://www.zhanggaoyuan.com/article/61</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -496,7 +513,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/golang/">
+                                    <span class="chip bg-color">golang</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -698,22 +719,19 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="golang-锁请小心使用">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="golang 锁请小心使用">
                         
-                        <span class="card-title">golang-锁请小心使用</span>
+                        <span class="card-title">golang 锁请小心使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-title: golang 锁请小心使用date: 2020-06-05 11:17:11tags: 
+                            关于锁使用 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 defer 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以很难排查。
 
-golangcategories:
-golang
+提前 unlock)
 
-
-        document.querySelectorAll('.git
+不能提前 unlock 怎么办？
                         
                     </div>
                     <div class="publish-info">
@@ -722,13 +740,25 @@ golang
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            JeffreyBool
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/golang/" class="post-category">
+                                    golang
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/golang/">
+                        <span class="chip bg-color">golang</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -743,22 +773,19 @@ golang
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="golang-锁请小心使用">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="golang 锁请小心使用">
                         
-                        <span class="card-title">golang-锁请小心使用</span>
+                        <span class="card-title">golang 锁请小心使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-title: golang 锁请小心使用date: 2020-06-05 11:17:11tags: 
+                            关于锁使用 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 defer 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以很难排查。
 
-golangcategories:
-golang
+提前 unlock)
 
-
-        document.querySelectorAll('.git
+不能提前 unlock 怎么办？
                         
                     </div>
                     <div class="publish-info">
@@ -767,13 +794,25 @@ golang
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            JeffreyBool
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/golang/" class="post-category">
+                                    golang
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/golang/">
+                        <span class="chip bg-color">golang</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -956,7 +995,7 @@ golang
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">69</span>&nbsp;字
+                class="white-color">387</span>&nbsp;字
             
             
             

@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title>golang-锁请小心使用</title>
+      <title>golang 锁请小心使用</title>
       <link href="/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/"/>
       <url>/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/</url>
       
-        <content type="html"><![CDATA[<hr><p>title: golang 锁请小心使用<br>date: 2020-06-05 11:17:11<br>tags: </p><ul><li>golang<br>categories:</li><li>golang</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<h2 id="关于锁使用"><a href="#关于锁使用" class="headerlink" title="关于锁使用"></a>关于锁使用</h2><p> 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 <code>defer</code> 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以很难排查。</p><ol><li><p>提前 <code>unlock</code><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744022_k7ZtwmAx9H.png" alt="image.png">)<img src="media/15907411886247/15907429736183.jpg" alt=""></p></li><li><p>不能提前 <code>unlock</code> 怎么办？如何处理???<br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744031_4Ay8Ub0Ntd.png" alt="image.png">)<img src="media/15907411886247/15907431250385.jpg" alt=""></p></li></ol><p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744040_vMvix7i2KO.png" alt="image.png">)<img src="media/15907411886247/15907436439527.jpg" alt=""><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744050_ewlAjsdhpx.png" alt="image.png"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744056_VlDn6KYxy9.png" alt="image.png"></p><p>以上就是处理锁提前返回防止坑，能够知道锁什么时间释放很重要，往往很多坑就是这个函数已经 <code>lock</code> 锁了，然后再调用另外一个函数 <code>a-&gt;b-&gt;c-&gt;d</code>， 如此调用链；你不会知道这些函数是否也调用了这个函数的锁实例，导致死锁的发生。而且还有一点，像上图的 <code>SendMessage</code> 可能是一个耗时调用，那么这个锁就会一直阻塞在这里得不到释放。像我遇到的一个坑就是调用 <code>SendMessage</code> 函数，然后这个函数给客户端发送消息，然后由于客户端种种原因导致消息发送失败触发我的 close 函数，然后 close 内部处理资源清理导致再调用这个锁实例的函数导致重复加锁，这个 😭😭<code>BUG</code> 隐藏的很深，一般看不出来。</p><p>原文链接：<a href="https://www.zhanggaoyuan.com/article/61" target="_blank" rel="noopener">https://www.zhanggaoyuan.com/article/61</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
+      <categories>
+          
+          <category> golang </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> golang </tag>
+            
+        </tags>
       
     </entry>
     
