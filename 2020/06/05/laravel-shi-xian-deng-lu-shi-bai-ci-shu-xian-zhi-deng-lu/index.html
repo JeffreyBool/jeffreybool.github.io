@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="golang 锁请小心使用, JeffreyBool">
+    <meta name="keywords" content="laravel 实现登录失败次数限制登录, JeffreyBool">
     <meta name="description" content="JeffreyBool">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>golang 锁请小心使用 | JeffreyBool</title>
+    <title>laravel 实现登录失败次数限制登录 | JeffreyBool</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">golang 锁请小心使用</h1>
+                    <h1 class="description center-align post-title">laravel 实现登录失败次数限制登录</h1>
                 </div>
             </div>
         </div>
@@ -367,8 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/golang/">
-                                <span class="chip bg-color">golang</span>
+                            <a href="/tags/laravel/">
+                                <span class="chip bg-color">laravel</span>
                             </a>
                         
                     </div>
@@ -379,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/golang/" class="post-category">
-                                golang
+                            <a href="/categories/laravel/" class="post-category">
+                                laravel
                             </a>
                         
                     </div>
@@ -401,14 +401,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    387
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -423,15 +423,130 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="关于锁使用"><a href="#关于锁使用" class="headerlink" title="关于锁使用"></a>关于锁使用</h2><p> 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 <code>defer</code> 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以很难排查。</p>
-<ol>
-<li><p>提前 <code>unlock</code><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744022_k7ZtwmAx9H.png" alt="golang 锁请小心使用"></p>
-</li>
-<li><p>不能提前 <code>unlock</code> 怎么办？如何处理???<br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744031_4Ay8Ub0Ntd.png" alt="golang 锁请小心使用"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744040_vMvix7i2KO.png" alt="golang 锁请小心使用"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744050_ewlAjsdhpx.png" alt="golang 锁请小心使用"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744056_VlDn6KYxy9.png" alt="golang 锁请小心使用"></p>
-</li>
-</ol>
-<p>以上就是处理锁提前返回防止坑，能够知道锁什么时间释放很重要，往往很多坑就是这个函数已经 <code>lock</code> 锁了，然后再调用另外一个函数 <code>a-&gt;b-&gt;c-&gt;d</code>， 如此调用链；你不会知道这些函数是否也调用了这个函数的锁实例，导致死锁的发生。而且还有一点，像上图的 <code>SendMessage</code> 可能是一个耗时调用，那么这个锁就会一直阻塞在这里得不到释放。像我遇到的一个坑就是调用 <code>SendMessage</code> 函数，然后这个函数给客户端发送消息，然后由于客户端种种原因导致消息发送失败触发我的 close 函数，然后 close 内部处理资源清理导致再调用这个锁实例的函数导致重复加锁，这个 😭😭<code>BUG</code> 隐藏的很深，一般看不出来。</p>
-<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/61" target="_blank" rel="noopener">https://www.zhanggaoyuan.com/article/61</a></p>
+                <p>在默认的 auth 的 <code>LoginControoler</code> usr的trait <code>AuthenticatesUsers</code><br><code>Illuminate\Foundation\Auth\ThrottlesLogins</code>这个trait有如下方法</p>
+<pre class=" language-php"><code class="language-php"><span class="token function">limiter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// limiter方法，从服务容器获取 RateLimiter 实例，专门连接缓存记录用户登录次数；</span>
+
+<span class="token function">throttleKey</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 该方法的内部代码为 return Str::lower($request->input($this->username())).'|'.$request->ip();</span>
+<span class="token comment" spellcheck="true">// 返回的值为 缓存数据库中的Key; </span>
+<span class="token comment" spellcheck="true">// 比如 张三从 192.168.1.11 登录系统，5次尝试登录失败，那么此处的返回值是 张三 | 192.168.1.11</span>
+<span class="token comment" spellcheck="true">// 缓存数据库中有一条记录是 键名为 '张三 | 192.168.1.11'， 键值为 '5'</span>
+
+<span class="token function">hasTooManyLoginAttempts</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 判断是否用户失败登录频率超过门槛值(1分钟内失败5次)；</span>
+
+<span class="token function">incrementLoginAttempts</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 用户在缓存数据库中的登录次数值，如果存在则加1；不存在，则新增，同时设置过期时间（默认是1分钟）</span>
+
+<span class="token function">sendLockoutResponse</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 这方法被调用意味着用户已经超过登录上限，此时方法会 back 到登录页，并携带'登录超过上限，请于58秒后再次登录'这样的提示； </span>
+
+<span class="token function">clearLoginAttempts</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 清除指定用户在缓存数据库中的登录次数记录，包括Lock记录；</span>
+
+<span class="token function">fireLockoutEvent</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 方法内部就一句话，event(new Lockout($request)); 触发 lockout 事件</span></code></pre>
+<p>Laravel 本身已实现了登录失败次数限制的功能。在使用 Laravel 的登录验证时，登录失败次数限制预设是：「失败5次，1分钟后才可再次登录。」但如果要求的功能是：「失败3次，1分钟后才可登录；再失败3次，3分钟后才可登录；再失败3次，5分钟后才可登录。」要如何实现？下面将实际示范此登录失败次数限制的功能。</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>Laravel 5.5 以上</p>
+<h2 id="改写登录类别设定"><a href="#改写登录类别设定" class="headerlink" title="改写登录类别设定"></a>改写登录类别设定</h2><p><em>app\Http\Controllers\Auth\LoginController.php</em></p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Foundation<span class="token punctuation">\</span>Auth<span class="token punctuation">\</span>AuthenticatesUsers</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Cache<span class="token punctuation">\</span>AdvancedRateLimiter</span>
+
+<span class="token keyword">class</span> <span class="token class-name">LoginController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">use</span> <span class="token package">AuthenticatesUsers</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Get the rate limiter instance.
+     *
+     * @return \App\Cache\AdvancedRateLimiter
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">limiter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">app</span><span class="token punctuation">(</span>AdvancedRateLimiter<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * The maximum number of attempts to allow.
+     *
+     * @var integer
+     */</span>
+    <span class="token keyword">protected</span> <span class="token variable">$maxAttempts</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * The number of minutes to throttle for.
+     *
+     * @var integer|array
+     */</span>
+    <span class="token keyword">protected</span> <span class="token variable">$decayMinutes</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在 <code>LoginController</code> 类中，增加自订方法复盖掉 <code>AuthenticatesUsers</code> 类原本的方法：</p>
+<ul>
+<li><code>limiter</code> 方法是返回登录失败次数限制的类，原本是返回 <code>RateLimiter</code> 类(实现登录失败次数限制的类)，但本例要扩充新方法，因此返回了我们下面创建的子类别 <code>AdvancedRateLimiter</code> 。</li>
+<li><code>$maxAttempts</code> 属性是设定登录失败次数。</li>
+<li><code>$decayMinutes</code> 属性是登录失败达上限后，须等待的分钟数。但我们要实现的功能是每次都等待不一样的时间，因此传入一个数组，输入每次的等待分钟数。</li>
+</ul>
+<p>如果只是要修改 Laravel 原本的次数设定，新增 <code>$maxAttempts</code> 属性及 <code>$decayMinutes</code> 属性并设定值即可完成。</p>
+<h2 id="擴充登录失败次数限制功能"><a href="#擴充登录失败次数限制功能" class="headerlink" title="擴充登录失败次数限制功能"></a>擴充登录失败次数限制功能</h2><p>新增类别 <code>AdvancedRateLimiter</code>：</p>
+<p><em>app\Cache\AdvancedRateLimiter.php</em></p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Cache</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Cache<span class="token punctuation">\</span>RateLimiter</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AdvancedRateLimiter</span> <span class="token keyword">extends</span> <span class="token class-name">RateLimiter</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * Increment the counter for a given key for a given decay time.
+     *
+     * @param  string  $key
+     * @param  float|int|array  $decayMinutes
+     * @return int
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">hit</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token variable">$decayMinutes</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">is_array</span><span class="token punctuation">(</span><span class="token variable">$decayMinutes</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">has</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':timer'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">has</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':step'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">add</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':step'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1440</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':step'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token variable">$step</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':step'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$step</span> <span class="token operator">=</span> <span class="token variable">$step</span> <span class="token operator">&lt;</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$decayMinutes</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token variable">$step</span> <span class="token punctuation">:</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$decayMinutes</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token variable">$decayMinutes</span> <span class="token operator">=</span> <span class="token variable">$decayMinutes</span><span class="token punctuation">[</span><span class="token variable">$step</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">hit</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">addMinutes</span><span class="token punctuation">(</span><span class="token variable">$decayMinutes</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Clear the hits and lockout timer for the given key.
+     *
+     * @param  string  $key
+     * @return void
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">clear</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">forget</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':step'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li><code>hit</code> 方法是在登錄錯誤後，執行登錄錯誤次數記錄遞增的方法。為了實現每次登錄錯誤等待的時間可以不一樣，我們讓傳入的變數 <code>$decayMinutes</code> 可以接受傳入数组，第一次登錄錯誤等待時間為 <code>数组[0]</code> 的分鐘數(本例為1分鐘)，第二次為 <code>数组[1]</code> 的分鐘數(例：3分鐘)，而第三次為 <code>数组[2]</code> 的分鐘數(例：5分鐘)，之後的登錄錯誤等待時間皆為数组的最後的元素的分鐘數。</li>
+<li><code>clear</code> 是成功登入後，將時間、次數重設，下一次再登入錯誤後，將從頭開始計數。</li>
+</ul>
+<p>此時登录失败次数限制的功能已改寫完成，再次登入並輸入錯誤的帳號或密碼，重複數次即可看到結果。</p>
+<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/55" target="_blank" rel="noopener">https://www.zhanggaoyuan.com/article/55</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -475,7 +590,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jeffreybool.github.io/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/">https://jeffreybool.github.io/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/</a>
+                    <a href="https://jeffreybool.github.io/2020/06/05/laravel-shi-xian-deng-lu-shi-bai-ci-shu-xian-zhi-deng-lu/">https://jeffreybool.github.io/2020/06/05/laravel-shi-xian-deng-lu-shi-bai-ci-shu-xian-zhi-deng-lu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -513,8 +628,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/golang/">
-                                    <span class="chip bg-color">golang</span>
+                                <a href="/tags/laravel/">
+                                    <span class="chip bg-color">laravel</span>
                                 </a>
                             
                         </div>
@@ -685,7 +800,7 @@
         repo: 'jeffreybool.github.io',
         owner: 'JeffreyBool',
         admin: "JeffreyBool",
-        id: '2020-06-05T11-17-11',
+        id: '2020-06-05T12-37-29',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -709,9 +824,61 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/06/05/laravel-shi-xian-deng-lu-shi-bai-ci-shu-xian-zhi-deng-lu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="laravel 实现登录失败次数限制登录">
+                        
+                        <span class="card-title">laravel 实现登录失败次数限制登录</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            在默认的 auth 的 LoginControoler usr的trait AuthenticatesUsersIlluminate\Foundation\Auth\ThrottlesLogins这个trait有如下方法
+limiter()
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/laravel/" class="post-category">
+                                    laravel
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/laravel/">
+                        <span class="chip bg-color">laravel</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/06/05/golang-huo-qu-wen-zhang-zhai-yao-suan-fa-xing-neng-xiang-xi-dui-bi/">
                     <div class="card-image">
@@ -726,59 +893,6 @@
                     <div class="summary block-with-text">
                         
                             现在我们开发网站基本摆脱不了上传文件的功能，但是上传文件的可能有几百M 或者几个G, 如果不做秒传的话会带来很多的功能。例如：用户体验不好，同一个文件还要多次上传到服务器。浪费服务器带宽和资源。如果我们做了秒传就会解决上面带来的问题，可以在客户端计算文件的摘要，和服务器算法保持一致就可以做到秒传了，客户端拿着算好的摘要去服务端判断这个文件是否已经上传，如果上传了直接返回文件信息，没有上传就调用上传接口
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/golang/" class="post-category">
-                                    golang
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/golang/">
-                        <span class="chip bg-color">golang</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="golang 锁请小心使用">
-                        
-                        <span class="card-title">golang 锁请小心使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            关于锁使用 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 defer 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以很难排查。
-
-提前 unlock
-
-不能提前 unlock 怎么办？如
                         
                     </div>
                     <div class="publish-info">
@@ -797,7 +911,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
