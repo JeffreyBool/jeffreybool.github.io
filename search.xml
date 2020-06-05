@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>hello,hexo</title>
-      <link href="/2020/06/05/hello-hexo/"/>
-      <url>/2020/06/05/hello-hexo/</url>
+      <title>golang-锁请小心使用</title>
+      <link href="/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/"/>
+      <url>/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/</url>
       
-        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<hr><p>title: golang 锁请小心使用<br>date: 2020-06-05 11:17:11<br>tags: </p><ul><li>golang<br>categories:</li><li>golang</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       
