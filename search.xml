@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>linux系统搭建golang环境</title>
+      <link href="/2020/06/05/linux-xi-tong-da-jian-golang-huan-jing/"/>
+      <url>/2020/06/05/linux-xi-tong-da-jian-golang-huan-jing/</url>
+      
+        <content type="html"><![CDATA[<h2 id="第一步打开-golang-官方找到安装版本列表"><a href="#第一步打开-golang-官方找到安装版本列表" class="headerlink" title="第一步打开 golang 官方找到安装版本列表"></a>第一步打开 <code>golang</code> 官方找到安装版本列表</h2><blockquote><p>安装地址<a href="https://golang.google.cn/dl/" target="_blank" rel="noopener">https://golang.google.cn/dl/</a></p></blockquote><p>我们找到 <code>linux</code>系统版本，复制这个链接</p><blockquote><p>wget <a href="https://dl.google.com/go/go1.13.6.linux-amd64.tar.gz" target="_blank" rel="noopener">https://dl.google.com/go/go1.13.6.linux-amd64.tar.gz</a></p></blockquote><p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202001/10/1_1578646097_Lsyt7j1IMP.png" alt="image.png"></p><h2 id="第二部解压"><a href="#第二部解压" class="headerlink" title="第二部解压"></a>第二部解压</h2><blockquote><p>tar -C /usr/local -xzf go1.13.6.linux-amd64.tar.gz</p></blockquote><p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202001/10/1_1578646131_uKxBOtfAut.png" alt="linux系统搭建golang环境"></p><h2 id="第三步添加环境变量到-etc-profile"><a href="#第三步添加环境变量到-etc-profile" class="headerlink" title="第三步添加环境变量到 /etc/profile"></a>第三步添加环境变量到 <code>/etc/profile</code></h2><ul><li>打开 <code>/etc/profile</code> 文件</li><li>添加 export PATH=$PATH:/usr/local/go/bin</li><li>重新加载 <code>source /etc/profile</code></li></ul><h2 id="查看是否安装成功"><a href="#查看是否安装成功" class="headerlink" title="查看是否安装成功"></a>查看是否安装成功</h2><pre class=" language-bash"><code class="language-bash">go --version</code></pre><p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202001/10/1_1578646097_Lsyt7j1IMP.png" alt="linux系统搭建golang环境"></p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://golang.google.cn/doc/install?download=go1.13.6.linux-amd64.tar.gz" target="_blank" rel="noopener">golang官方文档</a></p><p>原文链接：<a href="https://www.zhanggaoyuan.com/article/51" target="_blank" rel="noopener">https://www.zhanggaoyuan.com/article/51</a></p><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> golang </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> golang </tag>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux 服务器生成 github ssh</title>
       <link href="/2020/06/05/linux-fu-wu-qi-sheng-cheng-github-ssh/"/>
       <url>/2020/06/05/linux-fu-wu-qi-sheng-cheng-github-ssh/</url>
