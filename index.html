@@ -440,28 +440,6 @@
     
     
     <div class="col s12" >
-        <div class="post-card" style="background-image: url('/medias/featureimages/19.jpg')">
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/golang/" class="category">golang</a>
-                        
-                    
-                </div>
-                <a href="/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/">
-                    <h3 class="post-title">golang 锁请小心使用</h3>
-                </a>
-                <p class="post-description">关于锁使用 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 defer 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以</p>
-                <a href="/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
         <div class="post-card" style="background-image: url('/medias/featureimages/14.jpg')">
             <div class="post-body">
                 <div class="post-categories">
@@ -475,7 +453,29 @@
                     <h3 class="post-title">golang获取文章摘要算法性能详细对比</h3>
                 </a>
                 <p class="post-description">现在我们开发网站基本摆脱不了上传文件的功能，但是上传文件的可能有几百M 或者几个G, 如果不做秒传的话会带来很多的功能。例如：用户体验不好，同一个文件还要多次上传到服务器。浪费服务器带宽和资源。如果我们做了秒传就会解决上面带来的问题，可以在客户端计算文件的摘要，和服务器算法保持一致就可以做到秒传了，客户端拿着算好的摘要去服务端判断这个文件是否已经上传，如果上传了直接返回文件信息，没有上传就调用上传接口</p>
-                <a href="/2020/06/05/golang-huo-qu-wen-zhang-zhai-yao-suan-fa-xing-neng-xiang-xi-dui-bi/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
+                <a href="/2020/06/05/golang-huo-qu-wen-zhang-zhai-yao-suan-fa-xing-neng-xiang-xi-dui-bi/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        <div class="post-card" style="background-image: url('/medias/featureimages/19.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/golang/" class="category">golang</a>
+                        
+                    
+                </div>
+                <a href="/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/">
+                    <h3 class="post-title">golang 锁请小心使用</h3>
+                </a>
+                <p class="post-description">关于锁使用 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 defer 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，</p>
+                <a href="/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
                     <i class="icon far fa-eye fa-fw"></i>阅读更多
                 </a>
             </div>
@@ -537,8 +537,14 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                跳表实现原理是一种动态的数据结构,它可以支持快速的插入、查找、查询操作.写起来并不复杂,甚至可以替代红黑树.
-对于一个单链表来讲,即使链表中的储存数据是有序的.如果我们想要在其中查找某个数据,也只能从头到尾遍历链表.这样的效率会很低,时间复
+                                跳表实现原理
+title: 跳表实现原理date: 2020-06-05 13:17:11categories: redistags: 
+
+redis
+数据结构
+
+
+是一种动态的数据结构,它可以支持快速的插入、查找、查询操作.写起来并不复杂
                             
                         </div>
                         <div class="publish-info">
