@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux系统搭建golang环境, JeffreyBool">
+    <meta name="keywords" content="redis跳表实现原理, JeffreyBool">
     <meta name="description" content="JeffreyBool">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>linux系统搭建golang环境 | JeffreyBool</title>
+    <title>redis跳表实现原理 | JeffreyBool</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">linux系统搭建golang环境</h1>
+                    <h1 class="description center-align post-title">redis跳表实现原理</h1>
                 </div>
             </div>
         </div>
@@ -365,29 +365,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/golang/">
-                                <span class="chip bg-color">golang</span>
-                            </a>
-                        
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/golang/" class="post-category">
-                                golang
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -405,7 +388,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    183
+                    311
                 </div>
                 
 
@@ -427,27 +410,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="第一步打开-golang-官方找到安装版本列表"><a href="#第一步打开-golang-官方找到安装版本列表" class="headerlink" title="第一步打开 golang 官方找到安装版本列表"></a>第一步打开 <code>golang</code> 官方找到安装版本列表</h2><blockquote>
-<p>安装地址<a href="https://golang.google.cn/dl/" target="_blank" rel="noopener">https://golang.google.cn/dl/</a></p>
-</blockquote>
-<p>我们找到 <code>linux</code>系统版本，复制这个链接</p>
+                <h2 id="跳表实现原理"><a href="#跳表实现原理" class="headerlink" title="跳表实现原理"></a>跳表实现原理</h2><p>是一种动态的数据结构,它可以支持快速的插入、查找、查询操作.写起来并不复杂,甚至可以替代红黑树.</p>
+<p>对于一个单链表来讲,即使链表中的储存数据是有序的.如果我们想要在其中查找某个数据,也只能从头到尾遍历链表.这样的效率会很低,时间复杂度也很高  <code>O(n)</code>.</p>
+<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264459_hwwzRqoAyX.png" alt="跳表实现原理"></p>
 <blockquote>
-<p>wget <a href="https://dl.google.com/go/go1.13.6.linux-amd64.tar.gz" target="_blank" rel="noopener">https://dl.google.com/go/go1.13.6.linux-amd64.tar.gz</a></p>
+<p>如何提升链表的查询效率呢? 我们对链表建立一级索引层.每两个节点提取一个节点到上一级.图中的 down 表示 down 指针，指向下一级结点。</p>
 </blockquote>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202001/10/1_1578646097_Lsyt7j1IMP.png" alt="image.png"></p>
-<h2 id="第二部解压"><a href="#第二部解压" class="headerlink" title="第二部解压"></a>第二部解压</h2><blockquote>
-<p>tar -C /usr/local -xzf go1.13.6.linux-amd64.tar.gz</p>
+<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264467_VmnwgITZSJ.png" alt="跳表实现原理"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264476_85UkzmWwjz.png" alt="跳表实现原理"></p>
+<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264488_ZCNI85qG89.png" alt="跳表实现原理"></p>
+<blockquote>
+<p>这种链表加多级索引的结构，就是<code>跳表</code></p>
 </blockquote>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202001/10/1_1578646131_uKxBOtfAut.png" alt="linux系统搭建golang环境"></p>
-<h2 id="第三步添加环境变量到-etc-profile"><a href="#第三步添加环境变量到-etc-profile" class="headerlink" title="第三步添加环境变量到 /etc/profile"></a>第三步添加环境变量到 <code>/etc/profile</code></h2><ul>
-<li>打开 <code>/etc/profile</code> 文件</li>
-<li>添加 export PATH=$PATH:/usr/local/go/bin</li>
-<li>重新加载 <code>source /etc/profile</code></li>
-</ul>
-<h2 id="查看是否安装成功"><a href="#查看是否安装成功" class="headerlink" title="查看是否安装成功"></a>查看是否安装成功</h2><pre class=" language-bash"><code class="language-bash">go --version</code></pre>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202001/10/1_1578646097_Lsyt7j1IMP.png" alt="linux系统搭建golang环境"></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://golang.google.cn/doc/install?download=go1.13.6.linux-amd64.tar.gz" target="_blank" rel="noopener">golang官方文档</a></p>
-<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/51" target="_blank" rel="noopener">https://www.zhanggaoyuan.com/article/51</a></p>
+<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264496_WX4kM3HP9K.png" alt="跳表实现原理"></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结:"></a>小结:</h3><p>跳表采用空间换时间的设计思路,通过构建多级索引来提高查询的效率,实现了基于链表的<code>二分查找</code>.跳表是一种动态的数据结构,支持快速的插入.</p>
+<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/4" target="_blank" rel="noopener">https://www.zhanggaoyuan.com/article/4</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -491,7 +467,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jeffreybool.github.io/2020/06/05/linux-xi-tong-da-jian-golang-huan-jing/">https://jeffreybool.github.io/2020/06/05/linux-xi-tong-da-jian-golang-huan-jing/</a>
+                    <a href="https://jeffreybool.github.io/2020/06/05/redis-tiao-biao-shi-xian-yuan-li/">https://jeffreybool.github.io/2020/06/05/redis-tiao-biao-shi-xian-yuan-li/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -528,15 +504,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/golang/">
-                                    <span class="chip bg-color">golang</span>
-                                </a>
-                            
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -705,7 +673,7 @@
         repo: 'jeffreybool.github.io',
         owner: 'JeffreyBool',
         admin: "JeffreyBool",
-        id: '2020-06-05T12-49-00',
+        id: '2020-06-05T13-05-13',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -729,9 +697,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/06/05/redis-tiao-biao-shi-xian-yuan-li/">
                     <div class="card-image">
@@ -750,9 +719,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -761,6 +730,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -771,23 +741,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/05/linux-fu-wu-qi-sheng-cheng-github-ssh/">
+                <a href="/2020/06/05/linux-xi-tong-da-jian-golang-huan-jing/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="linux 服务器生成 github ssh">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="linux系统搭建golang环境">
                         
-                        <span class="card-title">linux 服务器生成 github ssh</span>
+                        <span class="card-title">linux系统搭建golang环境</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            服务器生成 git ssh 步骤详细记录：1. 首先检查自己之前是否有生成
-$ ls -al ~/.ssh  
+                            第一步打开 golang 官方找到安装版本列表
+安装地址https://golang.google.cn/dl/
 
-2. 检查自己是否有配置过git 全局配置
-git config user.namegit config user.email
+我们找到 linux系统版本，复制这个链接
+
+wget https://dl.google.com/go/go1.13.6.
                         
                     </div>
                     <div class="publish-info">
@@ -798,8 +769,8 @@ git config user.namegit config user.email
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/linux/" class="post-category">
-                                    linux
+                            <a href="/categories/golang/" class="post-category">
+                                    golang
                                 </a>
                             
                             
@@ -809,16 +780,12 @@ git config user.namegit config user.email
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/golang/">
+                        <span class="chip bg-color">golang</span>
+                    </a>
+                    
                     <a href="/tags/linux/">
                         <span class="chip bg-color">linux</span>
-                    </a>
-                    
-                    <a href="/tags/github/">
-                        <span class="chip bg-color">github</span>
-                    </a>
-                    
-                    <a href="/tags/ssh/">
-                        <span class="chip bg-color">ssh</span>
                     </a>
                     
                 </div>
