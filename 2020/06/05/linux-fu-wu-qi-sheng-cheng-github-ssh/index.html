@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="golang获取文章摘要算法性能详细对比, JeffreyBool">
+    <meta name="keywords" content="linux 服务器生成 github ssh, JeffreyBool">
     <meta name="description" content="JeffreyBool">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>golang获取文章摘要算法性能详细对比 | JeffreyBool</title>
+    <title>linux 服务器生成 github ssh | JeffreyBool</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">golang获取文章摘要算法性能详细对比</h1>
+                    <h1 class="description center-align post-title">linux 服务器生成 github ssh</h1>
                 </div>
             </div>
         </div>
@@ -367,8 +367,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/golang/">
-                                <span class="chip bg-color">golang</span>
+                            <a href="/tags/linux/">
+                                <span class="chip bg-color">linux</span>
+                            </a>
+                        
+                            <a href="/tags/github/">
+                                <span class="chip bg-color">github</span>
+                            </a>
+                        
+                            <a href="/tags/ssh/">
+                                <span class="chip bg-color">ssh</span>
                             </a>
                         
                     </div>
@@ -379,8 +387,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/golang/" class="post-category">
-                                golang
+                            <a href="/categories/linux/" class="post-category">
+                                linux
                             </a>
                         
                     </div>
@@ -401,14 +409,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    561
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    2 分
                 </div>
                 
 
@@ -423,183 +431,87 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>为了测试 golang <code>ioutil.ReadAll</code> 、<code>io.Copy</code>、<code>bufio.NewReader</code> 性能 我写了三个函数，函数代码如下:</p>
-<h2 id="golang-读取文件性能对比"><a href="#golang-读取文件性能对比" class="headerlink" title="golang 读取文件性能对比"></a>golang 读取文件性能对比</h2><h3 id="ioutil-ReadAll"><a href="#ioutil-ReadAll" class="headerlink" title="ioutil.ReadAll"></a><code>ioutil.ReadAll</code></h3><pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">ReadAll</span><span class="token punctuation">(</span>path <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>fileMD5 <span class="token builtin">string</span><span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    f<span class="token punctuation">,</span> err <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> fileMD5<span class="token punctuation">,</span> err
-    <span class="token punctuation">}</span>
-    <span class="token keyword">defer</span> f<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    body<span class="token punctuation">,</span> err <span class="token operator">:=</span> ioutil<span class="token punctuation">.</span><span class="token function">ReadAll</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> fileMD5<span class="token punctuation">,</span> err
-    <span class="token punctuation">}</span>
-    hash <span class="token operator">:=</span> sha1<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    hash<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>body<span class="token punctuation">)</span>
-    fileMD5 <span class="token operator">=</span> hex<span class="token punctuation">.</span><span class="token function">EncodeToString</span><span class="token punctuation">(</span>hash<span class="token punctuation">.</span><span class="token function">Sum</span><span class="token punctuation">(</span><span class="token boolean">nil</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> fileMD5<span class="token punctuation">,</span> <span class="token boolean">nil</span>
-<span class="token punctuation">}</span></code></pre>
-<h3 id="io-copy"><a href="#io-copy" class="headerlink" title="io.copy"></a><code>io.copy</code></h3><pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">Copy</span><span class="token punctuation">(</span>path <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>fileMD5 <span class="token builtin">string</span><span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    f<span class="token punctuation">,</span> err <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> fileMD5<span class="token punctuation">,</span> err
-    <span class="token punctuation">}</span>
-    <span class="token keyword">defer</span> f<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    md5hash <span class="token operator">:=</span> sha1<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> io<span class="token punctuation">.</span><span class="token function">Copy</span><span class="token punctuation">(</span>md5hash<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> fileMD5<span class="token punctuation">,</span> err
-    <span class="token punctuation">}</span>
-
-    fileMD5 <span class="token operator">=</span> hex<span class="token punctuation">.</span><span class="token function">EncodeToString</span><span class="token punctuation">(</span>md5hash<span class="token punctuation">.</span><span class="token function">Sum</span><span class="token punctuation">(</span><span class="token boolean">nil</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> fileMD5<span class="token punctuation">,</span> <span class="token boolean">nil</span>
-<span class="token punctuation">}</span></code></pre>
-<h3 id="bufio-NewReader"><a href="#bufio-NewReader" class="headerlink" title="bufio.NewReader"></a><code>bufio.NewReader</code></h3><pre class=" language-go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">ReadBuf</span><span class="token punctuation">(</span>path <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>fileMD5 <span class="token builtin">string</span><span class="token punctuation">,</span> err <span class="token builtin">error</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    f<span class="token punctuation">,</span> err <span class="token operator">:=</span> os<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> fileMD5<span class="token punctuation">,</span> err
-    <span class="token punctuation">}</span>
-    <span class="token keyword">defer</span> f<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    buf <span class="token operator">:=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">byte</span><span class="token punctuation">,</span> <span class="token number">1024</span><span class="token punctuation">)</span>
-    reader <span class="token operator">:=</span> bufio<span class="token punctuation">.</span><span class="token function">NewReader</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>
-    md5hash <span class="token operator">:=</span> sha1<span class="token punctuation">.</span><span class="token function">New</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> <span class="token punctuation">{</span>
-        n<span class="token punctuation">,</span> err <span class="token operator">:=</span> reader<span class="token punctuation">.</span><span class="token function">Read</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// 遇到任何错误立即返回，并忽略 EOF 错误信息</span>
-            <span class="token keyword">if</span> err <span class="token operator">==</span> io<span class="token punctuation">.</span>EOF <span class="token punctuation">{</span>
-                <span class="token keyword">goto</span> stop
-            <span class="token punctuation">}</span>
-            <span class="token keyword">return</span> fileMD5<span class="token punctuation">,</span> err
-        <span class="token punctuation">}</span>
-        md5hash<span class="token punctuation">.</span><span class="token function">Write</span><span class="token punctuation">(</span>buf<span class="token punctuation">[</span><span class="token punctuation">:</span>n<span class="token punctuation">]</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-stop<span class="token punctuation">:</span>
-    fileMD5 <span class="token operator">=</span> hex<span class="token punctuation">.</span><span class="token function">EncodeToString</span><span class="token punctuation">(</span>md5hash<span class="token punctuation">.</span><span class="token function">Sum</span><span class="token punctuation">(</span><span class="token boolean">nil</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> fileMD5<span class="token punctuation">,</span> <span class="token boolean">nil</span>
-<span class="token punctuation">}</span></code></pre>
-<h3 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h3><pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> file_test
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
-    <span class="token string">"testing"</span>
-
-    <span class="token string">"filestore/test/file"</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">var</span> <span class="token punctuation">(</span>
-    minPath <span class="token operator">=</span> <span class="token string">"~/6d827d1edddea7c73fb7d6efbb467167839ff2f6.jpg"</span>
-    maxPath <span class="token operator">=</span> <span class="token string">"/Users/zhanggaoyuan/学习/2004.mkv"</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">func</span> <span class="token function">BenchmarkReadAll</span><span class="token punctuation">(</span>b <span class="token operator">*</span>testing<span class="token punctuation">.</span>B<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> b<span class="token punctuation">.</span>N<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
-        <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> file<span class="token punctuation">.</span><span class="token function">ReadAll</span><span class="token punctuation">(</span>minPath<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-            b<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-            <span class="token keyword">return</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">BenchmarkCopy</span><span class="token punctuation">(</span>b <span class="token operator">*</span>testing<span class="token punctuation">.</span>B<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> b<span class="token punctuation">.</span>N<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
-        <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> file<span class="token punctuation">.</span><span class="token function">Copy</span><span class="token punctuation">(</span>minPath<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-            b<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-            <span class="token keyword">return</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">BenchmarkReadBuf</span><span class="token punctuation">(</span>b <span class="token operator">*</span>testing<span class="token punctuation">.</span>B<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> b<span class="token punctuation">.</span>N<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
-        <span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> file<span class="token punctuation">.</span><span class="token function">ReadBuf</span><span class="token punctuation">(</span>minPath<span class="token punctuation">)</span>
-        <span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
-            b<span class="token punctuation">.</span><span class="token function">Error</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
-            <span class="token keyword">return</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<h2 id="文件大小耗时情况"><a href="#文件大小耗时情况" class="headerlink" title="文件大小耗时情况"></a>文件大小耗时情况</h2><h3 id="小于等于-10MB-的文件耗时情况"><a href="#小于等于-10MB-的文件耗时情况" class="headerlink" title="小于等于 10MB 的文件耗时情况"></a>小于等于 <code>10MB</code> 的文件耗时情况</h3><p>准备 6d827d1edddea7c73fb7d6efbb467167839ff2f6.jpg 9.7M 的文件，</p>
-<p>执行 <code>go test -bench=. -benchmem</code> 就可以看到详细的信息啦</p>
-<pre><code>goos: darwin
-goarch: amd64
-pkg: filestore/test/file
-BenchmarkReadAll-8             64      17963784 ns/op    33552812 B/op          22 allocs/op
-BenchmarkCopy-8                80      12910267 ns/op       33192 B/op           8 allocs/op
-BenchmarkReadBuf-8             66      15641888 ns/op        5544 B/op           9 allocs/op
-PASS
-ok      filestore/test/file    3.994s</code></pre><p>我们可以看出 <code>BenchmarkCopy</code> 性能最高，执行 84 次平均时间 12910267 纳秒，也就是 1.2 秒左右的样子啦。</p>
-<h3 id="小于等于-40MB-的文件耗时情况"><a href="#小于等于-40MB-的文件耗时情况" class="headerlink" title="小于等于 40MB 的文件耗时情况"></a>小于等于 <code>40MB</code> 的文件耗时情况</h3><p>准备文件 niushop_b2c_mf2.3.zip 37M</p>
-<p>执行 <code>go test -bench=. -benchmem</code> 就可以看到详细的信息啦</p>
-<pre><code>goos: darwin
-goarch: amd64
-pkg: filestore/test/file
-BenchmarkReadAll-8             16      63298080 ns/op    134216088 B/op          24 allocs/op
-BenchmarkCopy-8                24      48085580 ns/op       33176 B/op           8 allocs/op
-BenchmarkReadBuf-8             19      58120592 ns/op        5528 B/op           9 allocs/op
-PASS
-ok      filestore/test/file    4.206s</code></pre><p>我们还是可以看到 <code>BenchmarkCopy</code> 函数性能最高</p>
-<h3 id="大于等于-1G-小于等于-6G的文件耗时情况"><a href="#大于等于-1G-小于等于-6G的文件耗时情况" class="headerlink" title="大于等于 1G 小于等于 6G的文件耗时情况"></a>大于等于 <code>1G</code> 小于等于 <code>6G</code>的文件耗时情况</h3><p>注意一点的就是当我们测试大文件读取不能直接使用 <code>ioutil.ReadAll</code>, 因为这个函数会直接把文件的全部内容加载到内存中，这样会导致内存直接崩溃。我们只使用 <code>io.copy</code> 和 bufio.NewReader 函数，太大了刚不住，我也很无奈啊~~😆😆😆😆</p>
-<pre><code>goos: darwin
-goarch: amd64
-pkg: filestore/test/file
-BenchmarkCopy-8                 1    8612443012 ns/op       33176 B/op          10 allocs/op
-BenchmarkReadBuf-8              1    8924705447 ns/op        5512 B/op           9 allocs/op
-PASS
-ok      filestore/test/file    17.554s</code></pre><p>我们比较这两个函数的性能发现具体差别不是太大。 单还是 <code>BenchmarkCopy</code> 性能更快。。。，好啦没得话说选 <code>io.copy</code> 啦</p>
-<h2 id="接下来分析-md5-和-sha1-哪个算法计算更快"><a href="#接下来分析-md5-和-sha1-哪个算法计算更快" class="headerlink" title="接下来分析 md5 和 sha1 哪个算法计算更快"></a>接下来分析 <code>md5</code> 和 <code>sha1</code> 哪个算法计算更快</h2><p>我们还是用不同的文件做比较，因为有时候很多函数的时间和空间复杂度和大小，数量有关系</p>
-<h3 id="小于等于10MB-的文件耗时情况"><a href="#小于等于10MB-的文件耗时情况" class="headerlink" title="小于等于10MB 的文件耗时情况"></a>小于等于<code>10MB</code> 的文件耗时情况</h3><p><code>sha1</code></p>
-<pre><code>goos: darwin
-goarch: amd64
-pkg: filestore/test/file
-BenchmarkReadAll-8             64      17963784 ns/op    33552812 B/op          22 allocs/op
-BenchmarkCopy-8                80      12910267 ns/op       33192 B/op           8 allocs/op
-BenchmarkReadBuf-8             66      15641888 ns/op        5544 B/op           9 allocs/op
-PASS
-ok      filestore/test/file    3.994s</code></pre><p><code>md5</code></p>
-<pre><code>goos: darwin
-goarch: amd64
-pkg: filestore/test/file
-BenchmarkReadAll-8             56      20431688 ns/op    33552750 B/op          22 allocs/op
-BenchmarkCopy-8                70      16554352 ns/op       33128 B/op           8 allocs/op
-BenchmarkReadBuf-8             57      19220965 ns/op        5480 B/op           9 allocs/op
-PASS
-ok      filestore/test/file    4.202s</code></pre><h3 id="小于等于-40MB-的文件耗时情况-1"><a href="#小于等于-40MB-的文件耗时情况-1" class="headerlink" title="小于等于 40MB 的文件耗时情况"></a>小于等于 <code>40MB</code> 的文件耗时情况</h3><p><code>sha1</code></p>
-<pre><code>goos: darwin
-goarch: amd64
-pkg: filestore/test/file
-BenchmarkReadAll-8             16      63298080 ns/op    134216088 B/op          24 allocs/op
-BenchmarkCopy-8                24      48085580 ns/op       33176 B/op           8 allocs/op
-BenchmarkReadBuf-8             19      58120592 ns/op        5528 B/op           9 allocs/op
-PASS
-ok      filestore/test/file    4.206s</code></pre><p><code>md5</code></p>
-<pre><code>goos: darwin
-goarch: amd64
-pkg: filestore/test/file
-BenchmarkReadAll-8             14      75987790 ns/op    134216024 B/op          24 allocs/op
-BenchmarkCopy-8                19      61600369 ns/op       33112 B/op           8 allocs/op
-BenchmarkReadBuf-8             15      72338837 ns/op        5464 B/op           9 allocs/op
-PASS
-ok      filestore/test/file    4.339s</code></pre><h3 id="大于等于-1G-小于等于-6G的文件耗时情况-1"><a href="#大于等于-1G-小于等于-6G的文件耗时情况-1" class="headerlink" title="大于等于 1G 小于等于 6G的文件耗时情况"></a>大于等于 <code>1G</code> 小于等于 <code>6G</code>的文件耗时情况</h3><p><code>sha1</code></p>
-<pre><code>goos: darwin
-goarch: amd64
-pkg: filestore/test/file
-BenchmarkCopy-8                 1    8612443012 ns/op       33176 B/op          10 allocs/op
-BenchmarkReadBuf-8              1    8924705447 ns/op        5512 B/op           9 allocs/op
-PASS
-ok      filestore/test/file    17.554s</code></pre><p><code>md5</code></p>
-<pre><code>goos: darwin
-goarch: amd64
-pkg: filestore/test/file
-BenchmarkCopy-8                 1    8714197367 ns/op       33112 B/op          10 allocs/op
-BenchmarkReadBuf-8              1    10077543682 ns/op        5448 B/op           9 allocs/op
-PASS
-ok      filestore/test/file    18.804s</code></pre><blockquote>
-<p>最终我们可以看到 <code>sha1</code> 算法不管是大文件还是小文件都优于 <code>md5</code> 文件的性能。至此还用比吗？傻子才不选 <code>sha1</code> 算法呢~, 最终选 <code>io.copy</code> 和 <code>sha1</code></p>
+                <h2 id="服务器生成-git-ssh-步骤详细记录："><a href="#服务器生成-git-ssh-步骤详细记录：" class="headerlink" title="服务器生成 git ssh 步骤详细记录："></a>服务器生成 git ssh 步骤详细记录：</h2><h3 id="1-首先检查自己之前是否有生成"><a href="#1-首先检查自己之前是否有生成" class="headerlink" title="1. 首先检查自己之前是否有生成"></a>1. 首先检查自己之前是否有生成</h3><blockquote>
+<p>$ ls -al ~/.ssh  </p>
 </blockquote>
-<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/58" target="_blank" rel="noopener">https://www.zhanggaoyuan.com/article/58</a></p>
+<h3 id="2-检查自己是否有配置过git-全局配置"><a href="#2-检查自己是否有配置过git-全局配置" class="headerlink" title="2. 检查自己是否有配置过git 全局配置"></a>2. 检查自己是否有配置过git 全局配置</h3><blockquote>
+<p>git config user.name<br>git config user.email</p>
+</blockquote>
+<p>以上两个命令可以检查是否已经有配置过 github 全局配置信息，配置过是如下显示</p>
+<pre><code>[root@VM_0_13_centos wwwroot]# git config user.name
+JeffreyBool</code></pre><p>如果没有配置，可以通过以下命令设置</p>
+<blockquote>
+<p>git config –global user.name ‘你的github名称’<br>git config user.email ‘你的 github 邮箱’</p>
+</blockquote>
+<h3 id="3-生成秘钥"><a href="#3-生成秘钥" class="headerlink" title="3. 生成秘钥"></a>3. 生成秘钥</h3><blockquote>
+<p>ssh-keygen -t rsa -C ‘你的 github 邮箱’</p>
+</blockquote>
+<p>步骤如下:</p>
+<pre><code>[root@VM_0_13_centos .ssh]# ssh-keygen -t rsa -C '1402992668@qq.com'
+Generating public/private rsa key pair.
+
+▽
+Enter file in which to save the key (/root/.ssh/id_rsa): github
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in github.
+Your public key has been saved in github.pub.
+The key fingerprint is:
+SHA256:rCizfSAB6nxdIUNCrKclfsm+xXnCjoAMv+WNMmVhnPg 1402992668@qq.com
+The key's randomart image is:
++---[RSA 2048]----+
+|  oo..           |
+|.  ..o .         |
+|...o .o .        |
+|.ooo=  o         |
+|= *+o.. S        |
+|+*.=Eo..         |
+|.oB+oB..         |
+|  +X+o+          |
+|  o==o.          |
++----[SHA256]-----+</code></pre><ul>
+<li>查看生成的文件</li>
+</ul>
+<blockquote>
+<p>ll </p>
+</blockquote>
+<pre><code> -rw------- 1 root root  794 10月 16 20:37 authorized_keys
+-rw------- 1 root root 1679 12月 30 20:40 github
+-rw-r--r-- 1 root root  399 12月 30 20:40 github.pub</code></pre><p>这时候我们已经生成完毕。</p>
+<h3 id="3-如果想登陆远端，则需要将rsa-pub里的秘钥添加到远端。"><a href="#3-如果想登陆远端，则需要将rsa-pub里的秘钥添加到远端。" class="headerlink" title="3. 如果想登陆远端，则需要将rsa.pub里的秘钥添加到远端。"></a>3. 如果想登陆远端，则需要将rsa.pub里的秘钥添加到远端。</h3><ul>
+<li>首先，去.ssh目录下找到<code>github.pub</code>这个文件夹打开复制全部内容。</li>
+<li>登录GitHub，进入你的Settings</li>
+</ul>
+<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202003/03/1_1583215014_qyWInUvrFV.png" alt="image.png">)<img src="media/15777098619113/15777104858355.jpg" alt=""></p>
+<ul>
+<li>会看到左边这些目录，点击SSH and GPG keys</li>
+</ul>
+<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202003/03/1_1583215030_UbsjRj6wha.png" alt="image.png">)<img src="media/15777098619113/15777105819556.jpg" alt=""></p>
+<ul>
+<li><p>创建New SSH key</p>
+<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202003/03/1_1583215050_zfgeuNftkf.png" alt="image.png">)<img src="media/15777098619113/15777106443651.jpg" alt=""></p>
+</li>
+<li><p>点击Add SSH key</p>
+</li>
+<li><p>再弹出窗口，输入你的GitHub密码，点击确认按钮。</p>
+</li>
+<li><p>到此，就大功告成了。</p>
+</li>
+</ul>
+<h3 id="4-测试。"><a href="#4-测试。" class="headerlink" title="4.测试。"></a>4.测试。</h3><blockquote>
+<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
+</blockquote>
+<pre><code>[root@VM_0_13_centos ~]# ssh-add ~/.ssh/github
+Could not open a connection to your authentication agent.</code></pre><p>发现出现以上报错信息</p>
+<blockquote>
+<p>ssh-agent bash</p>
+</blockquote>
+<p>我百度了解决方案使用以下命令可以解决以上的问题。</p>
+<blockquote>
+<p>ssh -T <a href="mailto:git@github.com">git@github.com</a><br>按回车键，如看到以下信息，那么就完美了。</p>
+</blockquote>
+<pre><code>[root@VM_0_13_centos ~]# ssh -T git@github.com
+Hi JeffreyBool! You've successfully authenticated, but GitHub does not provide shell access.</code></pre><p>原文链接：<a href="https://www.zhanggaoyuan.com/article/54" target="_blank" rel="noopener">https://www.zhanggaoyuan.com/article/54</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -643,7 +555,7 @@ ok      filestore/test/file    18.804s</code></pre><blockquote>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jeffreybool.github.io/2020/06/05/golang-huo-qu-wen-zhang-zhai-yao-suan-fa-xing-neng-xiang-xi-dui-bi/">https://jeffreybool.github.io/2020/06/05/golang-huo-qu-wen-zhang-zhai-yao-suan-fa-xing-neng-xiang-xi-dui-bi/</a>
+                    <a href="https://jeffreybool.github.io/2020/06/05/linux-fu-wu-qi-sheng-cheng-github-ssh/">https://jeffreybool.github.io/2020/06/05/linux-fu-wu-qi-sheng-cheng-github-ssh/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -681,8 +593,16 @@ ok      filestore/test/file    18.804s</code></pre><blockquote>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/golang/">
-                                    <span class="chip bg-color">golang</span>
+                                <a href="/tags/linux/">
+                                    <span class="chip bg-color">linux</span>
+                                </a>
+                            
+                                <a href="/tags/github/">
+                                    <span class="chip bg-color">github</span>
+                                </a>
+                            
+                                <a href="/tags/ssh/">
+                                    <span class="chip bg-color">ssh</span>
                                 </a>
                             
                         </div>
@@ -853,7 +773,7 @@ ok      filestore/test/file    18.804s</code></pre><blockquote>
         repo: 'jeffreybool.github.io',
         owner: 'JeffreyBool',
         admin: "JeffreyBool",
-        id: '2020-06-05T11-54-37',
+        id: '2020-06-05T12-41-50',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -877,9 +797,72 @@ ok      filestore/test/file    18.804s</code></pre><blockquote>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/06/05/linux-fu-wu-qi-sheng-cheng-github-ssh/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="linux 服务器生成 github ssh">
+                        
+                        <span class="card-title">linux 服务器生成 github ssh</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            服务器生成 git ssh 步骤详细记录：1. 首先检查自己之前是否有生成
+$ ls -al ~/.ssh  
+
+2. 检查自己是否有配置过git 全局配置
+git config user.namegit config user.email
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
+                    </a>
+                    
+                    <a href="/tags/github/">
+                        <span class="chip bg-color">github</span>
+                    </a>
+                    
+                    <a href="/tags/ssh/">
+                        <span class="chip bg-color">ssh</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/06/05/laravel-shi-xian-deng-lu-shi-bai-ci-shu-xian-zhi-deng-lu/">
                     <div class="card-image">
@@ -898,9 +881,9 @@ limiter()
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -918,59 +901,6 @@ limiter()
                     
                     <a href="/tags/laravel/">
                         <span class="chip bg-color">laravel</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/06/05/golang-suo-qing-xiao-xin-shi-yong/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="golang 锁请小心使用">
-                        
-                        <span class="card-title">golang 锁请小心使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            关于锁使用 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 defer 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以很难排查。
-
-提前 unlock
-
-不能提前 unlock 怎么办？如
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/golang/" class="post-category">
-                                    golang
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/golang/">
-                        <span class="chip bg-color">golang</span>
                     </a>
                     
                 </div>
