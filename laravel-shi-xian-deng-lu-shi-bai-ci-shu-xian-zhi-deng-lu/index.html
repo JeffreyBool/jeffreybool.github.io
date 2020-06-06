@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="超详细 Hexo + Github Page 搭建技术blog教程, JeffreyBool">
+    <meta name="keywords" content="laravel 实现登录失败次数限制登录, JeffreyBool">
     <meta name="description" content="JeffreyBool">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>超详细 Hexo + Github Page 搭建技术blog教程 | JeffreyBool</title>
+    <title>laravel 实现登录失败次数限制登录 | JeffreyBool</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -62,22 +62,22 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/tags" class="waves-effect waves-light">
+    <a href="/categories" class="waves-effect waves-light">
       
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
       
-      <span>标签</span>
+      <span>分类</span>
     </a>
     
   </li>
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/categories" class="waves-effect waves-light">
+    <a href="/tags" class="waves-effect waves-light">
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
-      <span>分类</span>
+      <span>标签</span>
     </a>
     
   </li>
@@ -165,22 +165,22 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/tags" class="waves-effect waves-light">
+		<a href="/categories" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-tags"></i>
+			    <i class="fa-fw fas fa-bookmark"></i>
 			
-			标签
+			分类
 		</a>
           
         </li>
         
         <li class="m-nav-item">
 	  
-		<a href="/categories" class="waves-effect waves-light">
+		<a href="/tags" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-bookmark"></i>
+			    <i class="fa-fw fas fa-tags"></i>
 			
-			分类
+			标签
 		</a>
           
         </li>
@@ -250,7 +250,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">超详细 Hexo + Github Page 搭建技术blog教程</h1>
+                    <h1 class="description center-align post-title">laravel 实现登录失败次数限制登录</h1>
                 </div>
             </div>
         </div>
@@ -367,18 +367,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/github/">
-                                <span class="chip bg-color">github</span>
-                            </a>
-                        
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
+                            <a href="/tags/laravel/">
+                                <span class="chip bg-color">laravel</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/laravel/" class="post-category">
+                                laravel
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -396,7 +401,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.1k
                 </div>
                 
 
@@ -418,69 +423,130 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="超详细-Hexo-Github-Page-搭建技术blog教程"><a href="#超详细-Hexo-Github-Page-搭建技术blog教程" class="headerlink" title="超详细 Hexo + Github Page 搭建技术blog教程"></a>超详细 Hexo + Github Page 搭建技术blog教程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>博客有第三方平台，也可以自建，比较早的有博客园、CSDN，近几年新兴的也比较多诸如：WordPress、segmentFault、简书、掘金、知乎专栏、Github Page 等等。</p>
-<p>这次我要说的就是 Github Page + Hexo 搭建个人博客的方式！Github Page 是 Github 提供的一种免费的静态网页托管服务（所以想想免费的空间不用也挺浪费的哈哈哈），可以用来托管博客、项目官网等静态网页。支持 Jekyll、Hugo、Hexo 编译静态资源，这次我们的主角就是 Hexo 了，具体的内容下面在文章内介绍。</p>
-<p>下面就开始吧~</p>
-<h2 id="准备环境"><a href="#准备环境" class="headerlink" title="准备环境"></a>准备环境</h2><p>准备 node 和 git 环境，<br>首先，安装 NodeJS，因为 Hexo 是基于 Node.js 驱动的一款博客框架，相比起前面提到过的 Jekyll 框架更快更简洁，因为天*朝网络被墙的原因尝试过安装 Jekyll 失败而放弃了。<br>然后，安装 git，一个分布式版本控制系统，用于项目的版本控制管理，作者是 Linux 之父。如果 Git 还不熟悉可以参考廖雪峰大神的 Git 教程。</p>
-<p>两个工具不同的平台安装方法有所不一样，可自行了解按步骤安装，这里不详述了。安装成功后打开git bash（Windowns）或者终端（Mac），下方中将统一称为命令行。<br>在命令行中输入相应命令验证是否成功，如果成功会有相应的版本号。</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> version
-node -v
-<span class="token function">npm</span> -v</code></pre>
-<p><img src="https://imgkr.cn-bj.ufileos.com/a8f34ad7-050d-4a98-8317-1cd5f257df5c.png" alt="超详细 Hexo + Github Page 搭建技术blog教程"></p>
-<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><p>如果以上环境准备好了就可以使用 npm 开始安装 Hexo 了。也可查看 <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo</a> 的详细文档。<br>在命令行输入执行以下命令：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g hexo-cli</code></pre>
-<h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><p>安装 Hexo 完成后，再执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
-<pre class=" language-bash"><code class="language-bash">hexo init my-blog
-<span class="token function">cd</span> my-blog
-<span class="token function">npm</span> <span class="token function">install</span></code></pre>
-<p>新建完成后，指定文件夹的目录如下：</p>
-<pre class=" language-tree"><code class="language-tree">.
-├── _config.yml # 网站的配置信息，您可以在此配置大部分的参数。 
-├── package.json
-├── scaffolds # 模版文件夹
-├── source  # 资源文件夹，除 _posts 文件，其他以下划线_开头的文件或者文件夹不会被编译打包到public文件夹
-|   ├── _drafts # 草稿文件
-|   └── _posts # 文章Markdowm文件 
-└── themes  # 主题文件夹</code></pre>
-<p>好了，如果上面的命令都没报错的话，就恭喜了，运行 <code>hexo s</code> 命令，其中 <code>s</code> 是 <code>server</code> 的缩写，在浏览器中输入 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 回车就可以预览效果了。</p>
-<pre class=" language-bash"><code class="language-bash">hexo s</code></pre>
-<p>以下是我本地的预览效果，更换了 <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener">hexo-theme-matery</a> 主题的，默认不是这个主题。</p>
-<p><img src="https://imgkr.cn-bj.ufileos.com/1382a18c-2ef6-4a0d-adb7-bf8940bf83bc.png" alt="hexo-theme-matery"></p>
-<p><img src="https://imgkr.cn-bj.ufileos.com/9e42cd4c-06ed-49bc-86e8-8708d00ac16a.png" alt="hexo-theme-matery"></p>
-<p><img src="https://imgkr.cn-bj.ufileos.com/7f0efde2-8916-4f23-b40e-77703b5b0ddc.png" alt="hexo-theme-matery"></p>
-<p><img src="https://imgkr.cn-bj.ufileos.com/aa310852-2aae-4aa2-9feb-b6a4e3d687bb.png" alt="hexo-theme-matery"></p>
-<p>至此，你本地的博客就已经搭建成功，接下来就是部署到 Github Page 了。</p>
-<h2 id="创建-github-page"><a href="#创建-github-page" class="headerlink" title="创建 github page"></a>创建 github page</h2><ul>
-<li>第一步创建<code>repository</code><br><img src="https://imgkr.cn-bj.ufileos.com/c4ba3fe9-ba06-4e17-a95b-c16260a2a9d7.png" alt="repository"></li>
-</ul>
+                <p>在默认的 auth 的 <code>LoginControoler</code> usr的trait <code>AuthenticatesUsers</code><br><code>Illuminate\Foundation\Auth\ThrottlesLogins</code>这个trait有如下方法</p>
+<pre class=" language-php"><code class="language-php"><span class="token function">limiter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// limiter方法，从服务容器获取 RateLimiter 实例，专门连接缓存记录用户登录次数；</span>
+
+<span class="token function">throttleKey</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 该方法的内部代码为 return Str::lower($request->input($this->username())).'|'.$request->ip();</span>
+<span class="token comment" spellcheck="true">// 返回的值为 缓存数据库中的Key; </span>
+<span class="token comment" spellcheck="true">// 比如 张三从 192.168.1.11 登录系统，5次尝试登录失败，那么此处的返回值是 张三 | 192.168.1.11</span>
+<span class="token comment" spellcheck="true">// 缓存数据库中有一条记录是 键名为 '张三 | 192.168.1.11'， 键值为 '5'</span>
+
+<span class="token function">hasTooManyLoginAttempts</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 判断是否用户失败登录频率超过门槛值(1分钟内失败5次)；</span>
+
+<span class="token function">incrementLoginAttempts</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 用户在缓存数据库中的登录次数值，如果存在则加1；不存在，则新增，同时设置过期时间（默认是1分钟）</span>
+
+<span class="token function">sendLockoutResponse</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 这方法被调用意味着用户已经超过登录上限，此时方法会 back 到登录页，并携带'登录超过上限，请于58秒后再次登录'这样的提示； </span>
+
+<span class="token function">clearLoginAttempts</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 清除指定用户在缓存数据库中的登录次数记录，包括Lock记录；</span>
+
+<span class="token function">fireLockoutEvent</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 方法内部就一句话，event(new Lockout($request)); 触发 lockout 事件</span></code></pre>
+<p>Laravel 本身已实现了登录失败次数限制的功能。在使用 Laravel 的登录验证时，登录失败次数限制预设是：「失败5次，1分钟后才可再次登录。」但如果要求的功能是：「失败3次，1分钟后才可登录；再失败3次，3分钟后才可登录；再失败3次，5分钟后才可登录。」要如何实现？下面将实际示范此登录失败次数限制的功能。</p>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><p>Laravel 5.5 以上</p>
+<h2 id="改写登录类别设定"><a href="#改写登录类别设定" class="headerlink" title="改写登录类别设定"></a>改写登录类别设定</h2><p><em>app\Http\Controllers\Auth\LoginController.php</em></p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Foundation<span class="token punctuation">\</span>Auth<span class="token punctuation">\</span>AuthenticatesUsers</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Cache<span class="token punctuation">\</span>AdvancedRateLimiter</span>
+
+<span class="token keyword">class</span> <span class="token class-name">LoginController</span> <span class="token keyword">extends</span> <span class="token class-name">Controller</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">use</span> <span class="token package">AuthenticatesUsers</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Get the rate limiter instance.
+     *
+     * @return \App\Cache\AdvancedRateLimiter
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">limiter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">app</span><span class="token punctuation">(</span>AdvancedRateLimiter<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * The maximum number of attempts to allow.
+     *
+     * @var integer
+     */</span>
+    <span class="token keyword">protected</span> <span class="token variable">$maxAttempts</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * The number of minutes to throttle for.
+     *
+     * @var integer|array
+     */</span>
+    <span class="token keyword">protected</span> <span class="token variable">$decayMinutes</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在 <code>LoginController</code> 类中，增加自订方法复盖掉 <code>AuthenticatesUsers</code> 类原本的方法：</p>
 <ul>
-<li>第二步输入你要申请的 github.io 域名<br><img src="https://imgkr.cn-bj.ufileos.com/39927eab-27df-46a4-a5dd-48ca08b9778a.png" alt="github.io"></li>
+<li><code>limiter</code> 方法是返回登录失败次数限制的类，原本是返回 <code>RateLimiter</code> 类(实现登录失败次数限制的类)，但本例要扩充新方法，因此返回了我们下面创建的子类别 <code>AdvancedRateLimiter</code> 。</li>
+<li><code>$maxAttempts</code> 属性是设定登录失败次数。</li>
+<li><code>$decayMinutes</code> 属性是登录失败达上限后，须等待的分钟数。但我们要实现的功能是每次都等待不一样的时间，因此传入一个数组，输入每次的等待分钟数。</li>
 </ul>
-<blockquote>
-<p>注意点来了，Github 仅能使用一个同名仓库的代码托管一个静态站点，这个网上很多教程没说到的。</p>
-</blockquote>
-<h2 id="第三步配置-github-page"><a href="#第三步配置-github-page" class="headerlink" title="第三步配置 github page"></a>第三步配置 github page</h2><p>在建好的仓库右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到有个网址，访问它，你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它，当然里面还很空什么东西都没有。 该地址就是你的博客默认地址，你也可以购买域名，将其换成你喜欢的地址。</p>
-<p><img src="https://imgkr.cn-bj.ufileos.com/b3e27327-9839-4c2c-bc7f-ab55e3c2609a.png" alt="github page"></p>
-<h2 id="生成-github-ssh"><a href="#生成-github-ssh" class="headerlink" title="生成 github ssh"></a>生成 github ssh</h2><p><a href="https://jeffreybool.github.io/2020/06/05/linux-fu-wu-qi-sheng-cheng-github-ssh/">参考文章</a></p>
-<h2 id="上传到github"><a href="#上传到github" class="headerlink" title="上传到github"></a>上传到github</h2><p>如果你一切都配置好了，发布上传很容易，一句hexo d就搞定，当然关键还是你要把所有东西配置好。<br>首先，ssh key肯定要配置好。<br>其次，配置_config.yml中 有关deploy的部分：<br>正确写法：</p>
-<pre class=" language-yml"><code class="language-yml">deploy:
-  type: git
-  repository: git@github.com:JeffreyBool/jeffreybool.github.io.git
-  branch: master</code></pre>
-<h2 id="常用hexo命令"><a href="#常用hexo命令" class="headerlink" title="常用hexo命令"></a>常用hexo命令</h2><pre class=" language-bash"><code class="language-bash">hexo new <span class="token string">"postName"</span> <span class="token comment" spellcheck="true">#新建文章</span>
-hexo new page <span class="token string">"pageName"</span> <span class="token comment" spellcheck="true">#新建页面</span>
-hexo generate <span class="token comment" spellcheck="true">#生成静态页面至public目录</span>
-hexo server <span class="token comment" spellcheck="true">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span>
-hexo deploy <span class="token comment" spellcheck="true">#部署到GitHub</span>
-hexo <span class="token function">help</span>  <span class="token comment" spellcheck="true"># 查看帮助</span>
-hexo version  <span class="token comment" spellcheck="true">#查看Hexo的版本</span></code></pre>
-<h4 id="缩写："><a href="#缩写：" class="headerlink" title="缩写："></a>缩写：</h4><pre class=" language-bash"><code class="language-bash">hexo n <span class="token operator">==</span><span class="token operator">></span> hexo new
-hexo g <span class="token operator">==</span><span class="token operator">></span> hexo generate
-hexo s <span class="token operator">==</span><span class="token operator">></span> hexo server
-hexo d <span class="token operator">==</span><span class="token operator">></span> hexo deploy</code></pre>
-<h4 id="组合命令"><a href="#组合命令" class="headerlink" title="组合命令"></a>组合命令</h4><pre class=" language-bash"><code class="language-bash">hexo s -g <span class="token comment" spellcheck="true"># 生成并本地预览</span>
-hexo d -g <span class="token comment" spellcheck="true"># 生成并上传</span></code></pre>
-<h1 id="未完结，后续继续更新"><a href="#未完结，后续继续更新" class="headerlink" title="未完结，后续继续更新"></a>未完结，后续继续更新</h1><h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://segmentfault.com/a/1190000017986794" target="_blank" rel="noopener">超详细Hexo+Github Page搭建技术博客教程【持续更新】</a><br><a href="https://www.cnblogs.com/liuxianan/p/build-blog-website-by-hexo-github.html" target="_blank" rel="noopener">使用hexo+github搭建免费个人博客详细教程</a><br><a href="https://www.jianshu.com/p/1bcad7700c46" target="_blank" rel="noopener">使用hexo搭建github博客</a></p>
+<p>如果只是要修改 Laravel 原本的次数设定，新增 <code>$maxAttempts</code> 属性及 <code>$decayMinutes</code> 属性并设定值即可完成。</p>
+<h2 id="擴充登录失败次数限制功能"><a href="#擴充登录失败次数限制功能" class="headerlink" title="擴充登录失败次数限制功能"></a>擴充登录失败次数限制功能</h2><p>新增类别 <code>AdvancedRateLimiter</code>：</p>
+<p><em>app\Cache\AdvancedRateLimiter.php</em></p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Cache</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Cache<span class="token punctuation">\</span>RateLimiter</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AdvancedRateLimiter</span> <span class="token keyword">extends</span> <span class="token class-name">RateLimiter</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * Increment the counter for a given key for a given decay time.
+     *
+     * @param  string  $key
+     * @param  float|int|array  $decayMinutes
+     * @return int
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">hit</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token variable">$decayMinutes</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">is_array</span><span class="token punctuation">(</span><span class="token variable">$decayMinutes</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">has</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':timer'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">has</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':step'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">add</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':step'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1440</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':step'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token variable">$step</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':step'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$step</span> <span class="token operator">=</span> <span class="token variable">$step</span> <span class="token operator">&lt;</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$decayMinutes</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token variable">$step</span> <span class="token punctuation">:</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$decayMinutes</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token variable">$decayMinutes</span> <span class="token operator">=</span> <span class="token variable">$decayMinutes</span><span class="token punctuation">[</span><span class="token variable">$step</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">hit</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">,</span> <span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">addMinutes</span><span class="token punctuation">(</span><span class="token variable">$decayMinutes</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Clear the hits and lockout timer for the given key.
+     *
+     * @param  string  $key
+     * @return void
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">clear</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">cache</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">forget</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">.</span><span class="token string">':step'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">parent</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token variable">$key</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li><code>hit</code> 方法是在登錄錯誤後，執行登錄錯誤次數記錄遞增的方法。為了實現每次登錄錯誤等待的時間可以不一樣，我們讓傳入的變數 <code>$decayMinutes</code> 可以接受傳入数组，第一次登錄錯誤等待時間為 <code>数组[0]</code> 的分鐘數(本例為1分鐘)，第二次為 <code>数组[1]</code> 的分鐘數(例：3分鐘)，而第三次為 <code>数组[2]</code> 的分鐘數(例：5分鐘)，之後的登錄錯誤等待時間皆為数组的最後的元素的分鐘數。</li>
+<li><code>clear</code> 是成功登入後，將時間、次數重設，下一次再登入錯誤後，將從頭開始計數。</li>
+</ul>
+<p>此時登录失败次数限制的功能已改寫完成，再次登入並輸入錯誤的帳號或密碼，重複數次即可看到結果。</p>
+<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/55">https://www.zhanggaoyuan.com/article/55</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -524,7 +590,7 @@ hexo d -g <span class="token comment" spellcheck="true"># 生成并上传</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://jeffreybool.github.io/2020/06/05/chao-xiang-xi-hexo-github-page-da-jian-ji-zhu-blog-jiao-cheng/">https://jeffreybool.github.io/2020/06/05/chao-xiang-xi-hexo-github-page-da-jian-ji-zhu-blog-jiao-cheng/</a>
+                    <a href="https://www.zhanggaoyuan.com/laravel-shi-xian-deng-lu-shi-bai-ci-shu-xian-zhi-deng-lu/">https://www.zhanggaoyuan.com/laravel-shi-xian-deng-lu-shi-bai-ci-shu-xian-zhi-deng-lu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -562,12 +628,8 @@ hexo d -g <span class="token comment" spellcheck="true"># 生成并上传</span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/github/">
-                                    <span class="chip bg-color">github</span>
-                                </a>
-                            
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
+                                <a href="/tags/laravel/">
+                                    <span class="chip bg-color">laravel</span>
                                 </a>
                             
                         </div>
@@ -738,7 +800,7 @@ hexo d -g <span class="token comment" spellcheck="true"># 生成并上传</span>
         repo: 'jeffreybool.github.io',
         owner: 'JeffreyBool',
         admin: "JeffreyBool",
-        id: '2020-06-05T16-22-27',
+        id: '2020-06-05T12-37-29',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -762,48 +824,58 @@ hexo d -g <span class="token comment" spellcheck="true"># 生成并上传</span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/06/05/chao-xiang-xi-hexo-github-page-da-jian-ji-zhu-blog-jiao-cheng/">
+                <a href="/linux-fu-wu-qi-sheng-cheng-github-ssh/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="超详细 Hexo + Github Page 搭建技术blog教程">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="linux 服务器生成 github ssh">
                         
-                        <span class="card-title">超详细 Hexo + Github Page 搭建技术blog教程</span>
+                        <span class="card-title">linux 服务器生成 github ssh</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            超详细 Hexo + Github Page 搭建技术blog教程前言博客有第三方平台，也可以自建，比较早的有博客园、CSDN，近几年新兴的也比较多诸如：WordPress、segmentFault、简书、掘金、知乎专栏、Github Pa
+                            服务器生成 git ssh 步骤详细记录：1. 首先检查自己之前是否有生成
+$ ls -al ~/.ssh  
+
+2. 检查自己是否有配置过git 全局配置
+git config user.namegit config user.email
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            JeffreyBool
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
+                    </a>
                     
                     <a href="/tags/github/">
                         <span class="chip bg-color">github</span>
                     </a>
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/ssh/">
+                        <span class="chip bg-color">ssh</span>
                     </a>
                     
                 </div>
@@ -817,20 +889,19 @@ hexo d -g <span class="token comment" spellcheck="true"># 生成并上传</span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/06/05/redis-tiao-biao-shi-xian-yuan-li/">
+                <a href="/golang-huo-qu-wen-zhang-zhai-yao-suan-fa-xing-neng-xiang-xi-dui-bi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="跳表实现原理">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="golang获取文章摘要算法性能详细对比">
                         
-                        <span class="card-title">跳表实现原理</span>
+                        <span class="card-title">golang获取文章摘要算法性能详细对比</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            是一种动态的数据结构,它可以支持快速的插入、查找、查询操作.写起来并不复杂,甚至可以替代红黑树.
-对于一个单链表来讲,即使链表中的储存数据是有序的.如果我们想要在其中查找某个数据,也只能从头到尾遍历链表.这样的效率会很低,时间复杂度也很高 
+                            现在我们开发网站基本摆脱不了上传文件的功能，但是上传文件的可能有几百M 或者几个G, 如果不做秒传的话会带来很多的功能。例如：用户体验不好，同一个文件还要多次上传到服务器。浪费服务器带宽和资源。如果我们做了秒传就会解决上面带来的问题，可以在客户端计算文件的摘要，和服务器算法保持一致就可以做到秒传了，客户端拿着算好的摘要去服务端判断这个文件是否已经上传，如果上传了直接返回文件信息，没有上传就调用上传接口
                         
                     </div>
                     <div class="publish-info">
@@ -841,8 +912,8 @@ hexo d -g <span class="token comment" spellcheck="true"># 生成并上传</span>
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/redis/" class="post-category">
-                                    redis
+                            <a href="/categories/golang/" class="post-category">
+                                    golang
                                 </a>
                             
                             
@@ -852,12 +923,8 @@ hexo d -g <span class="token comment" spellcheck="true"># 生成并上传</span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/golang/">
+                        <span class="chip bg-color">golang</span>
                     </a>
                     
                 </div>
