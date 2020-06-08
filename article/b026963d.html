@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="跳表实现原理, JeffreyBool">
+    <meta name="keywords" content="《数据结构与算法之美》为什么要学习数据结构和算法 (读后感), JeffreyBool">
     <meta name="description" content="JeffreyBool">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>跳表实现原理 | JeffreyBool</title>
+    <title>《数据结构与算法之美》为什么要学习数据结构和算法 (读后感) | JeffreyBool</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -250,7 +250,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">跳表实现原理</h1>
+                    <h1 class="description center-align post-title">《数据结构与算法之美》为什么要学习数据结构和算法 (读后感)</h1>
                 </div>
             </div>
         </div>
@@ -371,10 +371,6 @@
                                 <span class="chip bg-color">数据结构</span>
                             </a>
                         
-                            <a href="/tags/redis/">
-                                <span class="chip bg-color">redis</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -383,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/redis/" class="post-category">
-                                redis
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
                             </a>
                         
                     </div>
@@ -396,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-05
+                    2020-06-07
                 </div>
                 
 
@@ -405,14 +401,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    305
+                    590
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -427,20 +423,24 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>是一种动态的数据结构,它可以支持快速的插入、查找、查询操作.写起来并不复杂,甚至可以替代红黑树.</p>
-<p>对于一个单链表来讲,即使链表中的储存数据是有序的.如果我们想要在其中查找某个数据,也只能从头到尾遍历链表.这样的效率会很低,时间复杂度也很高  <code>O(n)</code>.</p>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264459_hwwzRqoAyX.png" alt="跳表实现原理"></p>
-<blockquote>
-<p>如何提升链表的查询效率呢? 我们对链表建立一级索引层.每两个节点提取一个节点到上一级.图中的 down 表示 down 指针，指向下一级结点。</p>
-</blockquote>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264467_VmnwgITZSJ.png" alt="跳表实现原理"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264476_85UkzmWwjz.png" alt="跳表实现原理"></p>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264488_ZCNI85qG89.png" alt="跳表实现原理"></p>
-<blockquote>
-<p>这种链表加多级索引的结构，就是<code>跳表</code></p>
-</blockquote>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264496_WX4kM3HP9K.png" alt="跳表实现原理"></p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结:"></a>小结:</h3><p>跳表采用空间换时间的设计思路,通过构建多级索引来提高查询的效率,实现了基于链表的<code>二分查找</code>.跳表是一种动态的数据结构,支持快速的插入.</p>
-<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/4">https://www.zhanggaoyuan.com/article/4</a></p>
+                <h2 id="一、数据结构和算法是什么"><a href="#一、数据结构和算法是什么" class="headerlink" title="一、数据结构和算法是什么"></a>一、数据结构和算法是什么</h2><ol>
+<li>数据结构是指一组数据的存储结构</li>
+<li>算法就是操作数据的方法</li>
+<li>数据结构和算法是相辅相成的，数据结构是为算法服务的，而算法要作用在特定的数据结构之上</li>
+</ol>
+<h2 id="二、学习的重点在什么地方"><a href="#二、学习的重点在什么地方" class="headerlink" title="二、学习的重点在什么地方"></a>二、学习的重点在什么地方</h2><p>数据结构和算法解决的是如何更省、更快地存储和处理数据的问题，因此，我们就需要一个考量效率和资源消耗的方法，这就是复杂度分析方法。在学习数据结构和算法的过程中，要学习它的「来历」、「自身的特点」、「适合解决的问题」以及「实际的应用场景」。</p>
+<ol>
+<li>数据结构和算法学习的精髓-复杂度分析</li>
+<li>最常用的、最基础的数据结构：数组、链表、栈、队列、散列表、二叉树、堆、跳表、图、Trie 树</li>
+<li>最常用的算法：递归、排序、二分查找、搜索、哈希算法、贪心算法、分治算法、回溯算法、动态规划、字符串匹配算法.</li>
+</ol>
+<h2 id="三、为什么要学习"><a href="#三、为什么要学习" class="headerlink" title="三、为什么要学习"></a>三、为什么要学习</h2><ol>
+<li>作为一名程序员，我觉得这个是基本功，就好比建房子一样，地基一定要牢固</li>
+<li>现在有如此多的开源项目，人们往往开发中只是照搬，调试，集成，然后很少会去注意性能和优化方面，慢慢的也就成了CRUD boy</li>
+<li>算法提供的是一种思想，这个思想真的可以让你超神，让你对待问题有着独特的见解，我觉得这个才是最重要的。不再是原来的，没有思考</li>
+<li>数据结构作为cs的基本专业，并且贯穿整个cs学习生涯，在cs方面的研究还是有很大的实用价值。<br>数据结构与算法的意义？</li>
+<li>根据我个人多年的开发经验总结: 算法和数据结构其实就是代码和机器的交互,怎么才能写出机器执行效率<code>更快丶更省</code>的代码就是我们学习的主要目的.</li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -484,7 +484,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.zhanggaoyuan.com/article/a7938bd1.html">https://www.zhanggaoyuan.com/article/a7938bd1.html</a>
+                    <a href="https://www.zhanggaoyuan.com/article/b026963d.html">https://www.zhanggaoyuan.com/article/b026963d.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -524,10 +524,6 @@
                             
                                 <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                                     <span class="chip bg-color">数据结构</span>
-                                </a>
-                            
-                                <a href="/tags/redis/">
-                                    <span class="chip bg-color">redis</span>
                                 </a>
                             
                         </div>
@@ -698,7 +694,7 @@
         repo: 'jeffreybool.github.io',
         owner: 'JeffreyBool',
         admin: "JeffreyBool",
-        id: '2020-06-05T13-17-11',
+        id: '2020-06-07T21-23-27',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -726,6 +722,56 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/article/9e380d0.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="基于 Laravel 命令行开发 API 代码生成器">
+                        
+                        <span class="card-title">基于 Laravel 命令行开发 API 代码生成器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            1. 命令行文件生成$ php artisan make:command ApiGenerator
+2. 编写代码模板就像你看到的，我使用了 php 的 heredoc 方式，不太优雅。开始用的文件方式，但是不支持替换数组，就放弃了；有好的
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/laravel/" class="post-category">
+                                    laravel
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/laravel/">
+                        <span class="chip bg-color">laravel</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/article/d2b1ed72.html">
                     <div class="card-image">
                         
@@ -742,9 +788,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -762,63 +808,6 @@
                     
                     <a href="/tags/hexo/">
                         <span class="chip bg-color">hexo</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/article/f3d7d619.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="剖析Redis常用数据类型对应的数据结构">
-                        
-                        <span class="card-title">剖析Redis常用数据类型对应的数据结构</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Redis是一种key-value非关系型数据库
-列表 list这种数据类型是由两种方法实现的,一种是压缩列表ziplist , 另一种是双向循环链表.
-当数据量小的时候,列表就可以使用压缩列表的方式实现,具体需要同时满足下面两个条件:
-
-
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/redis/" class="post-category">
-                                    redis
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
                     </a>
                     
                 </div>
