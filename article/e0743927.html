@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="golang 锁请小心使用, 张高元,zhanggaoyuan,JeffreyBool,个人博客,blog,个人网站,go,golang,go语言,golang教程入门,golang菜鸟教程,golang学习,golang教程,golang在线学习,golang技术,golang技术分享,golang社区,golang讨论,golang博客,laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel教程入门,laravel菜鸟教程,laravel学习,laravel教程,laravel在线学习,laravel技术,laravel技术分享,laravel社区,laravel讨论,laravel博客">
+    <meta name="keywords" content="golang package, 张高元,zhanggaoyuan,JeffreyBool,个人博客,blog,个人网站,go,golang,go语言,golang教程入门,golang菜鸟教程,golang学习,golang教程,golang在线学习,golang技术,golang技术分享,golang社区,golang讨论,golang博客,laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel教程入门,laravel菜鸟教程,laravel学习,laravel教程,laravel在线学习,laravel技术,laravel技术分享,laravel社区,laravel讨论,laravel博客">
     <meta name="description" content="张高元(JeffreyBool)，90后水瓶座普通男青年！后端工程师。喜欢敲代码的感觉，相信编程是一门艺术，自诩为游弋在代码里的人生。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>golang 锁请小心使用 | JeffreyBool - 游弋在代码里的人生</title>
+    <title>golang package | JeffreyBool - 游弋在代码里的人生</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">golang 锁请小心使用</h1>
+                    <h1 class="description center-align post-title">golang package</h1>
                 </div>
             </div>
         </div>
@@ -371,6 +371,10 @@
                                 <span class="chip bg-color">golang</span>
                             </a>
                         
+                            <a href="/tags/package/">
+                                <span class="chip bg-color">package</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -392,7 +396,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-05
+                    2020-06-27
                 </div>
                 
 
@@ -401,14 +405,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    387
+                    816
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -423,15 +427,163 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="关于锁使用"><a href="#关于锁使用" class="headerlink" title="关于锁使用"></a>关于锁使用</h2><p> 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 <code>defer</code> 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以很难排查。</p>
-<ol>
-<li><p>提前 <code>unlock</code><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744022_k7ZtwmAx9H.png" alt="golang 锁请小心使用"></p>
+                <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>go源码组织方式</li>
+<li>main 函数和 main 包</li>
+<li>自定义包</li>
+<li>init 函数以及执行顺序</li>
+<li>课后作业</li>
+</ol>
+<h2 id="go-的源码组织方式"><a href="#go-的源码组织方式" class="headerlink" title="go 的源码组织方式"></a>go 的源码组织方式</h2><ol>
+<li><p>go 通过 package 的方式来组织源码</p>
 </li>
-<li><p>不能提前 <code>unlock</code> 怎么办？如何处理???<br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744031_4Ay8Ub0Ntd.png" alt="golang 锁请小心使用"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744040_vMvix7i2KO.png" alt="golang 锁请小心使用"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744050_ewlAjsdhpx.png" alt="golang 锁请小心使用"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744056_VlDn6KYxy9.png" alt="golang 锁请小心使用"></p>
+<li><p>package 包名</p>
 </li>
 </ol>
-<p>以上就是处理锁提前返回防止坑，能够知道锁什么时间释放很重要，往往很多坑就是这个函数已经 <code>lock</code> 锁了，然后再调用另外一个函数 <code>a-&gt;b-&gt;c-&gt;d</code>， 如此调用链；你不会知道这些函数是否也调用了这个函数的锁实例，导致死锁的发生。而且还有一点，像上图的 <code>SendMessage</code> 可能是一个耗时调用，那么这个锁就会一直阻塞在这里得不到释放。像我遇到的一个坑就是调用 <code>SendMessage</code> 函数，然后这个函数给客户端发送消息，然后由于客户端种种原因导致消息发送失败触发我的 close 函数，然后 close 内部处理资源清理导致再调用这个锁实例的函数导致重复加锁，这个 😭😭<code>BUG</code> 隐藏的很深，一般看不出来。</p>
-<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/61">https://www.zhanggaoyuan.com/article/61</a></p>
+<ul>
+<li>注意：任何一个源码都属于一个包</li>
+<li>作用：代码复用和可读性</li>
+</ul>
+<h2 id="main-函数和-main-包"><a href="#main-函数和-main-包" class="headerlink" title="main 函数和 main 包"></a>main 函数和 main 包</h2><ol>
+<li>可执行程序的包名必须为 main，并且包含一个 main 函数</li>
+</ol>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+ <span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"hello world"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<ol start="2">
+<li><p>package 组织案例<br><img src="../images/6A190F82EFF2E52B82A1D7AD0E39F959.jpg" alt="package 组织案例"></p>
+</li>
+<li><p>链接过程<br><img src="../images/5A5C93AE-DB15-4700-8F9B-2BEA87D2EA21.png" alt="链接过程"></p>
+</li>
+</ol>
+<h2 id="自定义包"><a href="#自定义包" class="headerlink" title="自定义包"></a>自定义包</h2><ol>
+<li>除了可执行程序之外，用户可以写自定义包，自定义包编译成静态库<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> calc
+</code></pre>
+</li>
+</ol>
+<p>import (<br> “fmt”<br>)</p>
+<p>func Add(a,b int) int {<br>    return a + b<br>}</p>
+<pre><code>
+2. 导出变量或函数。首字母大写表示可导出，小写表示私有。不能被外部的包访问
+```go
+package calc
+
+import (
+ "fmt"
+)
+
+func Add(a,b int) int {
+    return a + b
+}</code></pre><h2 id="编译命令"><a href="#编译命令" class="headerlink" title="编译命令"></a>编译命令</h2><ol>
+<li><code>go run</code>  运行 go 代码，如果有多个文件，需要把所有文件都写到 <code>go run</code> 后面</li>
+<li><code>go bulid</code> 编译 go 代码，如果是可执行程序， 默认会在当前目录生成可执行程序，可以使用 <code>-o</code> 指定可执行程序程序生成的目录。</li>
+<li><code>go install</code> 编译 go 代码，并且把可执行程序拷贝到  GOPATH 的 <code>bin</code> 目录，自定义或者第三方包会拷贝到 GOPATH 的 <code>pkg</code>，目录</li>
+</ol>
+<h2 id="init-函数"><a href="#init-函数" class="headerlink" title="init 函数"></a>init 函数</h2><ol>
+<li>一个包里可以有 0个或多个 init 函数，在程序启动时会被自动调用<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> calc
+</code></pre>
+</li>
+</ol>
+<p>import (<br> “fmt”<br>)</p>
+<p>var a int = 10<br>func init(){</p>
+<p>}</p>
+<p>func Add(a,b int) int {<br>    return a + b<br>}</p>
+<pre><code>
+![init 函数执行过程](../images/92B319DE-5966-494A-B708-74AC4DD6533A.png)
+
+&gt; 总结：先执行全局变量是初始化 --&gt; 然后再执行 init 函数 --&gt; 最后执行 main 函数
+
+2. 如果一个包 import 另外一个包
+![多个 init 函数执行流程](../images/4DAA696D-1D88-4352-8979-C4C0BBDF3A6C.png)
+
+## 标示符
+`_` 标示符的另外一种用法
+
+```go
+package calc 
+
+import (
+ "fmt"
+ _ "sub"
+)
+
+func Add(a,b int) int {
+    return a + b
+}</code></pre><h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><ol>
+<li>你有50枚⾦金金币，需要分配给以下⼏几个⼈人:Matthew, Sarah, Augustus, Heidi, Emilie,<br>Peter, Giana, Adriano, Aaron, Elizabeth。分配规则如下所示:</li>
+</ol>
+<ul>
+<li>a. 名字中包含’a’或’A’: 1枚⾦金金币 </li>
+<li>b. 名字中包含’e’或’E’: 1枚⾦金金币 </li>
+<li>c. 名字中包含 ‘i’或’I’: 2枚⾦金金币 </li>
+<li>d. 名字中包含’o’或’O’: 3枚⾦金金币 </li>
+<li>e. 名字中包含’u’或’U’: 5枚⾦金金币</li>
+</ul>
+<p>写一个程序，计算每个⽤用户分到了了多少⾦金金币，以及最后剩余多少⾦金金币?</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token string">"fmt"</span>
+
+<span class="token keyword">var</span> <span class="token punctuation">(</span>
+    coins <span class="token operator">=</span> <span class="token number">100</span>
+    users <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">{</span>
+        <span class="token string">"Matthew"</span><span class="token punctuation">,</span> <span class="token string">"Sarah"</span><span class="token punctuation">,</span> <span class="token string">"Augustus"</span><span class="token punctuation">,</span> <span class="token string">"Heidi"</span><span class="token punctuation">,</span> <span class="token string">"Emilie"</span><span class="token punctuation">,</span>
+        <span class="token string">"Peter"</span><span class="token punctuation">,</span> <span class="token string">"Giana"</span><span class="token punctuation">,</span> <span class="token string">"Adriano"</span><span class="token punctuation">,</span> <span class="token string">"Aaron"</span><span class="token punctuation">,</span> <span class="token string">"Elizabeth"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    distribution <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>users<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">calcCoin</span><span class="token punctuation">(</span>username <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> sum <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> char <span class="token operator">:=</span> <span class="token keyword">range</span> username <span class="token punctuation">{</span>
+        <span class="token keyword">switch</span> char <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'A'</span><span class="token punctuation">:</span>
+            sum <span class="token operator">=</span> sum <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">case</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'E'</span><span class="token punctuation">:</span>
+            sum <span class="token operator">=</span> sum <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">case</span> <span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'I'</span><span class="token punctuation">:</span>
+            sum <span class="token operator">=</span> sum <span class="token operator">+</span> <span class="token number">2</span>
+        <span class="token keyword">case</span> <span class="token string">'o'</span><span class="token punctuation">,</span> <span class="token string">'O'</span><span class="token punctuation">:</span>
+            sum <span class="token operator">=</span> sum <span class="token operator">+</span> <span class="token number">3</span>
+        <span class="token keyword">case</span> <span class="token string">'u'</span><span class="token punctuation">,</span> <span class="token string">'U'</span><span class="token punctuation">:</span>
+            sum <span class="token operator">=</span> sum <span class="token operator">+</span> <span class="token number">5</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> sum
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">dispatchCoin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> left <span class="token builtin">int</span> <span class="token operator">=</span> coins
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> username <span class="token operator">:=</span> <span class="token keyword">range</span> users <span class="token punctuation">{</span>
+        allCoin <span class="token operator">:=</span> <span class="token function">calcCoin</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span>
+        left <span class="token operator">=</span> left <span class="token operator">-</span> allCoin
+        value<span class="token punctuation">,</span> ok <span class="token operator">:=</span> distribution<span class="token punctuation">[</span>username<span class="token punctuation">]</span>
+        <span class="token keyword">if</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+            distribution<span class="token punctuation">[</span>username<span class="token punctuation">]</span> <span class="token operator">=</span> allCoin
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            distribution<span class="token punctuation">[</span>username<span class="token punctuation">]</span> <span class="token operator">=</span> value <span class="token operator">+</span> allCoin
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> left
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    left <span class="token operator">:=</span> <span class="token function">dispatchCoin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> username<span class="token punctuation">,</span> coin <span class="token operator">:=</span> <span class="token keyword">range</span> distribution <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"user:%s have %d coins\n"</span><span class="token punctuation">,</span> username<span class="token punctuation">,</span> coin<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"left coin:%d\n"</span><span class="token punctuation">,</span> left<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -475,7 +627,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.zhanggaoyuan.com/article/9e862485.html">https://www.zhanggaoyuan.com/article/9e862485.html</a>
+                    <a href="https://www.zhanggaoyuan.com/article/e0743927.html">https://www.zhanggaoyuan.com/article/e0743927.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -515,6 +667,10 @@
                             
                                 <a href="/tags/golang/">
                                     <span class="chip bg-color">golang</span>
+                                </a>
+                            
+                                <a href="/tags/package/">
+                                    <span class="chip bg-color">package</span>
                                 </a>
                             
                         </div>
@@ -685,7 +841,7 @@
         repo: 'jeffreybool.github.io',
         owner: 'JeffreyBool',
         admin: "JeffreyBool",
-        id: '2020-06-05T11-17-11',
+        id: '2020-06-27T17-51-08',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -709,81 +865,44 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/article/3f02e521.html">
+                <a href="/article/e0743927.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="golang获取文章摘要算法性能详细对比">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="golang package">
                         
-                        <span class="card-title">golang获取文章摘要算法性能详细对比</span>
+                        <span class="card-title">golang package</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            现在我们开发网站基本摆脱不了上传文件的功能，但是上传文件的可能有几百M 或者几个G, 如果不做秒传的话会带来很多的功能。例如：用户体验不好，同一个文件还要多次上传到服务器。浪费服务器带宽和资源。如果我们做了秒传就会解决上面带来的问题，可以在客户端计算文件的摘要，和服务器算法保持一致就可以做到秒传了，客户端拿着算好的摘要去服务端判断这个文件是否已经上传，如果上传了直接返回文件信息，没有上传就调用上传接口
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/golang/" class="post-category">
-                                    golang
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/golang/">
-                        <span class="chip bg-color">golang</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/article/9e862485.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="golang 锁请小心使用">
-                        
-                        <span class="card-title">golang 锁请小心使用</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            关于锁使用 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 defer 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以很难排查。
+                            目录
+go源码组织方式
+main 函数和 main 包
+自定义包
+init 函数以及执行顺序
+课后作业
 
-提前 unlock
+go 的源码组织方式
+go 通过 package 的方式来组织源码
 
-不能提前 unlock 怎么办？如
+package 包名
+
+
+
+注意：任何一个源码都属于一个包
+作用
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-27
                             </span>
                         <span class="publish-author">
                             
@@ -798,6 +917,69 @@
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/golang/">
+                        <span class="chip bg-color">golang</span>
+                    </a>
+                    
+                    <a href="/tags/package/">
+                        <span class="chip bg-color">package</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/article/cf91f0fa.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="golang map 类型">
+                        
+                        <span class="card-title">golang map 类型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            code
+map 循环```go/**
+
+
+Author: JeffreyBool
+Date: 2020/6/27
+Time: 14:46
+Software: GoLand*/
+
+package main
+import (    “fmt”
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-27
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/golang/" class="post-category">
+                                    golang
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
                 
                 <div class="card-action article-tags">
                     
