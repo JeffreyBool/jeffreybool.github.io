@@ -405,7 +405,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    816
+                    782
                 </div>
                 
 
@@ -463,59 +463,70 @@
 </li>
 </ol>
 <h2 id="自定义包"><a href="#自定义包" class="headerlink" title="自定义包"></a>自定义包</h2><ol>
-<li>除了可执行程序之外，用户可以写自定义包，自定义包编译成静态库<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> calc
-</code></pre>
-</li>
+<li>除了可执行程序之外，用户可以写自定义包，自定义包编译成静态库</li>
 </ol>
-<p>import (<br> “fmt”<br>)</p>
-<p>func Add(a,b int) int {<br>    return a + b<br>}</p>
-<pre><code>
-2. 导出变量或函数。首字母大写表示可导出，小写表示私有。不能被外部的包访问
-```go
-package calc
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> calc
 
-import (
- "fmt"
-)
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+ <span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
 
-func Add(a,b int) int {
-    return a + b
-}</code></pre><h2 id="编译命令"><a href="#编译命令" class="headerlink" title="编译命令"></a>编译命令</h2><ol>
+<span class="token keyword">func</span> <span class="token function">Add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token punctuation">}</span></code></pre>
+<ol start="2">
+<li>导出变量或函数。首字母大写表示可导出，小写表示私有。不能被外部的包访问</li>
+</ol>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> calc
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+ <span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">Add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token punctuation">}</span></code></pre>
+<h2 id="编译命令"><a href="#编译命令" class="headerlink" title="编译命令"></a>编译命令</h2><ol>
 <li><code>go run</code>  运行 go 代码，如果有多个文件，需要把所有文件都写到 <code>go run</code> 后面</li>
 <li><code>go bulid</code> 编译 go 代码，如果是可执行程序， 默认会在当前目录生成可执行程序，可以使用 <code>-o</code> 指定可执行程序程序生成的目录。</li>
 <li><code>go install</code> 编译 go 代码，并且把可执行程序拷贝到  GOPATH 的 <code>bin</code> 目录，自定义或者第三方包会拷贝到 GOPATH 的 <code>pkg</code>，目录</li>
 </ol>
 <h2 id="init-函数"><a href="#init-函数" class="headerlink" title="init 函数"></a>init 函数</h2><ol>
-<li>一个包里可以有 0个或多个 init 函数，在程序启动时会被自动调用<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> calc
-</code></pre>
-</li>
+<li>一个包里可以有 0个或多个 init 函数，在程序启动时会被自动调用</li>
 </ol>
-<p>import (<br> “fmt”<br>)</p>
-<p>var a int = 10<br>func init(){</p>
-<p>}</p>
-<p>func Add(a,b int) int {<br>    return a + b<br>}</p>
-<pre><code>
-![init 函数执行过程](../images/92B319DE-5966-494A-B708-74AC4DD6533A.png)
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> calc
 
-&gt; 总结：先执行全局变量是初始化 --&gt; 然后再执行 init 函数 --&gt; 最后执行 main 函数
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+ <span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
 
-2. 如果一个包 import 另外一个包
-![多个 init 函数执行流程](../images/4DAA696D-1D88-4352-8979-C4C0BBDF3A6C.png)
+<span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">func</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 
-## 标示符
-`_` 标示符的另外一种用法
+<span class="token punctuation">}</span>
 
-```go
-package calc 
+<span class="token keyword">func</span> <span class="token function">Add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token punctuation">}</span></code></pre>
+<p><img src="../images/92B319DE-5966-494A-B708-74AC4DD6533A.png" alt="init 函数执行过程"></p>
+<blockquote>
+<p>总结：先执行全局变量是初始化 –&gt; 然后再执行 init 函数 –&gt; 最后执行 main 函数</p>
+</blockquote>
+<ol start="2">
+<li>如果一个包 import 另外一个包<br><img src="../images/4DAA696D-1D88-4352-8979-C4C0BBDF3A6C.png" alt="多个 init 函数执行流程"></li>
+</ol>
+<h2 id="标示符"><a href="#标示符" class="headerlink" title="标示符"></a>标示符</h2><p><code>_</code> 标示符的另外一种用法</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> calc 
 
-import (
- "fmt"
- _ "sub"
-)
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+ <span class="token string">"fmt"</span>
+ <span class="token boolean">_</span> <span class="token string">"sub"</span>
+<span class="token punctuation">)</span>
 
-func Add(a,b int) int {
-    return a + b
-}</code></pre><h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><ol>
+<span class="token keyword">func</span> <span class="token function">Add</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b
+<span class="token punctuation">}</span></code></pre>
+<h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><ol>
 <li>你有50枚⾦金金币，需要分配给以下⼏几个⼈人:Matthew, Sarah, Augustus, Heidi, Emilie,<br>Peter, Giana, Adriano, Aaron, Elizabeth。分配规则如下所示:</li>
 </ol>
 <ul>
@@ -952,16 +963,18 @@ package 包名
                     <div class="summary block-with-text">
                         
                             code
-map 循环```go/**
-
-
-Author: JeffreyBool
-Date: 2020/6/27
-Time: 14:46
-Software: GoLand*/
+map 循环
 
 package main
-import (    “fmt”
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().UnixN
                         
                     </div>
                     <div class="publish-info">
@@ -1170,7 +1183,7 @@ import (    “fmt”
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.7k</span>&nbsp;字
+                class="white-color">20.6k</span>&nbsp;字
             
             
             

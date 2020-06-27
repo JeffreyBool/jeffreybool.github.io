@@ -401,14 +401,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    993
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
 
@@ -424,105 +424,120 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><ol>
-<li>map 循环<br>```go<br>/**</li>
+<li>map 循环</li>
 </ol>
-<ul>
-<li>Author: JeffreyBool</li>
-<li>Date: 2020/6/27</li>
-<li>Time: 14:46</li>
-<li>Software: GoLand<br>*/</li>
-</ul>
-<p>package main</p>
-<p>import (<br>    “fmt”<br>    “math/rand”<br>    “time”<br>)</p>
-<p>func main() {<br>    rand.Seed(time.Now().UnixNano())</p>
-<pre><code>var a map[string]int = make(map[string]int, 1024)
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
 
-for i := 0; i &lt; 128; i++ {
-    key := fmt.Sprintf("stu%d", i)
-    value := rand.Intn(1000)
-    a[key] = value
-}
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"fmt"</span>
+    <span class="token string">"math/rand"</span>
+    <span class="token string">"time"</span>
+<span class="token punctuation">)</span>
 
-for key, value := range a {
-    fmt.Printf("map[%s]=%d\n", key, value)
-}</code></pre><p>}</p>
-<pre><code>
-2. map拷贝
-```go
-/**
-* Author: JeffreyBool
-* Date: 2020/6/27
-* Time: 14:50
-* Software: GoLand
- */
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    rand<span class="token punctuation">.</span><span class="token function">Seed</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-package main
+    <span class="token keyword">var</span> a <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">1024</span><span class="token punctuation">)</span>
 
-import (
-    "fmt"
-)
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">128</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+        key <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"stu%d"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+        value <span class="token operator">:=</span> rand<span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+        a<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value
+    <span class="token punctuation">}</span>
 
-func modify(a map[string]int) {
-    a["modify001"] = 1000
-}
-
-func main() {
-    var a map[string]int
-    fmt.Printf("a:%v\n", a)
-    // a["stu01"] = 100 # map 没有进行初始化，会发生 panic
-
-    a = make(map[string]int, 16)
-    a["stu01"] = 1000
-    a["stu02"] = 1000
-    a["stu02"] = 1000
-    a["stu03"] = 1000
-    fmt.Printf("a=%#v\n", a)
-
-    b := a
-    b["stu03"] = 2000
-    fmt.Printf("after modify a:%v\n", a)
-    modify(a)
-    fmt.Printf("after modify a:%v\n", a)
-}</code></pre><ol start="3">
-<li>map 删除<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+    <span class="token keyword">for</span> key<span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> a <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"map[%s]=%d\n"</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-</li>
+<ol start="2">
+<li>map拷贝</li>
 </ol>
-<p>import (<br>    “fmt”<br>)</p>
-<p>func main() {<br>    var a map[string]int<br>    fmt.Printf(“a:%v\n”, a)<br>    //a[“stu01”] = 100<br>    a = make(map[string]int, 16)<br>    fmt.Printf(“a=%v\n”, a)<br>    a[“stu01”] = 1000<br>    a[“stu02”] = 1000<br>    a[“stu03”] = 1000<br>    fmt.Printf(“a=%#v\n”, a)<br>    delete(a, “stu02”)<br>    fmt.Printf(“a=%#v\n”, a)</p>
-<pre><code>for key, _ := range a {
-    delete(a, key)
-}
-fmt.Printf("after delete a=%#v\n", a)</code></pre><p>}</p>
-<pre><code>
-4. 判断 map 是否存在
-```go
-package main
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
 
-import (
-    "fmt"
-)
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
 
-func main() {
-    var a map[string]int
+<span class="token keyword">func</span> <span class="token function">modify</span><span class="token punctuation">(</span>a <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    a<span class="token punctuation">[</span><span class="token string">"modify001"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+<span class="token punctuation">}</span>
 
-    a = make(map[string]int, 16)
-    a["stu01"] = 1000
-    a["stu02"] = 1000
-    a["stu03"] = 1000
-    fmt.Printf("a=%#v\n", a)
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> a <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a:%v\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// a["stu01"] = 100 # map 没有进行初始化，会发生 panic</span>
 
-    var (
-        result int
-        ok     bool
-    )
-    result, ok = a["stu03"]
-    if !ok {
-        fmt.Printf("key %s is not exist\n", "stu03")
-    } else {
-        fmt.Printf("key %s is %d\n", "stu03", result)
-    }
-}</code></pre><ol start="5">
+    a <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+    a<span class="token punctuation">[</span><span class="token string">"stu01"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    a<span class="token punctuation">[</span><span class="token string">"stu02"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    a<span class="token punctuation">[</span><span class="token string">"stu02"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    a<span class="token punctuation">[</span><span class="token string">"stu03"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a=%#v\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+
+    b <span class="token operator">:=</span> a
+    b<span class="token punctuation">[</span><span class="token string">"stu03"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2000</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"after modify a:%v\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+    <span class="token function">modify</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"after modify a:%v\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<ol start="3">
+<li>map 删除</li>
+</ol>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> a <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a:%v\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">//a["stu01"] = 100</span>
+    a <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a=%v\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+    a<span class="token punctuation">[</span><span class="token string">"stu01"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    a<span class="token punctuation">[</span><span class="token string">"stu02"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    a<span class="token punctuation">[</span><span class="token string">"stu03"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a=%#v\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+    <span class="token function">delete</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token string">"stu02"</span><span class="token punctuation">)</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a=%#v\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> key<span class="token punctuation">,</span> <span class="token boolean">_</span> <span class="token operator">:=</span> <span class="token keyword">range</span> a <span class="token punctuation">{</span>
+        <span class="token function">delete</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"after delete a=%#v\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<ol start="4">
+<li>判断 map 是否存在</li>
+</ol>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> a <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span>
+
+    a <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+    a<span class="token punctuation">[</span><span class="token string">"stu01"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    a<span class="token punctuation">[</span><span class="token string">"stu02"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    a<span class="token punctuation">[</span><span class="token string">"stu03"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a=%#v\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+
+    <span class="token keyword">var</span> <span class="token punctuation">(</span>
+        result <span class="token builtin">int</span>
+        ok     <span class="token builtin">bool</span>
+    <span class="token punctuation">)</span>
+    result<span class="token punctuation">,</span> ok <span class="token operator">=</span> a<span class="token punctuation">[</span><span class="token string">"stu03"</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"key %s is not exist\n"</span><span class="token punctuation">,</span> <span class="token string">"stu03"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"key %s is %d\n"</span><span class="token punctuation">,</span> <span class="token string">"stu03"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ol start="5">
 <li>map 初始化</li>
 </ol>
 <pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
@@ -566,52 +581,86 @@ func main() {
     fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"a=%#v\n"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
 <ol start="7">
-<li>map slice<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
-</code></pre>
-</li>
+<li>map slice</li>
 </ol>
-<p>import (<br>    “fmt”<br>    “math/rand”<br>    “time”<br>)</p>
-<p>func mapSlice() {<br>    rand.Seed(time.Now().UnixNano())<br>    var s map[string][]int<br>    s = make(map[string][]int, 16)<br>    key := “stu01”<br>    value, ok := s[key]<br>    if !ok {<br>        s[key] = make([]int, 0, 16)<br>        value = s[key]<br>    }<br>    value = append(value, 100)<br>    value = append(value, 200)<br>    value = append(value, 300)<br>    s[key] = value<br>    fmt.Printf(“map:%v\n”, s)<br>}</p>
-<p>func sliceMap() {<br>    rand.Seed(time.Now().UnixNano())<br>    var s []map[string]int<br>    s = make([]map[string]int, 5, 16)<br>    for index, val := range s {<br>        fmt.Printf(“slice[%d]=%v\n”, index, val)<br>    }</p>
-<pre><code>fmt.Println()
-s[0] = make(map[string]int, 16)
-s[0]["stu01"] = 1000
-s[0]["stu02"] = 1000
-s[0]["stu03"] = 1000</code></pre><p>}</p>
-<p>func main() {<br>    mapSlice()<br>    sliceMap()<br>}</p>
-<pre><code>
-8. map sort
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
 
-```go
-package main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"fmt"</span>
+    <span class="token string">"math/rand"</span>
+    <span class="token string">"time"</span>
+<span class="token punctuation">)</span>
 
-import (
-    "fmt"
-    "math/rand"
-    "sort"
-    "time"
-)
+<span class="token keyword">func</span> <span class="token function">mapSlice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    rand<span class="token punctuation">.</span><span class="token function">Seed</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> s <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span>
+    s <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+    key <span class="token operator">:=</span> <span class="token string">"stu01"</span>
+    value<span class="token punctuation">,</span> ok <span class="token operator">:=</span> s<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token operator">!</span>ok <span class="token punctuation">{</span>
+        s<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+        value <span class="token operator">=</span> s<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    value <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span>
+    value <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span>
+    value <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span>
+    s<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value
+    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"map:%v\n"</span><span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 
-func main() {
-    rand.Seed(time.Now().UnixNano())
-    var a map[string]int = make(map[string]int,1024)
+<span class="token keyword">func</span> <span class="token function">sliceMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    rand<span class="token punctuation">.</span><span class="token function">Seed</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> s <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span>
+    s <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> index<span class="token punctuation">,</span> val <span class="token operator">:=</span> <span class="token keyword">range</span> s <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"slice[%d]=%v\n"</span><span class="token punctuation">,</span> index<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
 
-    for i := 0; i &lt; 128; i++ {
-        key := fmt.Sprintf("stu%d", i)
-        value := rand.Intn(1000)
-        a[key] = value
-    }
+    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span>
+    s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"stu01"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"stu02"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+    s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"stu03"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1000</span>
+<span class="token punctuation">}</span>
 
-    var keys []string = make([]string, 0, 128)
-    for key,_ := range a {
-        //fmt.Printf("map[%s]=%d\n",key,value)
-        keys = append(keys,key)
-    }
-    sort.Strings(keys)
-    for _,value := range keys {
-        fmt.Printf("key:%s val:%d\n", value, a[value])
-    }
-}</code></pre><h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><ol>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">mapSlice</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token function">sliceMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ol start="8">
+<li>map sort</li>
+</ol>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+    <span class="token string">"fmt"</span>
+    <span class="token string">"math/rand"</span>
+    <span class="token string">"sort"</span>
+    <span class="token string">"time"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    rand<span class="token punctuation">.</span><span class="token function">Seed</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">var</span> a <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span><span class="token number">1024</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">128</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">{</span>
+        key <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"stu%d"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span>
+        value <span class="token operator">:=</span> rand<span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+        a<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> value
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">var</span> keys <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span> <span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">128</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> key<span class="token punctuation">,</span><span class="token boolean">_</span> <span class="token operator">:=</span> <span class="token keyword">range</span> a <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//fmt.Printf("map[%s]=%d\n",key,value)</span>
+        keys <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>keys<span class="token punctuation">,</span>key<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    sort<span class="token punctuation">.</span><span class="token function">Strings</span><span class="token punctuation">(</span>keys<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span>value <span class="token operator">:=</span> <span class="token keyword">range</span> keys <span class="token punctuation">{</span>
+        fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"key:%s val:%d\n"</span><span class="token punctuation">,</span> value<span class="token punctuation">,</span> a<span class="token punctuation">[</span>value<span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><ol>
 <li>写一个程序，统计一个字符串每个单词出现的次数。比如： s = “how do you do”, 输出 how = 1 do = 2 you = 1</li>
 </ol>
 <pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
@@ -1080,10 +1129,11 @@ package 包名
 课后练习
 
 golang 指针类型
-每个变量都有内存地址，可以说通过变量来操作对应大小的内存var a int32
+每个变量都有内存地址，可以说通过变量来操作对应大小的内存
+var a int32
 a = 100
 fmt.Printf("%d\n",a)
-fmt.Prin
+fmt.Pri
                         
                     </div>
                     <div class="publish-info">
@@ -1296,7 +1346,7 @@ fmt.Prin
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.7k</span>&nbsp;字
+                class="white-color">20.6k</span>&nbsp;字
             
             
             

@@ -412,7 +412,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
 
@@ -434,218 +434,198 @@
 <li>课后练习</li>
 </ol>
 <h2 id="golang-指针类型"><a href="#golang-指针类型" class="headerlink" title="golang 指针类型"></a>golang 指针类型</h2><ol>
-<li>每个变量都有内存地址，可以说通过变量来操作对应大小的内存<pre class=" language-go"><code class="language-go"><span class="token keyword">var</span> a <span class="token builtin">int32</span>
+<li><p>每个变量都有内存地址，可以说通过变量来操作对应大小的内存</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">var</span> a <span class="token builtin">int32</span>
 a <span class="token operator">=</span> <span class="token number">100</span>
 fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span>
 fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span></code></pre>
-注意：通过 <code>&amp;</code> 符号可以获取变量的地址</li>
-</ol>
-<ol start="2">
-<li>普通的变量存储的是对应类型的值，这些类型就叫 <code>值类型</code></li>
-</ol>
+<p>注意：通过 <code>&amp;</code> 符号可以获取变量的地址</p>
+</li>
+<li><p>普通的变量存储的是对应类型的值，这些类型就叫 <code>值类型</code></p>
 <pre class=" language-go"><code class="language-go"><span class="token keyword">var</span> b <span class="token builtin">int32</span>
 b <span class="token operator">=</span> <span class="token number">156</span>
 fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span>“<span class="token operator">%</span>d\n”<span class="token punctuation">,</span> b<span class="token punctuation">)</span> fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span>“<span class="token operator">%</span>p\n”<span class="token punctuation">,</span> <span class="token operator">&amp;</span>b<span class="token punctuation">)</span></code></pre>
 <p><img src="../images/%E6%8C%87%E9%92%88%E5%9C%B0%E5%9D%80.jpg" alt="指针地址"></p>
-<ol start="3">
-<li>指针类型的变量存储的是一个地址，所以又叫指针类型或者引用类型</li>
-</ol>
-<pre class=" language-go"><code class="language-go"> <span class="token keyword">var</span> b <span class="token builtin">int32</span>
- b <span class="token operator">=</span> <span class="token number">156</span>
- <span class="token keyword">var</span> a <span class="token operator">*</span><span class="token builtin">int32</span>
- a <span class="token operator">=</span> <span class="token operator">&amp;</span>b</code></pre>
+</li>
+<li><p>指针类型的变量存储的是一个地址，所以又叫指针类型或者引用类型</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">var</span> b <span class="token builtin">int32</span>
+b <span class="token operator">=</span> <span class="token number">156</span>
+<span class="token keyword">var</span> a <span class="token operator">*</span><span class="token builtin">int32</span>
+a <span class="token operator">=</span> <span class="token operator">&amp;</span>b</code></pre>
 <p><img src="../images/E8C6A43126330AD2B09A51E5CAE0B16C.png" alt="指针类型"></p>
-<ol start="4">
-<li>指针类型定义，var 变量名 *类型</li>
-</ol>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
-
- <span class="token keyword">import</span> <span class="token punctuation">(</span>
-   <span class="token string">"fmt"</span>
-<span class="token punctuation">)</span>
-
- <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-     b <span class="token operator">:=</span> <span class="token number">255</span>
-    <span class="token keyword">var</span> a <span class="token operator">*</span><span class="token builtin">int</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>b
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"Type of a is %T\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"address of b is"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre>
-<ol start="5">
-<li>执行类型变量的默认值为 nil, 也就是空地址<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
-</code></pre>
 </li>
-</ol>
-<p>import (<br>  “fmt”<br>)</p>
-<p>func main() {<br>    a := 25<br>    var b *int<br>    if b == nil {<br>        fmt.Println(“b is”, b)<br>        b = &amp;a<br>        fmt.Println(“b after initialization is”, b)<br>    }<br>}</p>
-<pre><code>
-6. 如果操作指针变量地址的地址里面的值呢？
-
-```go
-package main
-
-import (
- "fmt"
-)
-
-func main()  {
- b := 255
- a := &amp;b
- fmt.Println("address of b is",a)
- fmt.Println("value of b is",*a)
-}</code></pre><p><em>注意：通过 <code>*</code> 可以获取指针变量指向的变量`</em></p>
-<ol start="7">
-<li>通过指针修改变量的值</li>
-</ol>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
- <span class="token string">"fmt"</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
- b <span class="token operator">:=</span><span class="token number">255</span>
- a <span class="token operator">:=</span> <span class="token operator">&amp;</span>b
- fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"address os b is"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span>
- fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"value of b is"</span><span class="token punctuation">,</span><span class="token operator">*</span>a<span class="token punctuation">)</span>
- <span class="token operator">*</span>a <span class="token operator">++</span>
- fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"new value of b is"</span><span class="token punctuation">,</span>b<span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre>
-<ol start="8">
-<li>指针变量传参<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
-</code></pre>
-</li>
-</ol>
-<p>import (<br> “fmt”<br>)</p>
-<p>func change(val *int) {<br>  *val = 55<br>}</p>
-<p>func main() {<br>    a := 58<br>    fmt.Println(“value of a before function call is”,a)<br>    b := &amp;a<br>    change(b)<br>    fmt.Println(“value of a before function call is”,a)<br>}</p>
-<pre><code>
-9. 指针变量传参示例2
-
-```go
-package main
-
-import (
- "fmt"
-)
-
-func modify(arr *[3]int) {
-  (*arr)[0] = 90
-}
-
-func main() {
-    a := [3]int{89,90,91}
-    modify(&amp;a)
-    fmt.Println(a)
-}</code></pre><ol start="10">
-<li>切片传参</li>
-</ol>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
- <span class="token string">"fmt"</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">func</span> <span class="token function">modify</span><span class="token punctuation">(</span>sls <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    sls<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">90</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    a <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">89</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">,</span><span class="token number">91</span><span class="token punctuation">}</span>
-    <span class="token function">modify</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre>
-<p><em>注意： 切片是引用类型</em> </p>
-<ol start="11">
-<li><code>make</code> 用来分配引用类型的内存，比如 <code>map</code> 、<code>slice</code> 以及 <code>channel</code></li>
-</ol>
-<p><code>new</code> 用来分配除引用类型的所有其他类型的内存，比如 <code>int</code> 数组等</p>
-<ol start="12">
-<li>值拷贝和引用拷贝</li>
-</ol>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
- <span class="token string">"fmt"</span>
-<span class="token punctuation">)</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">100</span>
-    b <span class="token operator">:=</span> a
-<span class="token punctuation">}</span></code></pre>
-<p><img src="../images/30481C68451B12FC4972E52BC66C58EF.jpg" alt="值拷贝"></p>
-<ol start="13">
-<li>值拷贝和引用拷贝</li>
-</ol>
-<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">100</span>
-    <span class="token keyword">var</span> b <span class="token operator">*</span><span class="token builtin">int</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>a
-    <span class="token keyword">var</span> c <span class="token operator">*</span><span class="token builtin">int</span> <span class="token operator">=</span> b
-    <span class="token operator">*</span>c <span class="token operator">=</span> <span class="token number">200</span>
-<span class="token punctuation">}</span></code></pre>
-<p><img src="../images/5EE66F82-077E-4DED-BA37-F9A219FE636D.png" alt="值拷贝和引用拷贝"></p>
-<h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><ol>
-<li>写一个程序，获取一个变量的地址，并打印到终端。</li>
-</ol>
+<li><p>指针类型定义，var 变量名 *类型</p>
 <pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
 <span class="token string">"fmt"</span>
 <span class="token punctuation">)</span>
 
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  b <span class="token operator">:=</span> <span class="token number">255</span>
+ <span class="token keyword">var</span> a <span class="token operator">*</span><span class="token builtin">int</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>b
+ fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"Type of a is %T\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+ fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"address of b is"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>执行类型变量的默认值为 nil, 也就是空地址</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ a <span class="token operator">:=</span> <span class="token number">25</span>
+ <span class="token keyword">var</span> b <span class="token operator">*</span><span class="token builtin">int</span>
+ <span class="token keyword">if</span> b <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"b is"</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+     b <span class="token operator">=</span> <span class="token operator">&amp;</span>a
+     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"b after initialization is"</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>如果操作指针变量地址的地址里面的值呢？</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span>
+b <span class="token operator">:=</span> <span class="token number">255</span>
+a <span class="token operator">:=</span> <span class="token operator">&amp;</span>b
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"address of b is"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"value of b is"</span><span class="token punctuation">,</span><span class="token operator">*</span>a<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p> <em>注意：通过 <code>*</code> 可以获取指针变量指向的变量`</em></p>
+</li>
+<li><p>通过指针修改变量的值</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+b <span class="token operator">:=</span><span class="token number">255</span>
+a <span class="token operator">:=</span> <span class="token operator">&amp;</span>b
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"address os b is"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"value of b is"</span><span class="token punctuation">,</span><span class="token operator">*</span>a<span class="token punctuation">)</span>
+<span class="token operator">*</span>a <span class="token operator">++</span>
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"new value of b is"</span><span class="token punctuation">,</span>b<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>指针变量传参</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">change</span><span class="token punctuation">(</span>val <span class="token operator">*</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token operator">*</span>val <span class="token operator">=</span> <span class="token number">55</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ a <span class="token operator">:=</span> <span class="token number">58</span>
+ fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"value of a before function call is"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span>
+ b <span class="token operator">:=</span> <span class="token operator">&amp;</span>a
+ <span class="token function">change</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+ fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"value of a before function call is"</span><span class="token punctuation">,</span>a<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>指针变量传参示例2</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">modify</span><span class="token punctuation">(</span>arr <span class="token operator">*</span><span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">(</span><span class="token operator">*</span>arr<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">90</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ a <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">89</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">,</span><span class="token number">91</span><span class="token punctuation">}</span>
+ <span class="token function">modify</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
+ fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+<li><p>切片传参</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">modify</span><span class="token punctuation">(</span>sls <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+sls<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">90</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+a <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">{</span><span class="token number">89</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">,</span><span class="token number">91</span><span class="token punctuation">}</span>
+<span class="token function">modify</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+</li>
+</ol>
+<p><em>注意： 切片是引用类型</em> </p>
+<ol start="11">
+<li><p><code>make</code> 用来分配引用类型的内存，比如 <code>map</code> 、<code>slice</code> 以及 <code>channel</code>, <code>new</code> 用来分配除引用类型的所有其他类型的内存，比如 <code>int</code> 数组等</p>
+</li>
+<li><p>值拷贝和引用拷贝</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">100</span>
+b <span class="token operator">:=</span> a
+<span class="token punctuation">}</span></code></pre>
+<p><img src="../images/30481C68451B12FC4972E52BC66C58EF.jpg" alt="值拷贝"></p>
+</li>
+<li><p>值拷贝和引用拷贝</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">100</span>
+<span class="token keyword">var</span> b <span class="token operator">*</span><span class="token builtin">int</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>a
+<span class="token keyword">var</span> c <span class="token operator">*</span><span class="token builtin">int</span> <span class="token operator">=</span> b
+<span class="token operator">*</span>c <span class="token operator">=</span> <span class="token number">200</span>
+<span class="token punctuation">}</span></code></pre>
+<p><img src="../images/5EE66F82-077E-4DED-BA37-F9A219FE636D.png" alt="值拷贝和引用拷贝"></p>
+</li>
+</ol>
+<h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><ol>
+<li><p>写一个程序，获取一个变量的地址，并打印到终端。</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+<span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
 <span class="token keyword">var</span> a <span class="token builtin">int</span>
-
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Scanln</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"address a of:%p\n"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
+ fmt<span class="token punctuation">.</span><span class="token function">Scanln</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
+ fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"address a of:%p\n"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
-<ol start="2">
-<li>写一个函数，传入一个 int 类型的指针，并在函数中修改锁指向的值</li>
-</ol>
+</li>
+<li><p>写一个函数，传入一个 int 类型的指针，并在函数中修改锁指向的值</p>
 <pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
-
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
- <span class="token string">"fmt"</span>
+<span class="token string">"fmt"</span>
 <span class="token punctuation">)</span>
-
 <span class="token keyword">func</span> <span class="token function">modify</span><span class="token punctuation">(</span>a <span class="token operator">*</span><span class="token builtin">int</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token number">100</span>
+ <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token number">100</span>
 <span class="token punctuation">}</span>
-
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">10</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"before modify: %d addr:%p\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
-    <span class="token function">modify</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"after modify: %d addr:%p\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
+<span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">10</span>
+ fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"before modify: %d addr:%p\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
+ <span class="token function">modify</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
+ fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"after modify: %d addr:%p\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
-<ol start="3">
-<li>交换两个变量的值</li>
-</ol>
+</li>
+<li><p>交换两个变量的值</p>
 <pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
-
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
- <span class="token string">"fmt"</span>
+<span class="token string">"fmt"</span>
 <span class="token punctuation">)</span>
-
 <span class="token keyword">func</span> <span class="token function">swap</span><span class="token punctuation">(</span>a <span class="token operator">*</span><span class="token builtin">int</span><span class="token punctuation">,</span> b <span class="token operator">*</span><span class="token builtin">int</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span>
-    <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token operator">*</span>b <span class="token operator">=</span> <span class="token operator">*</span>b<span class="token punctuation">,</span><span class="token operator">*</span>a
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"after a=%d b=%d\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token operator">*</span>b<span class="token punctuation">)</span>
+<span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token operator">*</span>b <span class="token operator">=</span> <span class="token operator">*</span>b<span class="token punctuation">,</span><span class="token operator">*</span>a
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"after a=%d b=%d\n"</span><span class="token punctuation">,</span> <span class="token operator">*</span>a<span class="token punctuation">,</span> <span class="token operator">*</span>b<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-
 <span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">10</span>
-    <span class="token keyword">var</span> b <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">20</span>
-    <span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span><span class="token operator">&amp;</span>b<span class="token punctuation">)</span>
-    fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"in main a=%d b=%d\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
+<span class="token keyword">var</span> a <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">var</span> b <span class="token builtin">int</span> <span class="token operator">=</span> <span class="token number">20</span>
+<span class="token function">swap</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span><span class="token operator">&amp;</span>b<span class="token punctuation">)</span>
+fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"in main a=%d b=%d\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><pre class=" language-go"><code class="language-go"><span class="token comment" spellcheck="true">/**
-* Author: JeffreyBool
-* Date: 2020/6/27
-* Time: 02:21
-* Software: GoLand
- */</span>
-
-<span class="token keyword">package</span> main
+</li>
+</ol>
+<h2 id="code"><a href="#code" class="headerlink" title="code"></a>code</h2><pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
 
 <span class="token keyword">import</span> <span class="token punctuation">(</span>
     <span class="token string">"fmt"</span>
@@ -1054,16 +1034,18 @@ func main() {
                     <div class="summary block-with-text">
                         
                             code
-map 循环```go/**
-
-
-Author: JeffreyBool
-Date: 2020/6/27
-Time: 14:46
-Software: GoLand*/
+map 循环
 
 package main
-import (    “fmt”
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().UnixN
                         
                     </div>
                     <div class="publish-info">
@@ -1322,7 +1304,7 @@ import (    “fmt”
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">20.7k</span>&nbsp;字
+                class="white-color">20.6k</span>&nbsp;字
             
             
             
