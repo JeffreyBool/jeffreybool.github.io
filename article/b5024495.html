@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="跳表实现原理, 张高元,zhanggaoyuan,JeffreyBool,个人博客,blog,个人网站,go,golang,go语言,golang教程入门,golang菜鸟教程,golang学习,golang教程,golang在线学习,golang技术,golang技术分享,golang社区,golang讨论,golang博客,laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel教程入门,laravel菜鸟教程,laravel学习,laravel教程,laravel在线学习,laravel技术,laravel技术分享,laravel社区,laravel讨论,laravel博客">
+    <meta name="keywords" content="js 实现chunk 按照指定个数数组分割, 张高元,zhanggaoyuan,JeffreyBool,个人博客,blog,个人网站,go,golang,go语言,golang教程入门,golang菜鸟教程,golang学习,golang教程,golang在线学习,golang技术,golang技术分享,golang社区,golang讨论,golang博客,laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel教程入门,laravel菜鸟教程,laravel学习,laravel教程,laravel在线学习,laravel技术,laravel技术分享,laravel社区,laravel讨论,laravel博客">
     <meta name="description" content="张高元(JeffreyBool)，90后水瓶座普通男青年！后端工程师。喜欢敲代码的感觉，相信编程是一门艺术，自诩为游弋在代码里的人生。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>跳表实现原理 | JeffreyBool - 游弋在代码里的人生</title>
+    <title>js 实现chunk 按照指定个数数组分割 | JeffreyBool - 游弋在代码里的人生</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">跳表实现原理</h1>
+                    <h1 class="description center-align post-title">js 实现chunk 按照指定个数数组分割</h1>
                 </div>
             </div>
         </div>
@@ -367,12 +367,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/redis/">
-                                <span class="chip bg-color">redis</span>
+                            <a href="/tags/js/">
+                                <span class="chip bg-color">js</span>
                             </a>
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                <span class="chip bg-color">数据结构</span>
+                            <a href="/tags/javascript/">
+                                <span class="chip bg-color">javascript</span>
                             </a>
                         
                     </div>
@@ -383,8 +383,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/redis/" class="post-category">
-                                redis
+                            <a href="/categories/javascript/" class="post-category">
+                                javascript
                             </a>
                         
                     </div>
@@ -396,7 +396,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-05
+                    2020-06-28
                 </div>
                 
 
@@ -405,7 +405,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    305
+                    122
                 </div>
                 
 
@@ -427,20 +427,39 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>是一种动态的数据结构,它可以支持快速的插入、查找、查询操作.写起来并不复杂,甚至可以替代红黑树.</p>
-<p>对于一个单链表来讲,即使链表中的储存数据是有序的.如果我们想要在其中查找某个数据,也只能从头到尾遍历链表.这样的效率会很低,时间复杂度也很高  <code>O(n)</code>.</p>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264459_hwwzRqoAyX.png" alt="跳表实现原理"></p>
-<blockquote>
-<p>如何提升链表的查询效率呢? 我们对链表建立一级索引层.每两个节点提取一个节点到上一级.图中的 down 表示 down 指针，指向下一级结点。</p>
-</blockquote>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264467_VmnwgITZSJ.png" alt="跳表实现原理"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264476_85UkzmWwjz.png" alt="跳表实现原理"></p>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264488_ZCNI85qG89.png" alt="跳表实现原理"></p>
-<blockquote>
-<p>这种链表加多级索引的结构，就是<code>跳表</code></p>
-</blockquote>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555264496_WX4kM3HP9K.png" alt="跳表实现原理"></p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结:"></a>小结:</h3><p>跳表采用空间换时间的设计思路,通过构建多级索引来提高查询的效率,实现了基于链表的<code>二分查找</code>.跳表是一种动态的数据结构,支持快速的插入.</p>
-<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/4">https://www.zhanggaoyuan.com/article/4</a></p>
+                <pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">/**
+ * @param item
+ * @param num
+ * @returns {*}
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">split</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> item<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">let</span> groupSize <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">ceil</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>length <span class="token operator">/</span> num<span class="token punctuation">)</span> <span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">chunk</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span>groupSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/**
+ * @param item
+ * @param size
+ * @returns {*}
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">chunk</span><span class="token punctuation">(</span>item<span class="token punctuation">,</span>size<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">||</span> size <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> item<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">let</span> chunks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>item<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">=</span>i<span class="token operator">+</span>size<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        chunks<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>i<span class="token operator">+</span>size<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> chunks
+<span class="token punctuation">}</span>
+</code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -484,7 +503,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.zhanggaoyuan.com/article/a7938bd1.html">https://www.zhanggaoyuan.com/article/a7938bd1.html</a>
+                    <a href="https://www.zhanggaoyuan.com/article/b5024495.html">https://www.zhanggaoyuan.com/article/b5024495.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -522,12 +541,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/redis/">
-                                    <span class="chip bg-color">redis</span>
+                                <a href="/tags/js/">
+                                    <span class="chip bg-color">js</span>
                                 </a>
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                    <span class="chip bg-color">数据结构</span>
+                                <a href="/tags/javascript/">
+                                    <span class="chip bg-color">javascript</span>
                                 </a>
                             
                         </div>
@@ -698,7 +717,7 @@
         repo: 'jeffreybool.github.io',
         owner: 'JeffreyBool',
         admin: "JeffreyBool",
-        id: '2020-06-05T13-17-11',
+        id: '2020-06-28T12-02-50',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -722,46 +741,59 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/article/d2b1ed72.html">
+                <a href="/article/b5024495.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="超详细 Hexo + Github Page 搭建技术blog教程">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="js 实现chunk 按照指定个数数组分割">
                         
-                        <span class="card-title">超详细 Hexo + Github Page 搭建技术blog教程</span>
+                        <span class="card-title">js 实现chunk 按照指定个数数组分割</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            超详细 Hexo + Github Page 搭建技术blog教程前言博客有第三方平台，也可以自建，比较早的有博客园、CSDN，近几年新兴的也比较多诸如：WordPress、segmentFault、简书、掘金、知乎专栏、Github Pa
+                            /**
+ * @param item
+ * @param num
+ * @returns {*}
+ */
+export function split(item,num) {
+    if(item.length &lt;= 0){
+    
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-28
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            JeffreyBool
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/javascript/" class="post-category">
+                                    javascript
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/github/">
-                        <span class="chip bg-color">github</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
                     </a>
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/javascript/">
+                        <span class="chip bg-color">javascript</span>
                     </a>
                     
                 </div>
@@ -775,35 +807,38 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/article/f3d7d619.html">
+                <a href="/article/804ed534.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="剖析Redis常用数据类型对应的数据结构">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="golang 面向对象编程">
                         
-                        <span class="card-title">剖析Redis常用数据类型对应的数据结构</span>
+                        <span class="card-title">golang 面向对象编程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Redis是一种key-value非关系型数据库
-列表 list这种数据类型是由两种方法实现的,一种是压缩列表ziplist , 另一种是双向循环链表.
-当数据量小的时候,列表就可以使用压缩列表的方式实现,具体需要同时满足下面两个条件:
+                            golang 面向对象编程目录
+struct 声明和定义
+struct 的内存布局以及构造函数
+匿名字段和 struct 嵌套
+struct 与 tag 应用
+课后作业
 
-
+struct 声明和定义go 中面向对象是通过 struct 来实现
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/redis/" class="post-category">
-                                    redis
+                            <a href="/categories/golang/" class="post-category">
+                                    golang
                                 </a>
                             
                             
@@ -813,12 +848,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/golang/">
+                        <span class="chip bg-color">golang</span>
                     </a>
                     
                 </div>
