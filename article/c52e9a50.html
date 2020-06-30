@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="linux 服务器生成 github ssh, 张高元,zhanggaoyuan,JeffreyBool,个人博客,blog,个人网站,go,golang,go语言,golang教程入门,golang菜鸟教程,golang学习,golang教程,golang在线学习,golang技术,golang技术分享,golang社区,golang讨论,golang博客,laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel教程入门,laravel菜鸟教程,laravel学习,laravel教程,laravel在线学习,laravel技术,laravel技术分享,laravel社区,laravel讨论,laravel博客">
+    <meta name="keywords" content="golang io 操作, 张高元,zhanggaoyuan,JeffreyBool,个人博客,blog,个人网站,go,golang,go语言,golang教程入门,golang菜鸟教程,golang学习,golang教程,golang在线学习,golang技术,golang技术分享,golang社区,golang讨论,golang博客,laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel教程入门,laravel菜鸟教程,laravel学习,laravel教程,laravel在线学习,laravel技术,laravel技术分享,laravel社区,laravel讨论,laravel博客">
     <meta name="description" content="张高元(JeffreyBool)，90后水瓶座普通男青年！后端工程师。喜欢敲代码的感觉，相信编程是一门艺术，自诩为游弋在代码里的人生。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>linux 服务器生成 github ssh | JeffreyBool - 游弋在代码里的人生</title>
+    <title>golang io 操作 | JeffreyBool - 游弋在代码里的人生</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">linux 服务器生成 github ssh</h1>
+                    <h1 class="description center-align post-title">golang io 操作</h1>
                 </div>
             </div>
         </div>
@@ -367,16 +367,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/linux/">
-                                <span class="chip bg-color">linux</span>
-                            </a>
-                        
-                            <a href="/tags/github/">
-                                <span class="chip bg-color">github</span>
-                            </a>
-                        
-                            <a href="/tags/ssh/">
-                                <span class="chip bg-color">ssh</span>
+                            <a href="/tags/golang/">
+                                <span class="chip bg-color">golang</span>
                             </a>
                         
                     </div>
@@ -387,8 +379,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/linux/" class="post-category">
-                                linux
+                            <a href="/categories/golang/" class="post-category">
+                                golang
                             </a>
                         
                     </div>
@@ -400,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-05
+                    2020-06-30
                 </div>
                 
 
@@ -409,14 +401,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    561
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -431,87 +423,216 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="服务器生成-git-ssh-步骤详细记录："><a href="#服务器生成-git-ssh-步骤详细记录：" class="headerlink" title="服务器生成 git ssh 步骤详细记录："></a>服务器生成 git ssh 步骤详细记录：</h2><h3 id="1-首先检查自己之前是否有生成"><a href="#1-首先检查自己之前是否有生成" class="headerlink" title="1. 首先检查自己之前是否有生成"></a>1. 首先检查自己之前是否有生成</h3><blockquote>
-<p>$ ls -al ~/.ssh  </p>
-</blockquote>
-<h3 id="2-检查自己是否有配置过git-全局配置"><a href="#2-检查自己是否有配置过git-全局配置" class="headerlink" title="2. 检查自己是否有配置过git 全局配置"></a>2. 检查自己是否有配置过git 全局配置</h3><blockquote>
-<p>git config user.name<br>git config user.email</p>
-</blockquote>
-<p>以上两个命令可以检查是否已经有配置过 github 全局配置信息，配置过是如下显示</p>
-<pre><code>[root@VM_0_13_centos wwwroot]# git config user.name
-JeffreyBool</code></pre><p>如果没有配置，可以通过以下命令设置</p>
-<blockquote>
-<p>git config –global user.name ‘你的github名称’<br>git config user.email ‘你的 github 邮箱’</p>
-</blockquote>
-<h3 id="3-生成秘钥"><a href="#3-生成秘钥" class="headerlink" title="3. 生成秘钥"></a>3. 生成秘钥</h3><blockquote>
-<p>ssh-keygen -t rsa -C ‘你的 github 邮箱’</p>
-</blockquote>
-<p>步骤如下:</p>
-<pre><code>[root@VM_0_13_centos .ssh]# ssh-keygen -t rsa -C '1402992668@qq.com'
-Generating public/private rsa key pair.
+                <h1 id="golang-io-操作"><a href="#golang-io-操作" class="headerlink" title="golang io 操作"></a>golang io 操作</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>格式化输入</li>
+<li>终端输入输出背后的原理</li>
+<li>bufio 包的使用</li>
+<li>命令行参数处理和 urfave/cli 使用</li>
+<li>课后作业</li>
+</ul>
+<h2 id="格式化输入"><a href="#格式化输入" class="headerlink" title="格式化输入"></a>格式化输入</h2><p>从终端获取用户的输入</p>
+<ul>
+<li><code>fmt.Scanf(format string, a...interface{})</code> : 格式化输⼊，空格作为分隔符，占位符和格式化输出一致</li>
+<li><code>fmt.Scan(a ...interface{})</code> : 从终端获取⽤户输⼊，存储在Scanln中的参数里，空格和换行符 作为分隔符</li>
+<li><code>fmt.Scanln(a ...interface{})</code> : 从终端获取用户输入，存储在Scanln中的参数里，空格作为分隔符， 遇到换⾏符结束</li>
+</ul>
+<p>格式化输入背后的原理</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
 
-▽
-Enter file in which to save the key (/root/.ssh/id_rsa): github
-Enter passphrase (empty for no passphrase):
-Enter same passphrase again:
-Your identification has been saved in github.
-Your public key has been saved in github.pub.
-The key fingerprint is:
-SHA256:rCizfSAB6nxdIUNCrKclfsm+xXnCjoAMv+WNMmVhnPg 1402992668@qq.com
-The key's randomart image is:
-+---[RSA 2048]----+
-|  oo..           |
-|.  ..o .         |
-|...o .o .        |
-|.ooo=  o         |
-|= *+o.. S        |
-|+*.=Eo..         |
-|.oB+oB..         |
-|  +X+o+          |
-|  o==o.          |
-+----[SHA256]-----+</code></pre><ul>
-<li>查看生成的文件</li>
-</ul>
-<blockquote>
-<p>ll </p>
-</blockquote>
-<pre><code> -rw------- 1 root root  794 10月 16 20:37 authorized_keys
--rw------- 1 root root 1679 12月 30 20:40 github
--rw-r--r-- 1 root root  399 12月 30 20:40 github.pub</code></pre><p>这时候我们已经生成完毕。</p>
-<h3 id="3-如果想登陆远端，则需要将rsa-pub里的秘钥添加到远端。"><a href="#3-如果想登陆远端，则需要将rsa-pub里的秘钥添加到远端。" class="headerlink" title="3. 如果想登陆远端，则需要将rsa.pub里的秘钥添加到远端。"></a>3. 如果想登陆远端，则需要将rsa.pub里的秘钥添加到远端。</h3><ul>
-<li>首先，去.ssh目录下找到<code>github.pub</code>这个文件夹打开复制全部内容。</li>
-<li>登录GitHub，进入你的Settings</li>
-</ul>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202003/03/1_1583215014_qyWInUvrFV.png" alt="image.png">)<img src="media/15777098619113/15777104858355.jpg" alt=""></p>
+<span class="token keyword">import</span> <span class="token punctuation">(</span> <span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">var</span> <span class="token punctuation">(</span>
+  firstName<span class="token punctuation">,</span> lastName<span class="token punctuation">,</span> s <span class="token builtin">string</span>
+  i       <span class="token builtin">int</span>
+  f       <span class="token builtin">float32</span>
+  input   <span class="token operator">=</span> <span class="token string">"56.12/5212/Go"</span>
+  format  <span class="token operator">=</span> <span class="token string">"%f/%d/%s"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Please enter your full name: "</span><span class="token punctuation">)</span> fmt<span class="token punctuation">.</span><span class="token function">Scanln</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>firstName<span class="token punctuation">,</span> <span class="token operator">&amp;</span>lastName<span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">// fmt.Scanf("%s %s", &amp;firstName, &amp;lastName)</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"Hi %s %s!\n"</span><span class="token punctuation">,</span> firstName<span class="token punctuation">,</span> lastName<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Hi Chris Naegels fmt.Sscanf(input, format, &amp;f, &amp;i, &amp;s)</span>
+  fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"From the string we read: "</span><span class="token punctuation">,</span> f<span class="token punctuation">,</span> i<span class="token punctuation">,</span> s<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>从字符串中获取输入</p>
 <ul>
-<li>会看到左边这些目录，点击SSH and GPG keys</li>
+<li><code>fmt.Sscanf(str, format string, a...interface{})</code> : 格式化输入，空格作为分隔符，占位符和<br>格式化输出一致</li>
+<li><code>fmt.Sscan(str string, a ...interface{})</code> : 从终端获取⽤用户输入，存储在Scanln中的参数里， 空格和换行符作为分隔符</li>
+<li><code>fmt.Sscanln(str string, a ...interface{})</code> : 从终端获取⽤用户输入，存储在Scanln中的参数里， 空格作为分隔符，遇到换行符结束</li>
 </ul>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202003/03/1_1583215030_UbsjRj6wha.png" alt="image.png">)<img src="media/15777098619113/15777105819556.jpg" alt=""></p>
+<h2 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h2><ul>
+<li><code>fmt.Printf(format string, a...interface{})</code> : 格式化输出，并打印到终端</li>
+<li><code>fmt.Println(a ...interface{})</code> : 把零个或多个变量打印到终端， 并换行 </li>
+<li><code>fmt.Print(a ...interface{})</code> : 把零个或多个变量打印到终端</li>
+</ul>
+<p>格式化并返回字符串</p>
 <ul>
-<li><p>创建New SSH key</p>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202003/03/1_1583215050_zfgeuNftkf.png" alt="image.png">)<img src="media/15777098619113/15777106443651.jpg" alt=""></p>
+<li><code>fmt.Sprintf(format string, a...interface{})</code> : 格式化并返回字符串</li>
+<li><code>fmt.Sprintln(a ...interface{})</code> : 把零个或多个变量按空格进行格式化并换行，返回字符串 </li>
+<li><code>fmt.Sprint(a ...interface{})</code> : 把零个或多个变量按空格行行格式化，返回字符串</li>
+</ul>
+<h2 id="终端输入输出背后的原理"><a href="#终端输入输出背后的原理" class="headerlink" title="终端输入输出背后的原理"></a>终端输入输出背后的原理</h2><p>终端其实是一个文件</p>
+<ul>
+<li><code>os.Stdin</code>: 标准输入的文件实例，类型为 *File</li>
+<li><code>os.Stdout</code>: 标准输出的文件实例，类型为 *File</li>
+<li><code>os.Stderr</code>: 标准错误输出的文件实例，类型为 *File</li>
+</ul>
+<p>终端的操作</p>
+<ul>
+<li>终端读取操作<ul>
+<li><code>File.Read(b []byte)</code> </li>
+</ul>
 </li>
-<li><p>点击Add SSH key</p>
-</li>
-<li><p>再弹出窗口，输入你的GitHub密码，点击确认按钮。</p>
-</li>
-<li><p>到此，就大功告成了。</p>
+<li>终端输出操作<ul>
+<li><code>File.Write(b []byte)</code></li>
+<li><code>File.WriteString(str string)</code></li>
+</ul>
 </li>
 </ul>
-<h3 id="4-测试。"><a href="#4-测试。" class="headerlink" title="4.测试。"></a>4.测试。</h3><blockquote>
-<p>ssh -T <a href="mailto:git@github.com">git@github.com</a></p>
-</blockquote>
-<pre><code>[root@VM_0_13_centos ~]# ssh-add ~/.ssh/github
-Could not open a connection to your authentication agent.</code></pre><p>发现出现以上报错信息</p>
+<p>从文件获取输入</p>
+<ul>
+<li><code>fmt.Fscanf(file, format string, a…interface{})</code> : 从⽂件格式化输⼊，空格作为分隔符，占位符和格式化输出⼀致</li>
+<li><code>fmt.Fscan(file, a …interface{})</code> : 从⽂件获取⽤户输⼊，存储在Scanln中的参数⾥，空格和换⾏符作为分隔符</li>
+<li><code>fmt.Fscanln(file, a …interface{})</code> : 从⽂件获取⽤户输⼊，存储在Scanln中的参数⾥，空格作为分隔符，遇到换⾏符结束</li>
+</ul>
+<h2 id="终端读写"><a href="#终端读写" class="headerlink" title="终端读写"></a>终端读写</h2><p>带缓冲区的读写</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main 
+<span class="token keyword">import</span> <span class="token punctuation">(</span> 
+ <span class="token string">"bufio"</span> 
+ <span class="token string">"fmt"</span> 
+ <span class="token string">"os"</span> 
+<span class="token punctuation">)</span> 
+<span class="token keyword">var</span> inputReader <span class="token operator">*</span>bufio<span class="token punctuation">.</span>Reader
+<span class="token keyword">var</span> input <span class="token builtin">string</span>
+<span class="token keyword">var</span> err <span class="token builtin">error</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ inputReader <span class="token operator">=</span> bufio<span class="token punctuation">.</span><span class="token function">NewReader</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Stdin<span class="token punctuation">)</span> 
+fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Please enter some input: "</span><span class="token punctuation">)</span> 
+ input<span class="token punctuation">,</span> err <span class="token operator">=</span> inputReader<span class="token punctuation">.</span><span class="token function">ReadString</span><span class="token punctuation">(</span><span class="token string">'\n'</span><span class="token punctuation">)</span> 
+ <span class="token keyword">if</span> err <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span> 
+ fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"The input was: %s\n"</span><span class="token punctuation">,</span> input<span class="token punctuation">)</span> 
+ <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span></code></pre>
+<p>如何从终端读取带空格的字符串？</p>
 <blockquote>
-<p>ssh-agent bash</p>
+<p>字符串在终端输入加上双引号就可以获取了</p>
 </blockquote>
-<p>我百度了解决方案使用以下命令可以解决以上的问题。</p>
-<blockquote>
-<p>ssh -T <a href="mailto:git@github.com">git@github.com</a><br>按回车键，如看到以下信息，那么就完美了。</p>
-</blockquote>
-<pre><code>[root@VM_0_13_centos ~]# ssh -T git@github.com
-Hi JeffreyBool! You've successfully authenticated, but GitHub does not provide shell access.</code></pre><p>原文链接：<a href="https://www.zhanggaoyuan.com/article/54">https://www.zhanggaoyuan.com/article/54</a></p>
+<h2 id="命令行参数处理"><a href="#命令行参数处理" class="headerlink" title="命令行参数处理"></a>命令行参数处理</h2><p><code>os.Args</code> 命令行参数的切片</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+ <span class="token string">"fmt"</span>
+ <span class="token string">"os"</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ who <span class="token operator">:=</span> <span class="token string">"Alice"</span>
+ <span class="token keyword">if</span> <span class="token function">len</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Args<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">1</span> <span class="token punctuation">{</span>
+ who <span class="token operator">+=</span> strings<span class="token punctuation">.</span><span class="token function">Join</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">)</span>
+ <span class="token punctuation">}</span>
+ fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Good Morning"</span><span class="token punctuation">,</span> who<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>flag</code>包获取命令行参数</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span>
+  <span class="token string">"flag"</span>
+  <span class="token string">"fmt"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">parseArgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  flag<span class="token punctuation">.</span><span class="token function">IntVar</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>length<span class="token punctuation">,</span> <span class="token string">"l"</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token string">"-l ⽣成密码的长
+  度"</span><span class="token punctuation">)</span>
+  flag<span class="token punctuation">.</span><span class="token function">StringVar</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>charset<span class="token punctuation">,</span> <span class="token string">"t"</span><span class="token punctuation">,</span> <span class="token string">"num"</span><span class="token punctuation">,</span>
+  <span class="token string">`-t 制定密码⽣成的字符集, 
+  num:只使⽤数字[0-9], 
+  char:只使⽤英⽂字母[a-zA-Z], 
+  mix: 使⽤数字和字母，
+  advance:使⽤数字、字母以及特殊字符`</span><span class="token punctuation">)</span>
+  flag<span class="token punctuation">.</span><span class="token function">Parse</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token function">parseArgs</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>urave/cli</code> 包的使用</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span> 
+ <span class="token string">"fmt"</span>
+ <span class="token string">"os"</span> 
+ <span class="token string">"github.com/urfave/cli"</span>
+<span class="token punctuation">)</span> 
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+   app <span class="token operator">:=</span> cli<span class="token punctuation">.</span><span class="token function">NewApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+   app<span class="token punctuation">.</span>Name <span class="token operator">=</span> <span class="token string">"greet"</span>
+   app<span class="token punctuation">.</span>Usage <span class="token operator">=</span> <span class="token string">"fight the loneliness!"</span>
+   app<span class="token punctuation">.</span>Action <span class="token operator">=</span> <span class="token keyword">func</span><span class="token punctuation">(</span>c <span class="token operator">*</span>cli<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span> 
+   fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Hello friend!"</span><span class="token punctuation">)</span> 
+   <span class="token keyword">return</span> <span class="token boolean">nil</span>
+   <span class="token punctuation">}</span> 
+   app<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Args<span class="token punctuation">)</span> 
+<span class="token punctuation">}</span></code></pre>
+<p>获取命令行参数</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main 
+<span class="token keyword">import</span> <span class="token punctuation">(</span> 
+ <span class="token string">"fmt"</span>
+ <span class="token string">"os"</span>
+ <span class="token string">"github.com/urfave/cli"</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+ app <span class="token operator">:=</span> cli<span class="token punctuation">.</span><span class="token function">NewApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+ app<span class="token punctuation">.</span>Action <span class="token operator">=</span> <span class="token keyword">func</span><span class="token punctuation">(</span>c <span class="token operator">*</span>cli<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span> 
+ fmt<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"Hello %q"</span><span class="token punctuation">,</span> c<span class="token punctuation">.</span><span class="token function">Args</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+ <span class="token keyword">return</span> <span class="token boolean">nil</span>
+ <span class="token punctuation">}</span> 
+ app<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Args<span class="token punctuation">)</span> 
+<span class="token punctuation">}</span> </code></pre>
+<p>获取选项参数</p>
+<pre class=" language-go"><code class="language-go"><span class="token keyword">package</span> main 
+
+<span class="token keyword">import</span> <span class="token punctuation">(</span> 
+   <span class="token string">"fmt"</span> 
+   <span class="token string">"os"</span> 
+   <span class="token string">"github.com/urfave/cli"</span> 
+<span class="token punctuation">)</span> 
+
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+   <span class="token keyword">var</span> language <span class="token builtin">string</span> 
+   <span class="token keyword">var</span> recusive <span class="token builtin">bool</span> 
+
+   app <span class="token operator">:=</span> cli<span class="token punctuation">.</span><span class="token function">NewApp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+     app<span class="token punctuation">.</span>Flags <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>cli<span class="token punctuation">.</span>Flag<span class="token punctuation">{</span> 
+       cli<span class="token punctuation">.</span>StringFlag<span class="token punctuation">{</span> 
+       Name<span class="token punctuation">:</span> <span class="token string">"lang, l"</span><span class="token punctuation">,</span> 
+       Value<span class="token punctuation">:</span> <span class="token string">"english"</span><span class="token punctuation">,</span> 
+       Usage<span class="token punctuation">:</span> <span class="token string">"language for the greeting"</span><span class="token punctuation">,</span> 
+       Destination<span class="token punctuation">:</span> <span class="token operator">&amp;</span>language<span class="token punctuation">,</span> 
+     <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+     cli<span class="token punctuation">.</span>BoolFlag<span class="token punctuation">{</span> 
+       Name<span class="token punctuation">:</span> <span class="token string">"recusive, r"</span><span class="token punctuation">,</span> 
+       Usage<span class="token punctuation">:</span> <span class="token string">"recusive for the greeting"</span><span class="token punctuation">,</span> 
+       Destination<span class="token punctuation">:</span> <span class="token operator">&amp;</span>recusive<span class="token punctuation">,</span> 
+     <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+   <span class="token punctuation">}</span>
+
+   app<span class="token punctuation">.</span>Action <span class="token operator">=</span> <span class="token keyword">func</span><span class="token punctuation">(</span>c <span class="token operator">*</span>cli<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span> 
+     <span class="token keyword">var</span> cmd <span class="token builtin">string</span> 
+     <span class="token keyword">if</span> c<span class="token punctuation">.</span><span class="token function">NArg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span> <span class="token punctuation">{</span> 
+       cmd <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">Args</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> 
+       fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"cmd is "</span><span class="token punctuation">,</span> cmd<span class="token punctuation">)</span> 
+     <span class="token punctuation">}</span> 
+     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"recusive is "</span><span class="token punctuation">,</span> recusive<span class="token punctuation">)</span> 
+     fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"language is "</span><span class="token punctuation">,</span> language<span class="token punctuation">)</span> 
+     <span class="token keyword">return</span> <span class="token boolean">nil</span> 
+   <span class="token punctuation">}</span> 
+   app<span class="token punctuation">.</span><span class="token function">Run</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Args<span class="token punctuation">)</span> 
+<span class="token punctuation">}</span> </code></pre>
+<h2 id="课后练习"><a href="#课后练习" class="headerlink" title="课后练习"></a>课后练习</h2><ol>
+<li>实现⼀个简易的计算器，⽀持加减乘除以及带括号的计算表达式，⽤户从终端输⼊表达式，<br>程序输出计算结果。</li>
+</ol>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -555,7 +676,7 @@ Hi JeffreyBool! You've successfully authenticated, but GitHub does not provide s
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.zhanggaoyuan.com/article/a0bb4ed9.html">https://www.zhanggaoyuan.com/article/a0bb4ed9.html</a>
+                    <a href="https://www.zhanggaoyuan.com/article/c52e9a50.html">https://www.zhanggaoyuan.com/article/c52e9a50.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -593,16 +714,8 @@ Hi JeffreyBool! You've successfully authenticated, but GitHub does not provide s
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/linux/">
-                                    <span class="chip bg-color">linux</span>
-                                </a>
-                            
-                                <a href="/tags/github/">
-                                    <span class="chip bg-color">github</span>
-                                </a>
-                            
-                                <a href="/tags/ssh/">
-                                    <span class="chip bg-color">ssh</span>
+                                <a href="/tags/golang/">
+                                    <span class="chip bg-color">golang</span>
                                 </a>
                             
                         </div>
@@ -773,7 +886,7 @@ Hi JeffreyBool! You've successfully authenticated, but GitHub does not provide s
         repo: 'jeffreybool.github.io',
         owner: 'JeffreyBool',
         admin: "JeffreyBool",
-        id: '2020-06-05T12-41-50',
+        id: '2020-06-30T10-51-50',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -797,34 +910,39 @@ Hi JeffreyBool! You've successfully authenticated, but GitHub does not provide s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/article/fdc92cde.html">
+                <a href="/article/c52e9a50.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="linux系统搭建golang环境">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="golang io 操作">
                         
-                        <span class="card-title">linux系统搭建golang环境</span>
+                        <span class="card-title">golang io 操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            第一步打开 golang 官方找到安装版本列表
-安装地址https://golang.google.cn/dl/
+                            golang io 操作目录
+格式化输入
+终端输入输出背后的原理
+bufio 包的使用
+命令行参数处理和 urfave/cli 使用
+课后作业
 
-我们找到 linux系统版本，复制这个链接
+格式化输入从终端获取用户的输入
 
-wget https://dl.google.com/go/go1.13.6.
+fmt.Scanf(format string, a...i
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -837,15 +955,12 @@ wget https://dl.google.com/go/go1.13.6.
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/golang/">
                         <span class="chip bg-color">golang</span>
-                    </a>
-                    
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
@@ -859,32 +974,38 @@ wget https://dl.google.com/go/go1.13.6.
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/article/36a45cef.html">
+                <a href="/article/b5024495.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="laravel 实现登录失败次数限制登录">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="js 实现chunk 按照指定个数数组分割">
                         
-                        <span class="card-title">laravel 实现登录失败次数限制登录</span>
+                        <span class="card-title">js 实现chunk 按照指定个数数组分割</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在默认的 auth 的 LoginControoler usr的trait AuthenticatesUsersIlluminate\Foundation\Auth\ThrottlesLogins这个trait有如下方法
-limiter()
+                            /**
+ * @param item
+ * @param num
+ * @returns {*}
+ */
+export function split(item,num) {
+    if(item.length &lt;= 0){
+    
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/laravel/" class="post-category">
-                                    laravel
+                            <a href="/categories/javascript/" class="post-category">
+                                    javascript
                                 </a>
                             
                             
@@ -894,8 +1015,12 @@ limiter()
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/laravel/">
-                        <span class="chip bg-color">laravel</span>
+                    <a href="/tags/js/">
+                        <span class="chip bg-color">js</span>
+                    </a>
+                    
+                    <a href="/tags/javascript/">
+                        <span class="chip bg-color">javascript</span>
                     </a>
                     
                 </div>
