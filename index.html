@@ -467,32 +467,6 @@
     
     
     <div class="col s12 m6" >
-        <div class="post-card" style="background-image: url('/medias/featureimages/19.jpg')">
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/golang/" class="category">golang</a>
-                        
-                    
-                </div>
-                <a href="/article/9e862485.html">
-                    <h3 class="post-title">golang 锁请小心使用</h3>
-                </a>
-                <p class="post-description">
-                    
-                        关于锁使用 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 defer 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，
-                    
-                </p>
-                <a href="/article/9e862485.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
         <div class="post-card" style="background-image: url('/medias/featureimages/14.jpg')">
             <div class="post-body">
                 <div class="post-categories">
@@ -510,7 +484,33 @@
                         现在我们开发网站基本摆脱不了上传文件的功能，但是上传文件的可能有几百M 或者几个G, 如果不做秒传的话会带来很多的功能。例如：用户体验不好，同一个文件还要多次上传到服务器。浪费服务器带宽和资源。如果我们做了秒传就会解决上面带来的问题，可以在客户端计算文件的摘要，和服务器算法保持一致就可以做到秒传了，客户端拿着算好的摘要去服务端判断这个文件是否已经上传，如果上传了直接返回文件信息，没有上传就调用上传接口
                     
                 </p>
-                <a href="/article/3f02e521.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
+                <a href="/article/3f02e521.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        <div class="post-card" style="background-image: url('/medias/featureimages/19.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/golang/" class="category">golang</a>
+                        
+                    
+                </div>
+                <a href="/article/9e862485.html">
+                    <h3 class="post-title">golang 锁请小心使用</h3>
+                </a>
+                <p class="post-description">
+                    
+                        关于锁使用 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 defer 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，
+                    
+                </p>
+                <a href="/article/9e862485.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
                     <i class="icon far fa-eye fa-fw"></i>阅读更多
                 </a>
             </div>
@@ -560,6 +560,62 @@
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/article/8f3378d3.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="流、I/O 操作、阻塞、epoll 全系列解析">
+                            
+                            <span class="card-title">流、I/O 操作、阻塞、epoll 全系列解析</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+最近很多Golang小伙伴面试居然被问到epoll？很是头疼？         猜测面试官应该是一个古老的C/C++ Coder吧那么，对于Gopher来说，或者后端开发者来说，尤其是做服务器开发，不管从事什么编程语言，epoll确实都应
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/golang/" class="post-category">
+                                    golang
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/golang/">
+                            <span class="chip bg-color">golang</span>
+                        </a>
+                        
+                        <a href="/tags/io/">
+                            <span class="chip bg-color">io</span>
+                        </a>
+                        
+                        <a href="/tags/eloll/">
+                            <span class="chip bg-color">eloll</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -1159,67 +1215,12 @@ fmt.Pri
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/redis/">
-                            <span class="chip bg-color">redis</span>
-                        </a>
-                        
                         <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                             <span class="chip bg-color">数据结构</span>
                         </a>
                         
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/article/f3d7d619.html">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="剖析Redis常用数据类型对应的数据结构">
-                            
-                            <span class="card-title">剖析Redis常用数据类型对应的数据结构</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Redis是一种key-value非关系型数据库
-列表 list这种数据类型是由两种方法实现的,一种是压缩列表ziplist , 另一种是双向循环链表.
-当数据量小的时候,列表就可以使用压缩列表的方式实现,具体需要同时满足下面两个条件:
-
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/redis/" class="post-category">
-                                    redis
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
                         <a href="/tags/redis/">
                             <span class="chip bg-color">redis</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                            <span class="chip bg-color">数据结构</span>
                         </a>
                         
                     </div>
@@ -1271,7 +1272,7 @@ fmt.Pri
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">29.1k</span>&nbsp;字
+                class="white-color">32.2k</span>&nbsp;字
             
             
             
