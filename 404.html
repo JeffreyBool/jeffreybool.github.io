@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="剖析Redis常用数据类型对应的数据结构, 张高元,zhanggaoyuan,JeffreyBool,个人博客,blog,个人网站,go,golang,go语言,golang教程入门,golang菜鸟教程,golang学习,golang教程,golang在线学习,golang技术,golang技术分享,golang社区,golang讨论,golang博客,laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel教程入门,laravel菜鸟教程,laravel学习,laravel教程,laravel在线学习,laravel技术,laravel技术分享,laravel社区,laravel讨论,laravel博客">
+    <meta name="keywords" content="404, 张高元,zhanggaoyuan,JeffreyBool,个人博客,blog,个人网站,go,golang,go语言,golang教程入门,golang菜鸟教程,golang学习,golang教程,golang在线学习,golang技术,golang技术分享,golang社区,golang讨论,golang博客,laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel教程入门,laravel菜鸟教程,laravel学习,laravel教程,laravel在线学习,laravel技术,laravel技术分享,laravel社区,laravel讨论,laravel博客">
     <meta name="description" content="张高元(JeffreyBool)，90后水瓶座普通男青年！后端工程师。喜欢敲代码的感觉，相信编程是一门艺术，自诩为游弋在代码里的人生。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>剖析Redis常用数据类型对应的数据结构 | JeffreyBool - 游弋在代码里的人生</title>
+    <title>404 | JeffreyBool - 游弋在代码里的人生</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">剖析Redis常用数据类型对应的数据结构</h1>
+                    <h1 class="description center-align post-title">404</h1>
                 </div>
             </div>
         </div>
@@ -365,29 +365,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/redis/">
-                                <span class="chip bg-color">redis</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                <span class="chip bg-color">数据结构</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/redis/" class="post-category">
-                                redis
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -396,7 +379,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-05
+                    2020-05-30
                 </div>
                 
 
@@ -405,14 +388,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    885
+                    52
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -427,47 +410,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Redis是一种key-value非关系型数据库</p>
-<h2 id="列表-list"><a href="#列表-list" class="headerlink" title="列表 list"></a>列表 <code>list</code></h2><p>这种数据类型是由两种方法实现的,一种是压缩列表<code>ziplist</code> , 另一种是<code>双向循环链表</code>.</p>
-<p>当数据量小的时候,列表就可以使用<code>压缩列表</code>的方式实现,具体需要同时满足下面两个条件:</p>
-<ul>
-<li>列表保存的单个数据小于64个字节.</li>
-<li>列表数据个数少于512个.</li>
-</ul>
-<blockquote>
-<p>关于压缩列表它并不是基础的数据结构,而是 Redis 自己设计的数据储存结构.它类似数据,是一片连续的内存空间来存储数据.有点类似数组,它跟数组不同的一点是,它允许数据的大小不一样.</p>
-</blockquote>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555259749_mjpgRq6IsS.png" alt="剖析Redis常用数据类型对应的数据结构"></p>
-<blockquote>
-<p>为什么叫压缩列表? 最直接的反应就是节省内存,相当于数组的储存思路而言,我们知道数组要求每个元素大小相同,如果我们储存的是不同长度的字符串.那么就会使用最大长度的字符串大小作为元素的大小(例如假设是20个字节).当我们储存小于20个字节的时候,就会浪费部分空间.</p>
-</blockquote>
-<p><img src="https://api.zhanggaoyuan.com/uploads/images/articles/201904/15/1_1555259770_19FMp6Qc2s.png" alt="剖析Redis常用数据类型对应的数据结构"></p>
-<blockquote>
-<p>压缩列表这种数据结构,一方面可以比较节省内存,另一方面还可以支持不同类型的数据存储.因为在一片连续的内存空间所以读取数据的效率也非常高.</p>
-<blockquote>
-<p>双向链表也叫双链表，是链表的一种，它的每个数据结点中都有两个指针，分别指向直接后继和直接前驱。所以，从双向链表中的任意一个结点开始，都可以很方便地访问它的前驱结点和后继结点。一般我们都构造双向循环链表。</p>
-</blockquote>
-</blockquote>
-<h2 id="字典-hash"><a href="#字典-hash" class="headerlink" title="字典 hash"></a>字典 <code>hash</code></h2><p>字典这种数据类型用于储存一组数据对,每个数据对又包含又包含键值两部分.字典也是由两种方式实现的,一种是<code>压缩列表</code>,另外一种是<code>散列表</code>.</p>
-<p>只有在数据量储存小的时候会使用压缩列表,同时需要满足下面两种条件:</p>
-<ul>
-<li>字典中保存的键和值大小都要小于64个字节.</li>
-<li>字典中键和值的个数要少于512个.</li>
-</ul>
-<h2 id="集合-set"><a href="#集合-set" class="headerlink" title="集合 set"></a>集合 <code>set</code></h2><p>集合用于储存一组不重复的数据,这种数据类型也有两种方法.一种是基于<code>有序数组</code>,另一种是基于<code>散列表</code>.</p>
-<p>当储存的数据满足下面两种条件的时候,Redis 就使用 <code>有序数组</code> 来实现集合这种数据类型.</p>
-<ul>
-<li>储存的数据都是整数</li>
-<li>储存的元素个数不要超过512个.</li>
-</ul>
-<h2 id="有序集合-sortedset"><a href="#有序集合-sortedset" class="headerlink" title="有序集合 sortedset"></a>有序集合 <code>sortedset</code></h2><p>有序集合用来储存一组数据,并且每个数据都会附带一个得分 <code>score</code>. 通过<code>score</code>的大小,我们将数据组织成<code>跳表</code>这样的数据结构.以快速按照得分或者区间获取数据.</p>
-<p>当数据量小的时候会<code>压缩列表</code>来实现有序集合.需要同时满足下面两种情况.</p>
-<ul>
-<li>所有数据的大小都要小于64个字节.</li>
-<li>元素的个数要少于128个.</li>
-</ul>
-<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/1">https://www.zhanggaoyuan.com/article/1</a></p>
-<script>
+                <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -510,7 +453,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.zhanggaoyuan.com/article/f3d7d619.html">https://www.zhanggaoyuan.com/article/f3d7d619.html</a>
+                    <a href="https://www.zhanggaoyuan.com/404.html">https://www.zhanggaoyuan.com/404.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -547,15 +490,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/redis/">
-                                    <span class="chip bg-color">redis</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                    <span class="chip bg-color">数据结构</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -724,7 +659,7 @@
         repo: 'jeffreybool.github.io',
         owner: 'JeffreyBool',
         admin: "JeffreyBool",
-        id: '2020-06-05T13-03-20',
+        id: '2020-05-30T00-00-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -748,54 +683,42 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/article/a7938bd1.html">
+                <a href="/404.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="跳表实现原理">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="404">
                         
-                        <span class="card-title">跳表实现原理</span>
+                        <span class="card-title">404</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            是一种动态的数据结构,它可以支持快速的插入、查找、查询操作.写起来并不复杂,甚至可以替代红黑树.
-对于一个单链表来讲,即使链表中的储存数据是有序的.如果我们想要在其中查找某个数据,也只能从头到尾遍历链表.这样的效率会很低,时间复杂度也很高 
+                            
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-30
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/redis/" class="post-category">
-                                    redis
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            JeffreyBool
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -803,52 +726,40 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/article/e8066d9a.html">
+                <a href="/404.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="基于 laravel auth 接口实现自定义接口API用户认证详细步骤">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="404">
                         
-                        <span class="card-title">基于 laravel auth 接口实现自定义接口API用户认证详细步骤</span>
+                        <span class="card-title">404</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            基于 laravel 默认的 auth 实现 api 认证现在微服务越来越流行了. 很多东西都拆分成独立的系统,各个系统之间没有直接的关系. 这样我们如果做用户认证肯定是统一的做一个独立的 用户认证 系统,而不是每个业务系统都要重新去写一遍
+                            
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-30
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/laravel/" class="post-category">
-                                    laravel
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            JeffreyBool
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/laravel/">
-                        <span class="chip bg-color">laravel</span>
-                    </a>
-                    
-                    <a href="/tags/auth/">
-                        <span class="chip bg-color">auth</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
