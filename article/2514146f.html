@@ -805,7 +805,7 @@ fmt<span class="token punctuation">.</span><span class="token function">Println<
     app<span class="token punctuation">.</span>Usage <span class="token operator">=</span> <span class="token string">"list all file"</span>
     app<span class="token punctuation">.</span>Action <span class="token operator">=</span> <span class="token keyword">func</span><span class="token punctuation">(</span>c <span class="token operator">*</span>cli<span class="token punctuation">.</span>Context<span class="token punctuation">)</span> <span class="token builtin">error</span> <span class="token punctuation">{</span>
         <span class="token keyword">var</span> dir <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">"."</span>
-        <span class="token keyword">if</span> c<span class="token punctuation">.</span><span class="token function">NArg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> c<span class="token punctuation">.</span><span class="token function">NArg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span> <span class="token punctuation">{</span>
             dir <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">Args</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
         <span class="token punctuation">}</span>
         <span class="token keyword">if</span> err <span class="token operator">:=</span> <span class="token function">ListDir</span><span class="token punctuation">(</span>dir<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
@@ -1424,7 +1424,7 @@ type 接口名字 interface
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.4k</span>&nbsp;字
+                class="white-color">36.2k</span>&nbsp;字
             
             
             

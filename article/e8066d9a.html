@@ -412,7 +412,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    10 分
                 </div>
                 
 
@@ -564,7 +564,7 @@
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getAuthIdentifierName</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">primaryKey</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">primaryKey</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
@@ -573,7 +573,7 @@
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getAuthIdentifier</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token variable">$id</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token punctuation">{</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getAuthIdentifierName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token variable">$id</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token punctuation">{</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getAuthIdentifierName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> <span class="token variable">$id</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
@@ -604,8 +604,8 @@
     <span class="token punctuation">}</span>
 
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token variable">$apiMap</span> <span class="token operator">=</span> <span class="token punctuation">[</span>
-        <span class="token string">'getUserByToken'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token string">'method'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'path'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'login/user/token'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token string">'getUserByGuId'</span>  <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span><span class="token string">'method'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'path'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'user/guid/:guid'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token string">'getUserByToken'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">'method'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'path'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'login/user/token'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token string">'getUserByGuId'</span>  <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">'method'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'GET'</span><span class="token punctuation">,</span> <span class="token string">'path'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'user/guid/:guid'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 
@@ -618,7 +618,7 @@
     <span class="token punctuation">{</span>
         <span class="token keyword">try</span> <span class="token punctuation">{</span>
             <span class="token variable">$response</span> <span class="token operator">=</span> self<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'getUserByGuId'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
-                <span class="token string">':guid'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$guid</span>
+                <span class="token string">':guid'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$guid</span>
             <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">RestApiException</span> <span class="token variable">$e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
@@ -637,7 +637,7 @@
     <span class="token punctuation">{</span>
         <span class="token keyword">try</span> <span class="token punctuation">{</span>
             <span class="token variable">$response</span> <span class="token operator">=</span> self<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'getUserByToken'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
-                <span class="token string">'Authorization'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$token</span>
+                <span class="token string">'Authorization'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$token</span>
             <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">RestApiException</span> <span class="token variable">$e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
@@ -733,10 +733,10 @@ public function logout();</code></pre><p><code>Laravel</code> 中默认提供了
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span>UserProvider <span class="token variable">$provider</span><span class="token punctuation">,</span> Request <span class="token variable">$request</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">request</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token punctuation">;</span>
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">provider</span> <span class="token operator">=</span> <span class="token variable">$provider</span><span class="token punctuation">;</span>
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inputKey</span> <span class="token operator">=</span> <span class="token string">'Authorization'</span><span class="token punctuation">;</span>
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">storageKey</span> <span class="token operator">=</span> <span class="token string">'api_token'</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">request</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">provider</span> <span class="token operator">=</span> <span class="token variable">$provider</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">inputKey</span> <span class="token operator">=</span> <span class="token string">'Authorization'</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">storageKey</span> <span class="token operator">=</span> <span class="token string">'api_token'</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
@@ -745,21 +745,21 @@ public function logout();</code></pre><p><code>Laravel</code> 中默认提供了
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">user</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_null</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">user</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">user</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">is_null</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">user</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">user</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
         <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
 
-        <span class="token variable">$token</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">getTokenForRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$token</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">getTokenForRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$token</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">provider</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">retrieveByCredentials</span><span class="token punctuation">(</span>
-                <span class="token punctuation">[</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">storageKey</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$token</span><span class="token punctuation">]</span>
+            <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">provider</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">retrieveByCredentials</span><span class="token punctuation">(</span>
+                <span class="token punctuation">[</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">storageKey</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$token</span><span class="token punctuation">]</span>
             <span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
-        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">user</span> <span class="token operator">=</span> <span class="token variable">$user</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">user</span> <span class="token operator">=</span> <span class="token variable">$user</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
@@ -769,15 +769,15 @@ public function logout();</code></pre><p><code>Laravel</code> 中默认提供了
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">validate</span><span class="token punctuation">(</span><span class="token keyword">array</span> <span class="token variable">$credentials</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$credentials</span><span class="token punctuation">[</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inputKey</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token variable">$credentials</span><span class="token punctuation">[</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">inputKey</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
 
-        <span class="token variable">$credentials</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">storageKey</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$credentials</span><span class="token punctuation">[</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inputKey</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token variable">$credentials</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">storageKey</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$credentials</span><span class="token punctuation">[</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">inputKey</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">lastAttempted</span> <span class="token operator">=</span> <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">provider</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">retrieveByCredentials</span><span class="token punctuation">(</span><span class="token variable">$credentials</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">lastAttempted</span> <span class="token operator">=</span> <span class="token variable">$user</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">provider</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">retrieveByCredentials</span><span class="token punctuation">(</span><span class="token variable">$credentials</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">hasValidCredentials</span><span class="token punctuation">(</span><span class="token variable">$user</span><span class="token punctuation">,</span> <span class="token variable">$credentials</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">hasValidCredentials</span><span class="token punctuation">(</span><span class="token variable">$user</span><span class="token punctuation">,</span> <span class="token variable">$credentials</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment" spellcheck="true">/**
@@ -788,7 +788,7 @@ public function logout();</code></pre><p><code>Laravel</code> 中默认提供了
      */</span>
     <span class="token keyword">protected</span> <span class="token keyword">function</span> <span class="token function">hasValidCredentials</span><span class="token punctuation">(</span><span class="token variable">$user</span><span class="token punctuation">,</span> <span class="token variable">$credentials</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token operator">!</span><span class="token function">is_null</span><span class="token punctuation">(</span><span class="token variable">$user</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">provider</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">validateCredentials</span><span class="token punctuation">(</span><span class="token variable">$user</span><span class="token punctuation">,</span> <span class="token variable">$credentials</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token operator">!</span><span class="token function">is_null</span><span class="token punctuation">(</span><span class="token variable">$user</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">provider</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">validateCredentials</span><span class="token punctuation">(</span><span class="token variable">$user</span><span class="token punctuation">,</span> <span class="token variable">$credentials</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
 
@@ -798,7 +798,7 @@ public function logout();</code></pre><p><code>Laravel</code> 中默认提供了
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">getTokenForRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token variable">$token</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">request</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">header</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">inputKey</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$token</span> <span class="token operator">=</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">request</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">header</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">inputKey</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
         <span class="token keyword">return</span> <span class="token variable">$token</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -811,7 +811,7 @@ public function logout();</code></pre><p><code>Laravel</code> 中默认提供了
      */</span>
     <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">setRequest</span><span class="token punctuation">(</span>Request <span class="token variable">$request</span><span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">request</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">request</span> <span class="token operator">=</span> <span class="token variable">$request</span><span class="token punctuation">;</span>
 
         <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -822,18 +822,18 @@ public function logout();</code></pre><p><code>Laravel</code> 中默认提供了
 <span class="token punctuation">.</span>
 <span class="token punctuation">.</span>
 <span class="token punctuation">.</span>
-<span class="token comment" spellcheck="true">// auth:api -&gt; token provider.</span>
+<span class="token comment" spellcheck="true">// auth:api -> token provider.</span>
 Auth<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">provider</span><span class="token punctuation">(</span><span class="token string">'token'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token function">app</span><span class="token punctuation">(</span>UserProvider<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">// auth:api -&gt; token guard.</span>
+<span class="token comment" spellcheck="true">// auth:api -> token guard.</span>
 <span class="token comment" spellcheck="true">// @throw \Exception</span>
 Auth<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token string">'token'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token variable">$app</span><span class="token punctuation">,</span> <span class="token variable">$name</span><span class="token punctuation">,</span> <span class="token keyword">array</span> <span class="token variable">$config</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$name</span> <span class="token operator">===</span> <span class="token string">'api'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token function">app</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token function">make</span><span class="token punctuation">(</span>UserGuard<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
-            <span class="token string">'provider'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> Auth<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">createUserProvider</span><span class="token punctuation">(</span><span class="token variable">$config</span><span class="token punctuation">[</span><span class="token string">'provider'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-            <span class="token string">'request'</span>  <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token variable">$app</span><span class="token operator">-</span><span class="token operator">&gt;</span><span class="token property">request</span><span class="token punctuation">,</span>
+        <span class="token keyword">return</span> <span class="token function">app</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">make</span><span class="token punctuation">(</span>UserGuard<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+            <span class="token string">'provider'</span> <span class="token operator">=</span><span class="token operator">></span> Auth<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">createUserProvider</span><span class="token punctuation">(</span><span class="token variable">$config</span><span class="token punctuation">[</span><span class="token string">'provider'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">'request'</span>  <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$app</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">request</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">\</span>Exception</span><span class="token punctuation">(</span><span class="token string">'This guard only serves "auth:api".'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -862,9 +862,9 @@ Auth<span class="token punctuation">:</span><span class="token punctuation">:</s
     |
     */</span>
 
-    <span class="token string">'defaults'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span>
-        <span class="token string">'guard'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'api'</span><span class="token punctuation">,</span>
-        <span class="token string">'passwords'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'users'</span><span class="token punctuation">,</span>
+    <span class="token string">'defaults'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+        <span class="token string">'guard'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'api'</span><span class="token punctuation">,</span>
+        <span class="token string">'passwords'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'users'</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
 
     <span class="token comment" spellcheck="true">/*
@@ -884,15 +884,15 @@ Auth<span class="token punctuation">:</span><span class="token punctuation">:</s
     |
     */</span>
 
-    <span class="token string">'guards'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span>
-        <span class="token string">'web'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span>
-            <span class="token string">'driver'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'session'</span><span class="token punctuation">,</span>
-            <span class="token string">'provider'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'users'</span><span class="token punctuation">,</span>
+    <span class="token string">'guards'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+        <span class="token string">'web'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+            <span class="token string">'driver'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'session'</span><span class="token punctuation">,</span>
+            <span class="token string">'provider'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'users'</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">,</span>
 
-        <span class="token string">'api'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span>
-            <span class="token string">'driver'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'token'</span><span class="token punctuation">,</span>
-            <span class="token string">'provider'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'token'</span><span class="token punctuation">,</span>
+        <span class="token string">'api'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+            <span class="token string">'driver'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'token'</span><span class="token punctuation">,</span>
+            <span class="token string">'provider'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'token'</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
 
@@ -913,15 +913,15 @@ Auth<span class="token punctuation">:</span><span class="token punctuation">:</s
     |
     */</span>
 
-    <span class="token string">'providers'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span>
-        <span class="token string">'users'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span>
-            <span class="token string">'driver'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'eloquent'</span><span class="token punctuation">,</span>
-            <span class="token string">'model'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> App\<span class="token package">Models<span class="token punctuation">\</span>User</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span>
+    <span class="token string">'providers'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+        <span class="token string">'users'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+            <span class="token string">'driver'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'eloquent'</span><span class="token punctuation">,</span>
+            <span class="token string">'model'</span> <span class="token operator">=</span><span class="token operator">></span> App\<span class="token package">Models<span class="token punctuation">\</span>User</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">,</span>
 
-        <span class="token string">'token'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span>
-            <span class="token string">'driver'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'token'</span><span class="token punctuation">,</span>
-            <span class="token string">'model'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> App\<span class="token package">Models<span class="token punctuation">\</span>User</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span>
+        <span class="token string">'token'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+            <span class="token string">'driver'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'token'</span><span class="token punctuation">,</span>
+            <span class="token string">'model'</span> <span class="token operator">=</span><span class="token operator">></span> App\<span class="token package">Models<span class="token punctuation">\</span>User</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
 
@@ -940,11 +940,11 @@ Auth<span class="token punctuation">:</span><span class="token punctuation">:</s
     |
     */</span>
 
-    <span class="token string">'passwords'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span>
-        <span class="token string">'users'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">[</span>
-            <span class="token string">'provider'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'users'</span><span class="token punctuation">,</span>
-            <span class="token string">'table'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token string">'password_resets'</span><span class="token punctuation">,</span>
-            <span class="token string">'expire'</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">60</span><span class="token punctuation">,</span>
+    <span class="token string">'passwords'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+        <span class="token string">'users'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+            <span class="token string">'provider'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'users'</span><span class="token punctuation">,</span>
+            <span class="token string">'table'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token string">'password_resets'</span><span class="token punctuation">,</span>
+            <span class="token string">'expire'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token number">60</span><span class="token punctuation">,</span>
         <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
 
@@ -1276,12 +1276,12 @@ Auth<span class="token punctuation">:</span><span class="token punctuation">:</s
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
-                    </a>
-                    
                     <a href="/tags/redis/">
                         <span class="chip bg-color">redis</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
                 </div>
@@ -1517,7 +1517,7 @@ Auth<span class="token punctuation">:</span><span class="token punctuation">:</s
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.4k</span>&nbsp;字
+                class="white-color">36.2k</span>&nbsp;字
             
             
             

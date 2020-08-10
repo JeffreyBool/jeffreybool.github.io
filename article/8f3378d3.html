@@ -409,7 +409,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.2k
+                    3.1k
                 </div>
                 
 
@@ -564,7 +564,7 @@ new_event<span class="token punctuation">.</span>data<span class="token punctuat
 * @param timeout 超时时间
 * -1: 永久阻塞
 * 0: 立即返回，非阻塞
-* &gt;0: 指定微秒
+* >0: 指定微秒
 *
 * @returns 成功: 有多少文件描述符就绪,时间到时返回0
 * 失败: -1, errno 查看错误
@@ -642,17 +642,17 @@ new_event<span class="token punctuation">.</span>data<span class="token punctuat
 <h5 id="2-边缘触发"><a href="#2-边缘触发" class="headerlink" title="(2) 边缘触发"></a>(2) 边缘触发</h5><p><img src="http://cdn.zhanggaoyuan.com/article/20200701/iFKkpz.jpg" alt="iFKkpz"></p>
 <p><img src="http://cdn.zhanggaoyuan.com/article/20200701/pwi381.jpg" alt="pwi381"></p>
 <p>边缘触发，相对跟水平触发相反，当内核有事件到达， 只会通知用户一次，至于用户处理还是不处理，以后将不会再通知。这样减少了拷贝过程，增加了性能，但是相对来说，如果用户马虎忘记处理，将会产生事件丢的情况。</p>
-<h4 id="五、简单的epoll服务器-C语言"><a href="#五、简单的epoll服务器-C语言" class="headerlink" title="五、简单的epoll服务器(C语言)"></a>五、简单的epoll服务器(C语言)</h4><h5 id="1-服务端"><a href="#1-服务端" class="headerlink" title="(1) 服务端"></a>(1) 服务端</h5><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;ctype.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
+<h4 id="五、简单的epoll服务器-C语言"><a href="#五、简单的epoll服务器-C语言" class="headerlink" title="五、简单的epoll服务器(C语言)"></a>五、简单的epoll服务器(C语言)</h4><h5 id="1-服务端"><a href="#1-服务端" class="headerlink" title="(1) 服务端"></a>(1) 服务端</h5><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;ctype.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
 
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/socket.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;arpa/inet.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/socket.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;arpa/inet.h></span></span>
 
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/epoll.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/epoll.h></span></span>
 
 <span class="token macro property">#<span class="token directive keyword">define</span> SERVER_PORT (7778)</span>
 <span class="token macro property">#<span class="token directive keyword">define</span> EPOLL_MAX_NUM (2048)</span>
@@ -698,7 +698,7 @@ new_event<span class="token punctuation">.</span>data<span class="token punctuat
         <span class="token keyword">goto</span> END<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
-    <span class="token comment" spellcheck="true">// listen_fd -&gt; epoll</span>
+    <span class="token comment" spellcheck="true">// listen_fd -> epoll</span>
     event<span class="token punctuation">.</span>events <span class="token operator">=</span> EPOLLIN<span class="token punctuation">;</span>
     event<span class="token punctuation">.</span>data<span class="token punctuation">.</span>fd <span class="token operator">=</span> listen_fd<span class="token punctuation">;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">epoll_ctl</span><span class="token punctuation">(</span>epfd<span class="token punctuation">,</span> EPOLL_CTL_ADD<span class="token punctuation">,</span> listen_fd<span class="token punctuation">,</span> <span class="token operator">&amp;</span>event<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -785,16 +785,16 @@ END<span class="token punctuation">:</span>
     <span class="token function">close</span><span class="token punctuation">(</span>listen_fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<h5 id="2-客户端"><a href="#2-客户端" class="headerlink" title="(2) 客户端"></a>(2) 客户端</h5><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;strings.h&gt;</span></span>
+<h5 id="2-客户端"><a href="#2-客户端" class="headerlink" title="(2) 客户端"></a>(2) 客户端</h5><pre class=" language-c"><code class="language-c"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdio.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;stdlib.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;string.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;strings.h></span></span>
 
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/socket.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;arpa/inet.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h&gt;</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/types.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sys/socket.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;arpa/inet.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;fcntl.h></span></span>
 
 <span class="token macro property">#<span class="token directive keyword">define</span> MAX_LINE (1024)</span>
 <span class="token macro property">#<span class="token directive keyword">define</span> SERVER_PORT (7778)</span>
@@ -815,7 +815,7 @@ END<span class="token punctuation">:</span>
     <span class="token keyword">struct</span> sockaddr_in server_addr<span class="token punctuation">;</span>
 
     <span class="token keyword">if</span> <span class="token punctuation">(</span>argc <span class="token operator">!=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"usage ./client &lt;SERVER_IP&gt;\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">fprintf</span><span class="token punctuation">(</span><span class="token constant">stderr</span><span class="token punctuation">,</span> <span class="token string">"usage ./client &lt;SERVER_IP>\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">exit</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
@@ -1479,7 +1479,7 @@ fefer 详解
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">36.4k</span>&nbsp;字
+                class="white-color">36.2k</span>&nbsp;字
             
             
             
