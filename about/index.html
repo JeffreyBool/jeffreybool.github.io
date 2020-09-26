@@ -521,7 +521,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"golang","value":14},{"name":"javascript","value":1},{"name":"laravel","value":3},{"name":"linux","value":1},{"name":"数据结构","value":1},{"name":"redis","value":2}],
+                data: [{"name":"golang","value":14},{"name":"javascript","value":1},{"name":"laravel","value":3},{"name":"linux","value":1},{"name":"redis","value":2},{"name":"数据结构","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -545,7 +545,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["golang","laravel","数据结构","linux","github","redis","package","指针","js","javascript"]
+                data: ["golang","laravel","数据结构","linux","github","redis","package","指针","调度器","js"]
             }
         ],
         yAxis: [
@@ -799,6 +799,17 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+    <script type="text/javascript">
+        var OriginTitile = document.title,
+            st;
+        document.addEventListener("visibilitychange", function () {
+            document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+                "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                document.title = OriginTitile
+            }, 3e3))
+        })
+    </script>
+
+</body>
 
 </html>

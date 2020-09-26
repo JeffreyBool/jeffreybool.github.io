@@ -37,6 +37,8 @@ body {
     background-color: #eaeaea;
     margin: 0;
     color: #34495e;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 h1 {
@@ -265,7 +267,6 @@ mark {
     margin-bottom: 0;
 }
 
-/* 整体背景颜色，包括导航、移动端的导航、页尾、标签页等的背景颜色. */
 .bg-color {
     background-image: linear-gradient(to right,#00f260 0,#0575e6 100%);
 }
@@ -1246,12 +1247,22 @@ article .article-tags .chip {
     list-style-type: circle;
 }
 
+#articleContent table {
+	width: 100%;
+    display: block;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow: auto;
+}
+
+/**
 #articleContent table,
 th,
 td {
     padding: 12px 13px;
     border: 1px solid #dfe2e5;
 }
+**/
 
 table tr:nth-child(2n),
 thead {
@@ -1261,10 +1272,14 @@ thead {
 #articleContent table th {
     background-color: #f2f2f2;
     min-width: 80px;
+	border: 1px solid #dfe2e5;
+	padding: 6px 6px;
 }
 
 #articleContent table td {
     min-width: 80px;
+	border: 1px solid #dfe2e5;
+	padding: 6px 6px;
 }
 
 #articleContent [type="checkbox"]:not(:checked),
@@ -2154,4 +2169,3 @@ footer .copy-right {
     padding: 0px;
     margin: 0px;
 }
-
