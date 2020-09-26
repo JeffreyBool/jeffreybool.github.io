@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="golang 锁请小心使用, 张高元,zhanggaoyuan,JeffreyBool,个人博客,blog,个人网站,go,golang,go语言,golang教程入门,golang菜鸟教程,golang学习,golang教程,golang在线学习,golang技术,golang技术分享,golang社区,golang讨论,golang博客,laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel教程入门,laravel菜鸟教程,laravel学习,laravel教程,laravel在线学习,laravel技术,laravel技术分享,laravel社区,laravel讨论,laravel博客">
+    <meta name="keywords" content="阿里云搭建shadowsocks, 张高元,zhanggaoyuan,JeffreyBool,个人博客,blog,个人网站,go,golang,go语言,golang教程入门,golang菜鸟教程,golang学习,golang教程,golang在线学习,golang技术,golang技术分享,golang社区,golang讨论,golang博客,laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel教程入门,laravel菜鸟教程,laravel学习,laravel教程,laravel在线学习,laravel技术,laravel技术分享,laravel社区,laravel讨论,laravel博客">
     <meta name="description" content="张高元(JeffreyBool)，90后水瓶座普通男青年！后端工程师。喜欢敲代码的感觉，相信编程是一门艺术，自诩为游弋在代码里的人生。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>golang 锁请小心使用 | JeffreyBool</title>
+    <title>阿里云搭建shadowsocks | JeffreyBool</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -245,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">golang 锁请小心使用</h1>
+                    <h1 class="description center-align post-title">阿里云搭建shadowsocks</h1>
                 </div>
             </div>
         </div>
@@ -365,25 +365,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/golang/">
-                                <span class="chip bg-color">golang</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/golang/" class="post-category">
-                                golang
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -392,28 +379,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-05
+                    2020-09-26
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2020-06-07
+                    2020-09-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    387
+                    502
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -428,15 +415,73 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="关于锁使用"><a href="#关于锁使用" class="headerlink" title="关于锁使用"></a>关于锁使用</h2><p> 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 <code>defer</code> 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，这种问题可能是偶发引起的，所以很难排查。</p>
-<ol>
-<li><p>提前 <code>unlock</code><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744022_k7ZtwmAx9H.png" alt="golang 锁请小心使用"></p>
+                <h2 id="安装-shadowsocks"><a href="#安装-shadowsocks" class="headerlink" title="安装 shadowsocks"></a>安装 shadowsocks</h2><p>下载 shadowsocks.sh shell</p>
+<blockquote>
+<p>wget <a href="https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh" target="_blank" rel="noopener">https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</a></p>
+</blockquote>
+<p>赋予 shadowsocks.sh 执行权限</p>
+<blockquote>
+<p>chmod +x shadowsocks.sh</p>
+</blockquote>
+<p>运行安装脚本</p>
+<blockquote>
+<p>./shadowsocks.sh&gt;&amp;1 | tee shadowsocks.log</p>
+</blockquote>
+<p><em>这里会提示输入密码，需记下shadowsocks的登录密码，后面PC、手机登录用</em></p>
+<p><img src="http://cdn.zhanggaoyuan.com/article/20200926/sCPSpK.jpg" alt=""></p>
+<p>端口可以默认，也可以自己设置（需记住端口号，阿里云配置规则及PC、手机登录需用到）</p>
+<p><img src="http://cdn.zhanggaoyuan.com/article/20200926/hron8m.jpg" alt=""></p>
+<p>输入： 7，选择 <code>aes-256-cfb</code></p>
+<p>然后等待自动配置，可能要小等上几分钟。完成后会提示按Enter键继续，敲下Enter完成。</p>
+<p>到这里shadowsocks部署在云服务器配置完成。</p>
+<p>如果需要配置, 请打开 <code>/etc/shadowsocks.json</code> 文件</p>
+<blockquote>
+<p>vi /etc/shadowsocks.json</p>
+</blockquote>
+<blockquote>
+<p>（特别提醒：阿里云可能过一个月或者更长一段时间会禁用你的端口，导致不能连接网络，不要怕，只要修改下端口及下面“（2）阿里ECS安全组列表添加规则”步骤的相同的端口，就可以了）</p>
+</blockquote>
+<p>如果有需要重启下Shadowsock，服务启动命令：</p>
+<pre class=" language-bash"><code class="language-bash">启动：systemctl start shadowsocks.service
+停止：systemctl stop shadowsocks.service
+重启：systemctl restart shadowsocks.service
+状态：systemctl status shadowsocks.service</code></pre>
+<h2 id="阿里ECS安全组列表添加规则"><a href="#阿里ECS安全组列表添加规则" class="headerlink" title="阿里ECS安全组列表添加规则"></a>阿里ECS安全组列表添加规则</h2><ul>
+<li>配置规则</li>
+</ul>
+<p><img src="http://cdn.zhanggaoyuan.com/article/20200926/BZjzqc.png" alt="配置规则"></p>
+<ul>
+<li>访问规则</li>
+</ul>
+<p>首先配置入方向 -&gt; 手动添加</p>
+<p><img src="http://cdn.zhanggaoyuan.com/article/20200926/WlWafI.png" alt="WlWafI"></p>
+<p><img src="http://cdn.zhanggaoyuan.com/article/20200926/iCFrK4.png" alt="iCFrK4"></p>
+<p>然后 <code>出方向</code> 和上面入方向配置是一样的步骤</p>
+<h2 id="配置-Shadowsocks连接阿里云ECS"><a href="#配置-Shadowsocks连接阿里云ECS" class="headerlink" title="配置 Shadowsocks连接阿里云ECS"></a>配置 Shadowsocks连接阿里云ECS</h2><ul>
+<li><p>地址要服务器的外网地址</p>
 </li>
-<li><p>不能提前 <code>unlock</code> 怎么办？如何处理???<br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744031_4Ay8Ub0Ntd.png" alt="golang 锁请小心使用"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744040_vMvix7i2KO.png" alt="golang 锁请小心使用"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744050_ewlAjsdhpx.png" alt="golang 锁请小心使用"><br><img src="https://api.zhanggaoyuan.com/uploads/images/articles/202005/29/1_1590744056_VlDn6KYxy9.png" alt="golang 锁请小心使用"></p>
+<li><p>端口是刚刚安装的时候选择的端口比如我的是 <code>16471</code></p>
 </li>
+<li><p>加密方法 <code>aes-256-cfb</code></p>
+</li>
+<li><p>默认是你自己填的</p>
+</li>
+</ul>
+<p><img src="http://cdn.zhanggaoyuan.com/article/20200926/R45dsI.png" alt="R45dsI"></p>
+<p><img src="http://cdn.zhanggaoyuan.com/article/20200926/v32wIj.png" alt="v32wIj"></p>
+<ul>
+<li>手动更新订阅</li>
+</ul>
+<p><img src="http://cdn.zhanggaoyuan.com/article/20200926/39lLS8.png" alt="39lLS8"></p>
+<ul>
+<li>服务器测试 </li>
+</ul>
+<p><img src="http://cdn.zhanggaoyuan.com/article/20200926/yluM9s.png" alt="yluM9s"></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ol>
+<li><a href="https://blog.sbot.io/articles/36/%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAShadowsocks-Server%E5%8F%8A%E4%BD%BF%E7%94%A8SwitchyOmega%E5%88%87%E6%8D%A2%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE%E5%AE%9E%E6%88%98%E6%95%99%E7%A8%8B" target="_blank" rel="noopener">阿里云服务器搭建Shadowsocks Server及使用SwitchyOmega切换代理设置实战教程</a></li>
+<li><a href="https://medium.com/@WordlessEcho/centos%E6%90%AD%E5%BB%BAshadowsocks%E6%9C%8D%E5%8A%A1%E7%AB%AF-9e305444942e" target="_blank" rel="noopener">CentOS搭建Shadowsocks服务端</a></li>
+<li><a href="https://www.pianshen.com/article/6948261235/" target="_blank" rel="noopener">阿里云+shadowsocks （最完整版）</a></li>
 </ol>
-<p>以上就是处理锁提前返回防止坑，能够知道锁什么时间释放很重要，往往很多坑就是这个函数已经 <code>lock</code> 锁了，然后再调用另外一个函数 <code>a-&gt;b-&gt;c-&gt;d</code>， 如此调用链；你不会知道这些函数是否也调用了这个函数的锁实例，导致死锁的发生。而且还有一点，像上图的 <code>SendMessage</code> 可能是一个耗时调用，那么这个锁就会一直阻塞在这里得不到释放。像我遇到的一个坑就是调用 <code>SendMessage</code> 函数，然后这个函数给客户端发送消息，然后由于客户端种种原因导致消息发送失败触发我的 close 函数，然后 close 内部处理资源清理导致再调用这个锁实例的函数导致重复加锁，这个 😭😭<code>BUG</code> 隐藏的很深，一般看不出来。</p>
-<p>原文链接：<a href="https://www.zhanggaoyuan.com/article/61">https://www.zhanggaoyuan.com/article/61</a></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -480,7 +525,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://www.zhanggaoyuan.com/article/9e862485.html">https://www.zhanggaoyuan.com/article/9e862485.html</a>
+                    <a href="https://www.zhanggaoyuan.com/article/4f7e349a.html">https://www.zhanggaoyuan.com/article/4f7e349a.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -517,11 +562,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/golang/">
-                                    <span class="chip bg-color">golang</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -690,7 +731,7 @@
         repo: 'jeffreybool.github.io',
         owner: 'JeffreyBool',
         admin: "JeffreyBool",
-        id: '2020-06-05T11-17-11',
+        id: '2020-09-26T11-13-31',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -714,66 +755,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/article/3f02e521.html">
+                <a href="/article/4f7e349a.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="golang获取文章摘要算法性能详细对比">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="阿里云搭建shadowsocks">
                         
-                        <span class="card-title">golang获取文章摘要算法性能详细对比</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            现在我们开发网站基本摆脱不了上传文件的功能，但是上传文件的可能有几百M 或者几个G, 如果不做秒传的话会带来很多的功能。例如：用户体验不好，同一个文件还要多次上传到服务器。浪费服务器带宽和资源。如果我们做了秒传就会解决上面带来的问题，可以在客户端计算文件的摘要，和服务器算法保持一致就可以做到秒传了，客户端拿着算好的摘要去服务端判断这个文件是否已经上传，如果上传了直接返回文件信息，没有上传就调用上传接口
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/golang/" class="post-category">
-                                    golang
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/golang/">
-                        <span class="chip bg-color">golang</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/article/9e862485.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="golang 锁请小心使用">
-                        
-                        <span class="card-title">golang 锁请小心使用</span>
+                        <span class="card-title">阿里云搭建shadowsocks</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -784,7 +777,45 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-26
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            JeffreyBool
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/article/2e6584bd.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="golang 反射使用加实战 ini配置文件解析">
+                        
+                        <span class="card-title">golang 反射使用加实战 ini配置文件解析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-07-28
                             </span>
                         <span class="publish-author">
                             
@@ -798,7 +829,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
