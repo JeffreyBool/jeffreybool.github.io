@@ -505,34 +505,6 @@
     
     <div class="col s12 m6" >
         
-            <div class="post-card" style="background-image: url('/medias/featureimages/14.jpg')">
-            
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/golang/" class="category">golang</a>
-                        
-                    
-                </div>
-                <a href="/article/3f02e521.html">
-                    <h3 class="post-title">golang获取文章摘要算法性能详细对比</h3>
-                </a>
-                <p class="post-description">
-                    
-                        现在我们开发网站基本摆脱不了上传文件的功能，但是上传文件的可能有几百M 或者几个G, 如果不做秒传的话会带来很多的功能。例如：用户体验不好，同一个文件还要多次上传到服务器。浪费服务器带宽和资源。如果我们做了秒传就会解决上面带来的问题，可以在客户端计算文件的摘要，和服务器算法保持一致就可以做到秒传了，客户端拿着算好的摘要去服务端判断这个文件是否已经上传，如果上传了直接返回文件信息，没有上传就调用上传接口
-                    
-                </p>
-                <a href="/article/3f02e521.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
             <div class="post-card" style="background-image: url('/medias/featureimages/19.jpg')">
             
             <div class="post-body">
@@ -551,7 +523,35 @@
                         关于锁使用 减少读写锁粒度和范围大小，尽可能尽早释放，锁和 defer 配合使用容易踩坑，因为会出现死锁，意思就是，这段代码可能会重复加锁，
                     
                 </p>
-                <a href="/article/9e862485.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
+                <a href="/article/9e862485.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        
+            <div class="post-card" style="background-image: url('/medias/featureimages/14.jpg')">
+            
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/golang/" class="category">golang</a>
+                        
+                    
+                </div>
+                <a href="/article/3f02e521.html">
+                    <h3 class="post-title">golang获取文章摘要算法性能详细对比</h3>
+                </a>
+                <p class="post-description">
+                    
+                        现在我们开发网站基本摆脱不了上传文件的功能，但是上传文件的可能有几百M 或者几个G, 如果不做秒传的话会带来很多的功能。例如：用户体验不好，同一个文件还要多次上传到服务器。浪费服务器带宽和资源。如果我们做了秒传就会解决上面带来的问题，可以在客户端计算文件的摘要，和服务器算法保持一致就可以做到秒传了，客户端拿着算好的摘要去服务端判断这个文件是否已经上传，如果上传了直接返回文件信息，没有上传就调用上传接口
+                    
+                </p>
+                <a href="/article/3f02e521.html" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)" target="_blank">
                     <i class="icon far fa-eye fa-fw"></i>阅读更多
                 </a>
             </div>
@@ -619,7 +619,9 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                安装 shadowsocks下载 shadowsocks.sh shell
+
+wget https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadow
                             
                         </div>
                         <div class="publish-info">
@@ -654,7 +656,16 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                变量介绍
+类型信息，这部分是元信息，是预先定义好的
+值类型，这部分是程序运行过程中，动态改变的
+
+
+反射介绍反射与空接口
+
+空接口可以存储任何类型的变量
+那么给你一个空接口，怎么获取里面存储的内容
+在运行时动态的获取一个变量的类型信息和值信
                             
                         </div>
                         <div class="publish-info">
@@ -701,7 +712,21 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                目录
+接口介绍与定义
+空接口和类型断言
+指针接收和值接收区别
+接口嵌套
+课后作业
+
+接口介绍和定义接口定义了一个对象的行为规范
+
+只定义规范，不实现
+具体的对象需要实现规范的细节
+
+Go中接口定义
+type 接口名字 interface
+接
                             
                         </div>
                         <div class="publish-info">
@@ -748,7 +773,17 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                golang io (二) 操作目录
+文件打开和读写
+读取压缩文件
+bufio 原理和 cat 命令实现
+fefer 详解
+课后作业
+
+文件读写文件是存储在外部介质上的数据
+
+文件分类：文本文件和二进制文件
+文件存取方式：随机存取和顺序存放
                             
                         </div>
                         <div class="publish-info">
@@ -796,6 +831,7 @@
                         <div class="summary block-with-text">
                             
                                 
+最近很多Golang小伙伴面试居然被问到epoll？很是头疼？         猜测面试官应该是一个古老的C/C++ Coder吧那么，对于Gopher来说，或者后端开发者来说，尤其是做服务器开发，不管从事什么编程语言，epoll确实都应
                             
                         </div>
                         <div class="publish-info">
@@ -851,6 +887,12 @@
                         <div class="summary block-with-text">
                             
                                 
+该文章主要详细具体的介绍Goroutine调度器过程及原理，可以对Go调度器的详细调度过程有一个清晰的理解，花    费4天时间作了30+张图(推荐收藏)，包括如下几个章节。
+
+目录
+第一章 Golang 调度器的由来
+
+第二章 Goro
                             
                         </div>
                         <div class="publish-info">
@@ -901,7 +943,16 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                golang io 操作目录
+格式化输入
+终端输入输出背后的原理
+bufio 包的使用
+命令行参数处理和 urfave/cli 使用
+课后作业
+
+格式化输入从终端获取用户的输入
+
+fmt.Scanf(format string, a...i
                             
                         </div>
                         <div class="publish-info">
@@ -948,7 +999,14 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                /**
+ * @param item
+ * @param num
+ * @returns {*}
+ */
+export function split(item,num) {
+    if(item.length &lt;= 0){
+    
                             
                         </div>
                         <div class="publish-info">
@@ -999,7 +1057,14 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                golang 面向对象编程目录
+struct 声明和定义
+struct 的内存布局以及构造函数
+匿名字段和 struct 嵌套
+struct 与 tag 应用
+课后作业
+
+struct 声明和定义go 中面向对象是通过 struct 来实现
                             
                         </div>
                         <div class="publish-info">
@@ -1046,7 +1111,22 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                目录
+go源码组织方式
+main 函数和 main 包
+自定义包
+init 函数以及执行顺序
+课后作业
+
+go 的源码组织方式
+go 通过 package 的方式来组织源码
+
+package 包名
+
+
+
+注意：任何一个源码都属于一个包
+作用
                             
                         </div>
                         <div class="publish-info">
@@ -1097,7 +1177,19 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                code
+map 循环
+
+package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().UnixN
                             
                         </div>
                         <div class="publish-info">
@@ -1144,7 +1236,18 @@
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                
+                                目录
+变量和内存地址
+指针类型
+值拷贝和引用拷贝
+课后练习
+
+golang 指针类型
+每个变量都有内存地址，可以说通过变量来操作对应大小的内存
+var a int32
+a = 100
+fmt.Printf("%d\n",a)
+fmt.Pri
                             
                         </div>
                         <div class="publish-info">
